@@ -1,0 +1,87 @@
+{
+  "captured_at": "2026-09-26T03:08:06+00:00",
+  "sql": "SELECT event_id, vehicle_id, reason, kafka_partition, kafka_offset, left(raw_payload, 120) AS raw_payload_head FROM rejected_events ORDER BY rejected_at DESC LIMIT 10;",
+  "row_count": 10,
+  "rows": [
+    {
+      "event_id": "233701e5-a997-751a-d1c3-45af778a2ef1",
+      "vehicle_id": "V-019",
+      "reason": "LAT_OUT_OF_RANGE",
+      "kafka_partition": 1,
+      "kafka_offset": 14400,
+      "raw_payload_head": "{\"event_id\": \"233701e5-a997-751a-d1c3-45af778a2ef1\", \"trip_id\": \"T-d0e56fb55abc\", \"driver_id\": \"D-019\", \"vehicle_id\": \"V"
+    },
+    {
+      "event_id": "b578612c-d145-2166-5c81-ec5d0920def4",
+      "vehicle_id": "V-004",
+      "reason": "NEGATIVE_SPEED",
+      "kafka_partition": 1,
+      "kafka_offset": 14409,
+      "raw_payload_head": "{\"event_id\": \"b578612c-d145-2166-5c81-ec5d0920def4\", \"trip_id\": \"T-6e4c5de95b17\", \"driver_id\": \"D-004\", \"vehicle_id\": \"V"
+    },
+    {
+      "event_id": "75085bf0-d674-b957-72bc-fe7c48d093b6",
+      "vehicle_id": "V-020",
+      "reason": "NEGATIVE_SPEED",
+      "kafka_partition": 0,
+      "kafka_offset": 27227,
+      "raw_payload_head": "{\"event_id\": \"75085bf0-d674-b957-72bc-fe7c48d093b6\", \"trip_id\": \"T-fdd9bfe7f52c\", \"driver_id\": \"D-020\", \"vehicle_id\": \"V"
+    },
+    {
+      "event_id": "39402923-00c2-5e0f-3e9f-034fcdbc09ad",
+      "vehicle_id": "V-022",
+      "reason": "LON_OUT_OF_RANGE",
+      "kafka_partition": 0,
+      "kafka_offset": 27228,
+      "raw_payload_head": "{\"event_id\": \"39402923-00c2-5e0f-3e9f-034fcdbc09ad\", \"trip_id\": null, \"driver_id\": \"D-022\", \"vehicle_id\": \"V-022\", \"lat\""
+    },
+    {
+      "event_id": "3e528c3b-daa5-b205-eb5a-2a5faea546c0",
+      "vehicle_id": "V-006",
+      "reason": "NEGATIVE_FARE",
+      "kafka_partition": 3,
+      "kafka_offset": 20311,
+      "raw_payload_head": "{\"event_id\": \"3e528c3b-daa5-b205-eb5a-2a5faea546c0\", \"trip_id\": \"T-346cb9988ada\", \"driver_id\": \"D-006\", \"vehicle_id\": \"V"
+    },
+    {
+      "event_id": "02afc554-a5b3-b9ec-72a6-e806bdffa878",
+      "vehicle_id": "V-014",
+      "reason": "NEGATIVE_FARE",
+      "kafka_partition": 2,
+      "kafka_offset": 24941,
+      "raw_payload_head": "{\"event_id\": \"02afc554-a5b3-b9ec-72a6-e806bdffa878\", \"trip_id\": \"T-7b90e327cb49\", \"driver_id\": \"D-014\", \"vehicle_id\": \"V"
+    },
+    {
+      "event_id": "3150b0d2-6237-7e6e-d948-4dfca12ff1e8",
+      "vehicle_id": "V-010",
+      "reason": "NEGATIVE_SPEED",
+      "kafka_partition": 5,
+      "kafka_offset": 37772,
+      "raw_payload_head": "{\"event_id\": \"3150b0d2-6237-7e6e-d948-4dfca12ff1e8\", \"trip_id\": \"T-d824f591916f\", \"driver_id\": \"D-010\", \"vehicle_id\": \"V"
+    },
+    {
+      "event_id": "5b6515c4-91be-24f9-b1bb-593faf75f9de",
+      "vehicle_id": "V-006",
+      "reason": "LAT_OUT_OF_RANGE",
+      "kafka_partition": 3,
+      "kafka_offset": 20223,
+      "raw_payload_head": "{\"event_id\": \"5b6515c4-91be-24f9-b1bb-593faf75f9de\", \"trip_id\": \"T-346cb9988ada\", \"driver_id\": \"D-006\", \"vehicle_id\": \"V"
+    },
+    {
+      "event_id": "6429d2d2-b329-c659-7df1-56127b990eaa",
+      "vehicle_id": null,
+      "reason": "NULL_VEHICLE_ID",
+      "kafka_partition": 3,
+      "kafka_offset": 20242,
+      "raw_payload_head": "{\"event_id\": \"6429d2d2-b329-c659-7df1-56127b990eaa\", \"trip_id\": null, \"driver_id\": \"D-010\", \"vehicle_id\": null, \"lat\": 6"
+    },
+    {
+      "event_id": "331af486-74a9-34fd-b183-9ecf1f5a834c",
+      "vehicle_id": "V-012",
+      "reason": "NEGATIVE_SPEED",
+      "kafka_partition": 3,
+      "kafka_offset": 20249,
+      "raw_payload_head": "{\"event_id\": \"331af486-74a9-34fd-b183-9ecf1f5a834c\", \"trip_id\": null, \"driver_id\": \"D-012\", \"vehicle_id\": \"V-012\", \"lat\""
+    }
+  ]
+}

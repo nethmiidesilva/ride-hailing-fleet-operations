@@ -1,0 +1,76 @@
+/*
+ * Lambda (chosen) versus Kappa (rejected alternative), side by side.
+ * Render: dot -Tpng lambda_vs_kappa.dot -o lambda_vs_kappa.png
+ */
+digraph LambdaVsKappa {
+  rankdir=TB;
+  compound=true;
+  bgcolor="white";
+  fontname="Helvetica";
+  node [fontname="Helvetica", fontsize=9, shape=box, style="rounded,filled", penwidth=0.8];
+  edge [fontname="Helvetica", fontsize=8, color="#5b6b7a"];
+
+  /* ================= LAMBDA ================= */
+  subgraph cluster_lambda {
+    label="LAMBDA  —  CHOSEN";
+    labelloc="t"; fontsize=13; fontcolor="#2e7d32"; color="#2e7d32"; penwidth=2;
+    style="rounded"; bgcolor="#f4fbf5";
+
+    l_src1 [label="telemetry stream\nevery 2 s", fillcolor="#dbeafe", color="#176ba8"];
+    l_src2 [label="daily expense CSV\none file per day", fillcolor="#dbeafe", color="#176ba8"];
+    l_kafka [label="Kafka", shape=cylinder, fillcolor="#e8f4fb", color="#176ba8"];
+    l_file  [label="landing dir", shape=folder, fillcolor="#e8f4fb", color="#176ba8"];
+
+    l_speed [label="SPEED LAYER\nStructured Streaming\napprox counts · 2-min watermark\nlatency: seconds", fillcolor="#d7f3f3", color="#2e7d7d"];
+    l_lake  [label="MASTER DATASET\nParquet, immutable\npartitioned by sim_date", shape=cylinder, fillcolor="#e9f7ef", color="#2e7d32"];
+    l_batch [label="BATCH LAYER\nSpark batch, recomputes\nexact · corrects late data\nlatency: one day", fillcolor="#fdf0d5", color="#b8860b"];
+
+    l_serve [label="SERVING\nPostgreSQL + FastAPI\nrealtime_* and daily_* tables", shape=cylinder, fillcolor="#f0e9f7", color="#6a4c93"];
+
+    l_src1 -> l_kafka;
+    l_src2 -> l_file;
+    l_kafka -> l_speed;
+    l_speed -> l_lake  [label="writes cleaned\nevents"];
+    l_lake  -> l_batch [label="re-read whole day"];
+    l_file  -> l_batch [label="Airflow sensor"];
+    l_speed -> l_serve [label="fast, approximate"];
+    l_batch -> l_serve [label="slow, exact"];
+
+    l_note [label="+ two latency needs served natively\n+ recomputation fixes bugs and late data\n+ the daily file stays a file\n− two code paths (mitigated: common/zones.py,\n   common/schemas.py shared by both layers)\n− duplicated compute",
+            shape=note, fillcolor="#ffffff", color="#2e7d32", fontsize=8];
+    l_serve -> l_note [style=invis];
+  }
+
+  /* ================= KAPPA ================= */
+  subgraph cluster_kappa {
+    label="KAPPA  —  REJECTED";
+    labelloc="t"; fontsize=13; fontcolor="#c62828"; color="#c62828"; penwidth=2;
+    style="rounded"; bgcolor="#fdf5f5";
+
+    k_src1 [label="telemetry stream\nevery 2 s", fillcolor="#dbeafe", color="#176ba8"];
+    k_src2 [label="daily expense CSV\nmust be PUSHED into a topic\n(extra connector to build+run)", fillcolor="#fde8e8", color="#c62828"];
+    k_kafka [label="Kafka\nLONG retention for replay\n(days of telemetry on disk)", shape=cylinder, fillcolor="#e8f4fb", color="#176ba8"];
+
+    k_stream [label="SINGLE STREAM LAYER\nstream-static / stream-stream join\none code path", fillcolor="#d7f3f3", color="#2e7d7d"];
+    k_replay [label="REPROCESSING\nreplay the topic from offset 0\ninto a parallel job, then swap",
+              fillcolor="#fde8e8", color="#c62828"];
+    k_serve  [label="SERVING\nsingle result store", shape=cylinder, fillcolor="#f0e9f7", color="#6a4c93"];
+
+    k_src1 -> k_kafka;
+    k_src2 -> k_kafka [label="CSV → topic", color="#c62828"];
+    k_kafka -> k_stream;
+    k_kafka -> k_replay [style=dashed, label="replay"];
+    k_stream -> k_serve;
+    k_replay -> k_serve [style=dashed, label="swap over"];
+
+    k_note [label="+ one code path, one skill set\n+ no batch/speed divergence at all\n− a once-a-day file gains nothing from a topic\n− correction = full replay of a long topic\n− retention becomes the storage design\n− stream-stream joins need large state stores",
+            shape=note, fillcolor="#ffffff", color="#c62828", fontsize=8];
+    k_serve -> k_note [style=invis];
+  }
+
+  verdict [label="VERDICT for THIS use case:\ntwo genuinely different latency requirements (live utilisation vs daily profitability),\na batch-native second source, and a correctness requirement that needs recomputation\n(late GPS events and corrected cost files) → LAMBDA.\nKappa's single-code-path advantage does not outweigh forcing a daily file through a topic.",
+           shape=box, style="rounded,filled", fillcolor="#eef3f7", color="#16222e", fontsize=9, penwidth=1.2];
+
+  l_note -> verdict [ltail=cluster_lambda, style=invis];
+  k_note -> verdict [ltail=cluster_kappa, style=invis];
+}

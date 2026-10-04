@@ -1,0 +1,119 @@
+{
+  "captured_at": "2026-09-26T03:08:06+00:00",
+  "sql": "SELECT report_date, count(*) AS rows, round(sum(fuel_cost),2) AS fuel, round(sum(maintenance_cost),2) AS maintenance, round(sum(distance_covered),2) AS km FROM daily_expenses GROUP BY report_date ORDER BY report_date;",
+  "row_count": 16,
+  "rows": [
+    {
+      "report_date": "2026-09-01",
+      "rows": 25,
+      "fuel": "6669.77",
+      "maintenance": "16078.05",
+      "km": "142.02"
+    },
+    {
+      "report_date": "2026-09-02",
+      "rows": 25,
+      "fuel": "6908.07",
+      "maintenance": "14932.41",
+      "km": "147.46"
+    },
+    {
+      "report_date": "2026-09-03",
+      "rows": 25,
+      "fuel": "6537.26",
+      "maintenance": "15119.92",
+      "km": "144.18"
+    },
+    {
+      "report_date": "2026-09-04",
+      "rows": 25,
+      "fuel": "7319.32",
+      "maintenance": "16429.73",
+      "km": "156.03"
+    },
+    {
+      "report_date": "2026-09-05",
+      "rows": 25,
+      "fuel": "6977.53",
+      "maintenance": "17525.87",
+      "km": "149.35"
+    },
+    {
+      "report_date": "2026-09-16",
+      "rows": 25,
+      "fuel": "6800.45",
+      "maintenance": "16266.43",
+      "km": "145.63"
+    },
+    {
+      "report_date": "2026-09-17",
+      "rows": 25,
+      "fuel": "6532.71",
+      "maintenance": "16644.39",
+      "km": "143.61"
+    },
+    {
+      "report_date": "2026-09-20",
+      "rows": 25,
+      "fuel": "5895.73",
+      "maintenance": "16378.98",
+      "km": "128.11"
+    },
+    {
+      "report_date": "2026-09-21",
+      "rows": 25,
+      "fuel": "6873.51",
+      "maintenance": "19682.30",
+      "km": "148.80"
+    },
+    {
+      "report_date": "2026-09-22",
+      "rows": 25,
+      "fuel": "6907.67",
+      "maintenance": "16564.57",
+      "km": "149.91"
+    },
+    {
+      "report_date": "2026-11-04",
+      "rows": 25,
+      "fuel": "6516.79",
+      "maintenance": "16718.74",
+      "km": "141.41"
+    },
+    {
+      "report_date": "2026-11-05",
+      "rows": 25,
+      "fuel": "6673.98",
+      "maintenance": "16634.64",
+      "km": "144.66"
+    },
+    {
+      "report_date": "2026-11-06",
+      "rows": 25,
+      "fuel": "6983.68",
+      "maintenance": "14773.53",
+      "km": "148.40"
+    },
+    {
+      "report_date": "2026-11-07",
+      "rows": 25,
+      "fuel": "6304.82",
+      "maintenance": "16091.02",
+      "km": "134.48"
+    },
+    {
+      "report_date": "2026-11-08",
+      "rows": 25,
+      "fuel": "6553.89",
+      "maintenance": "14281.05",
+      "km": "142.20"
+    },
+    {
+      "report_date": "2026-11-09",
+      "rows": 25,
+      "fuel": "6696.73",
+      "maintenance": "16806.63",
+      "km": "143.33"
+    }
+  ]
+}

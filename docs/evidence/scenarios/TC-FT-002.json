@@ -1,0 +1,27 @@
+{
+  "test_case": "TC-FT-002",
+  "title": "Stream job restart resumes from checkpoint with no duplicate rows",
+  "requirements": ["REQ-10", "REQ-11"],
+  "status": "PASS",
+  "baseline": {
+    "vehicle_status_rows": "25",
+    "vehicle_status_distinct_vehicles": "25",
+    "zone_metric_rows": "331",
+    "zone_metric_distinct_keys": "331",
+    "stream_batches_total": "46"
+  },
+  "injection": { "at": "2026-09-25T18:17:29Z", "action": "docker compose restart stream-job" },
+  "recovery": {
+    "batches_resumed_after_seconds": 0,
+    "checkpoint_directories": "master rejected vehicle_status zone_metrics "
+  },
+  "after": {
+    "vehicle_status_rows": "25",
+    "vehicle_status_distinct_vehicles": "25",
+    "zone_metric_rows": "339",
+    "zone_metric_distinct_keys": "339",
+    "duplicate_open_idle_alerts": "0"
+  },
+  "assertion": "row count == distinct natural-key count for every upserted table; no duplicate open alerts",
+  "captured_at": "2026-09-25T18:18:21Z"
+}

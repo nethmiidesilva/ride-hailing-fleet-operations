@@ -1,0 +1,7 @@
+-- SELECT * FROM v_fleet_now;
+-- captured 2026-09-26T03:08:05.979435+00:00
+
+window_start              | window_end                | active_vehicles | idle_vehicles | total_vehicles | idle_ratio | trips_completed | earnings_lkr | avg_speed_kmh | zones_reporting
+--------------------------+---------------------------+-----------------+---------------+----------------+------------+-----------------+--------------+---------------+----------------
+2026-09-26 03:07:00+00:00 | 2026-09-26 03:08:00+00:00 | 17              | 8             | 25             | 0.3200     | 18              | 3558.52      | 39.10         | 6              
+(1 rows)

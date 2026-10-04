@@ -1,0 +1,38 @@
+# ==============================================================================================
+# RECOMMENDED %USERPROFILE%\.wslconfig  —  copy this to C:\Users\<you>\.wslconfig
+#
+# Why this file exists
+# --------------------
+# By default WSL2 (and therefore Docker Desktop's VM) may claim up to ~50-80% of host RAM and,
+# critically, does NOT return freed memory to Windows promptly. On the machine this project was
+# built on (15.6 GB total, ~9 GB used by Windows and other applications) that repeatedly drove
+# free physical memory below 0.5 GB and the Docker daemon became unresponsive three times.
+#
+# The settings below cap the VM and let it hand memory back. They are NOT applied automatically
+# by this project — editing a user's global WSL configuration is their decision, not the
+# pipeline's. Copy it manually if you hit the same problem:
+#
+#     Copy-Item .wslconfig.recommended "$env:USERPROFILE\.wslconfig"
+#     wsl --shutdown          # required for the change to take effect
+#     # then start Docker Desktop again
+#
+# After that, `make up` has ~6 GB of headroom, which is what the stack's mem_limits total (5.8 GB).
+# ==============================================================================================
+[wsl2]
+
+# Hard cap on the VM. Set this to (total RAM) minus (what Windows and your apps need).
+# 6 GB comfortably runs the whole stack, whose limits total 5.8 GB.
+memory=6GB
+
+# Enough parallelism for Spark local[*] without letting it starve the host.
+processors=6
+
+# A swap file inside the VM absorbs Spark's transient spikes instead of pushing Windows into
+# its page file, which is what makes the whole machine feel frozen.
+swap=4GB
+
+# Return freed page-cache memory to Windows instead of holding it forever (WSL 2.0+).
+# "gradual" is the safe choice; "dropcache" is more aggressive.
+[experimental]
+autoMemoryReclaim=gradual
+sparseVhd=true

@@ -1,0 +1,147 @@
+{
+  "captured_at": "2026-09-26T03:08:06+00:00",
+  "sql": "SELECT report_date, count(*) AS vehicles, sum(trips) AS trips, round(sum(revenue_lkr),2) AS revenue, round(sum(total_cost_lkr),2) AS cost, round(sum(profit_lkr),2) AS profit, count(*) FILTER (WHERE is_unprofitable) AS unprofitable, count(*) FILTER (WHERE trend <> 'STABLE') AS at_risk FROM daily_vehicle_profitability GROUP BY report_date ORDER BY report_date;",
+  "row_count": 14,
+  "rows": [
+    {
+      "report_date": "2026-09-01",
+      "vehicles": 25,
+      "trips": 159,
+      "revenue": "30611.90",
+      "cost": "22747.82",
+      "profit": "7864.08",
+      "unprofitable": 6,
+      "at_risk": 0
+    },
+    {
+      "report_date": "2026-09-02",
+      "vehicles": 25,
+      "trips": 129,
+      "revenue": "27110.08",
+      "cost": "21840.48",
+      "profit": "5269.60",
+      "unprofitable": 7,
+      "at_risk": 3
+    },
+    {
+      "report_date": "2026-09-03",
+      "vehicles": 25,
+      "trips": 179,
+      "revenue": "34027.57",
+      "cost": "21657.18",
+      "profit": "12370.39",
+      "unprofitable": 7,
+      "at_risk": 5
+    },
+    {
+      "report_date": "2026-09-04",
+      "vehicles": 25,
+      "trips": 151,
+      "revenue": "29917.62",
+      "cost": "23749.05",
+      "profit": "6168.57",
+      "unprofitable": 6,
+      "at_risk": 6
+    },
+    {
+      "report_date": "2026-09-05",
+      "vehicles": 25,
+      "trips": 14,
+      "revenue": "10501.93",
+      "cost": "24503.40",
+      "profit": "-14001.47",
+      "unprofitable": 17,
+      "at_risk": 8
+    },
+    {
+      "report_date": "2026-09-17",
+      "vehicles": 25,
+      "trips": 66,
+      "revenue": "25784.12",
+      "cost": "23177.10",
+      "profit": "2607.02",
+      "unprofitable": 12,
+      "at_risk": 0
+    },
+    {
+      "report_date": "2026-09-21",
+      "vehicles": 25,
+      "trips": 16,
+      "revenue": "16281.89",
+      "cost": "26555.81",
+      "profit": "-10273.92",
+      "unprofitable": 17,
+      "at_risk": 0
+    },
+    {
+      "report_date": "2026-09-22",
+      "vehicles": 25,
+      "trips": 177,
+      "revenue": "34399.66",
+      "cost": "23472.24",
+      "profit": "10927.42",
+      "unprofitable": 7,
+      "at_risk": 2
+    },
+    {
+      "report_date": "2026-11-04",
+      "vehicles": 25,
+      "trips": 13,
+      "revenue": "2420.64",
+      "cost": "23235.53",
+      "profit": "-20814.89",
+      "unprofitable": 25,
+      "at_risk": 0
+    },
+    {
+      "report_date": "2026-11-05",
+      "vehicles": 25,
+      "trips": 131,
+      "revenue": "25392.98",
+      "cost": "23308.62",
+      "profit": "2084.36",
+      "unprofitable": 6,
+      "at_risk": 1
+    },
+    {
+      "report_date": "2026-11-06",
+      "vehicles": 200,
+      "trips": 201,
+      "revenue": "38470.81",
+      "cost": "21757.21",
+      "profit": "16713.60",
+      "unprofitable": 7,
+      "at_risk": 5
+    },
+    {
+      "report_date": "2026-11-07",
+      "vehicles": 200,
+      "trips": 751,
+      "revenue": "146184.66",
+      "cost": "22395.84",
+      "profit": "123788.82",
+      "unprofitable": 7,
+      "at_risk": 5
+    },
+    {
+      "report_date": "2026-11-08",
+      "vehicles": 25,
+      "trips": 176,
+      "revenue": "33776.10",
+      "cost": "20834.94",
+      "profit": "12941.16",
+      "unprofitable": 5,
+      "at_risk": 1
+    },
+    {
+      "report_date": "2026-11-09",
+      "vehicles": 25,
+      "trips": 174,
+      "revenue": "33961.76",
+      "cost": "23503.36",
+      "profit": "10458.40",
+      "unprofitable": 7,
+      "at_risk": 7
+    }
+  ]
+}

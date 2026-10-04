@@ -1,0 +1,33 @@
+{
+  "test_case": "TC-FT-003",
+  "title": "Kafka broker restart - producer retries and does not crash",
+  "requirements": ["REQ-01", "REQ-08"],
+  "status": "PASS",
+  "baseline": {
+    "events_sent_total": "734",
+    "send_errors_total": "0",
+    "producer_restart_count": "0",
+    "producer_started_at": "2026-09-25T18:17:17.07801164Z"
+  },
+  "injection": { "at": "2026-09-25T18:18:22Z", "action": "docker compose restart kafka" },
+  "recovery": {
+    "broker_healthy_after_seconds": 6,
+    "producer_resumed_after_seconds": 1
+  },
+  "after": {
+    "events_sent_total": "859",
+    "send_errors_total": "0",
+    "producer_restart_count": "0",
+    "producer_started_at": "2026-09-25T18:17:17.07801164Z",
+    "producer_state": "running",
+    "producer_process_survived": true
+  },
+  "producer_config": {
+    "acks": "all",
+    "enable.idempotence": true,
+    "retries": 10,
+    "retry.backoff.ms": 500,
+    "delivery.timeout.ms": 120000
+  },
+  "captured_at": "2026-09-25T18:18:32Z"
+}

@@ -1,0 +1,15 @@
+{
+  "test_case": "TC-NFR-002",
+  "samples": 25,
+  "latency_seconds": {
+    "min": 1.13,
+    "p50": 1.13,
+    "p95": 3.369,
+    "max": 3.369,
+    "mean": 1.398
+  },
+  "measurement": "vehicle_status.updated_at - vehicle_status.last_event_time",
+  "pipeline_hops": "producer -> Kafka -> Spark micro-batch (10 s trigger) -> psycopg UPSERT",
+  "status": "PASS",
+  "captured_at": "2026-09-26T03:07:46+00:00"
+}

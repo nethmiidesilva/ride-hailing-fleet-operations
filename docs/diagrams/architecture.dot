@@ -1,0 +1,103 @@
+/*
+ * Overall system architecture — Lambda, end to end.
+ * Render: dot -Tpng architecture.dot -o architecture.png
+ */
+digraph FleetLambda {
+  rankdir=LR;
+  splines=ortho;
+  nodesep=0.35;
+  ranksep=0.7;
+  bgcolor="white";
+  fontname="Helvetica";
+  node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", penwidth=0.8];
+  edge [fontname="Helvetica", fontsize=8, color="#5b6b7a", penwidth=1.0];
+
+  /* ---------------- sources ---------------- */
+  subgraph cluster_sources {
+    label="INGESTION  (two sources, two cadences)";
+    fontsize=11; fontcolor="#16222e"; color="#b9c8d4"; style="rounded"; bgcolor="#f6f9fb";
+    gps   [label="gps_producer.py\n25 vehicles · state machine\nevery 2 s · :8001 metrics", fillcolor="#dbeafe", color="#176ba8"];
+    exp   [label="expense_producer.py\n1 CSV per simulated day\natomic rename · :8002 metrics", fillcolor="#dbeafe", color="#176ba8"];
+    fault [label="fault injection\n2% malformed · 1% late\n1% duplicate · 3 lazy vehicles", shape=note, fillcolor="#fff5e6", color="#ef6c00", fontsize=8];
+  }
+
+  kafka [label="Apache Kafka 3.7 (KRaft)\ntopic fleet.telemetry\n6 partitions · key = vehicle_id\n+ fleet.telemetry.dlq",
+         shape=cylinder, fillcolor="#e8f4fb", color="#176ba8"];
+  landing [label="/data/landing\nexpenses_<D>.csv", shape=folder, fillcolor="#e8f4fb", color="#176ba8"];
+
+  /* ---------------- speed layer ---------------- */
+  subgraph cluster_speed {
+    label="SPEED LAYER  (latency: seconds)";
+    fontsize=11; fontcolor="#16222e"; color="#59c3c3"; style="rounded"; bgcolor="#f2fbfb";
+    stream [label="Spark Structured Streaming\nlocal[*] · stream_job.py", fillcolor="#d7f3f3", color="#2e7d7d"];
+    val    [label="validate\n(shared rules)", fillcolor="#ffffff", color="#2e7d7d"];
+    dedup  [label="dropDuplicatesWithinWatermark\nevent_id · 2 min", fillcolor="#ffffff", color="#2e7d7d"];
+    enrich [label="enrich\nzone (shared fn) · is_active", fillcolor="#ffffff", color="#2e7d7d"];
+    stream -> val -> dedup -> enrich [style=dashed, arrowhead=vee];
+  }
+
+  /* ---------------- batch layer ---------------- */
+  subgraph cluster_batch {
+    label="BATCH LAYER  (latency: one simulated day)";
+    fontsize=11; fontcolor="#16222e"; color="#f6ae2d"; style="rounded"; bgcolor="#fffaf0";
+    airflow [label="Airflow 2.9 · LocalExecutor\ndaily_reconciliation DAG\nsensor → validate → load →\nspark-submit → report → DQ", fillcolor="#fdf0d5", color="#b8860b"];
+    batchjob [label="profitability_job.py\nRECOMPUTES from Parquet\njoin telemetry × expenses", fillcolor="#fdf0d5", color="#b8860b"];
+    airflow -> batchjob [label="spark-submit"];
+  }
+
+  lake [label="MASTER DATASET\nParquet on a volume\n/data/lake/telemetry/sim_date=…\nimmutable · append-only",
+        shape=cylinder, fillcolor="#e9f7ef", color="#2e7d32"];
+
+  /* ---------------- serving ---------------- */
+  subgraph cluster_serving {
+    label="SERVING LAYER";
+    fontsize=11; fontcolor="#16222e"; color="#8c6bb1"; style="rounded"; bgcolor="#faf7fd";
+    pg   [label="PostgreSQL 16\nrealtime_zone_metrics · vehicle_status\nidle_alerts · rejected_events\ndaily_vehicle_profitability\ndaily_zone_summary · pipeline_runs",
+          shape=cylinder, fillcolor="#f0e9f7", color="#6a4c93"];
+    api  [label="FastAPI :8000\n/metrics/fleet · /metrics/zones\n/alerts/idle · /reports/profitability\n/health · /docs", fillcolor="#f0e9f7", color="#6a4c93"];
+    rep  [label="HTML + CSV daily report\n/data/reports/profitability_<D>.html", shape=note, fillcolor="#ffffff", color="#6a4c93"];
+  }
+
+  /* ---------------- observability ---------------- */
+  subgraph cluster_obs {
+    label="OBSERVABILITY";
+    fontsize=11; fontcolor="#16222e"; color="#c62828"; style="rounded"; bgcolor="#fdf4f4";
+    prom  [label="Prometheus 2.53\nscrape 10 s\n9 alert rules", fillcolor="#fbe9e9", color="#c62828"];
+    graf  [label="Grafana 11\nFleet Operations\nPipeline Health\n(provisioned)", fillcolor="#fbe9e9", color="#c62828"];
+    kexp  [label="kafka-exporter\nconsumer lag", fillcolor="#fbe9e9", color="#c62828"];
+    logs  [label="structured JSON logs\nts · service · stage · event\nrun_id / batch_id / event_id", shape=note, fillcolor="#ffffff", color="#c62828"];
+  }
+
+  /* ---------------- edges ---------------- */
+  gps   -> kafka   [label="produce\nacks=all, idempotent"];
+  fault -> gps     [style=dotted, arrowhead=none];
+  exp   -> landing [label="atomic\nos.replace"];
+
+  kafka -> stream  [label="subscribe\nstartingOffsets=latest"];
+  landing -> airflow [label="FileSensor\nmode=reschedule"];
+
+  enrich -> lake [label="(a) Parquet sink\npartitionBy sim_date\ntrigger 30 s"];
+  enrich -> pg   [label="(b) 1-min windows → UPSERT\n(c) vehicle_status + idle_alerts"];
+  val    -> pg   [label="(d) rejected_events", style=dashed];
+  val    -> kafka [label="DLQ", style=dashed];
+
+  lake  -> batchjob [label="read partition sim_date=D"];
+  pg    -> batchjob [label="JDBC read\ndaily_expenses", style=dashed];
+  batchjob -> pg [label="UPSERT\ndaily_vehicle_profitability\ndaily_zone_summary"];
+  airflow -> rep [label="report_builder.py"];
+  rep -> api [style=dotted, label="served at\n/reports/.../html"];
+
+  pg -> api  [label="SQL"];
+  pg -> graf [label="SQL datasource", style=dashed];
+
+  gps -> prom    [style=dotted, label=":8001"];
+  exp -> prom    [style=dotted, label=":8002"];
+  stream -> prom [style=dotted, label=":8003"];
+  api -> prom    [style=dotted, label="/metrics-prom"];
+  kafka -> kexp  [style=dotted];
+  kexp -> prom   [style=dotted];
+  prom -> graf   [label="datasource", style=dashed];
+
+  {rank=same; gps; exp;}
+  {rank=same; lake; pg;}
+}

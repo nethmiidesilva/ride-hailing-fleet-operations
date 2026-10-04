@@ -1,0 +1,198 @@
+# ==============================================================================================
+# Prometheus alert rules.
+#
+# Each rule follows the same discipline: it names the FAILURE it detects (not the metric it
+# reads), and its threshold is justified against the simulated clock.  The rationale column is
+# reproduced as a table in the observability section of the report.
+#
+# Every rule is scoped with an explicit {job="..."} selector.  That is deliberate: the metrics are
+# now split into per-service registries (common/metrics.py), but pinning the job here means a
+# future registry mistake cannot resurrect the phantom instances of DEFECT-014, where an unset
+# gauge reading 0 made `time() - 0` fire three alerts permanently on services that never emit
+# those metrics.
+# ==============================================================================================
+groups:
+  - name: fleet-pipeline-availability
+    interval: 10s
+    rules:
+      # Detects: the GPS producer died, Kafka is unreachable, or the whole ingestion path stalled.
+      # Threshold: events are emitted every 2 s per vehicle, so 120 s of silence is ~60 missed
+      # emission cycles — far beyond any plausible GC pause or broker rebalance.
+      - alert: NoTelemetryReceived
+        # DEFECT-017 (the "dead man's switch"): an age-based expression alone cannot detect a
+        # DEAD target.  When the producer container stops, Prometheus marks its series stale and
+        # `producer_last_send_timestamp` returns NO DATA, so `time() - <nothing>` is an empty
+        # vector and the alert silently never fires -- exactly the outage it exists to catch.
+        # TC-FT-001 proved this by stopping the container: /health degraded correctly but this
+        # rule stayed inactive.  The `up == 0` clause is what makes the rule fire when the target
+        # disappears; the age clause catches a producer that is alive but no longer sending.
+        expr: |
+          up{job="gps-producer"} == 0
+            or
+          time() - producer_last_send_timestamp{job="gps-producer"} > 120
+        for: 30s
+        labels:
+          severity: critical
+          stage: ingestion
+        annotations:
+          summary: "No telemetry produced for over 2 minutes"
+          description: "producer_last_send_timestamp is {{ $value | humanizeDuration }} old. The speed layer is blind; /health will report degraded."
+          runbook: "docker compose logs gps-producer; docker compose restart gps-producer"
+
+      # Detects: the Spark streaming job crashed, is stuck on a batch, or lost its Kafka consumer.
+      # Separate from the producer rule so the report can distinguish "no data produced" from
+      # "data produced but not processed" — a distinction Lambda's two layers make observable.
+      - alert: StreamProcessingStalled
+        # Same dead man's switch as NoTelemetryReceived (DEFECT-017): `up == 0` catches the
+        # job being gone, the age clause catches it being alive but stuck on a batch.
+        expr: |
+          up{job="stream-job"} == 0
+            or
+          time() - stream_last_batch_timestamp{job="stream-job"} > 120
+        for: 30s
+        labels:
+          severity: critical
+          stage: processing
+        annotations:
+          summary: "No Structured Streaming micro-batch completed for over 2 minutes"
+          description: "Last batch was {{ $value | humanizeDuration }} ago; realtime_zone_metrics is going stale."
+          runbook: "docker compose logs stream-job | tail -50; check checkpoint dir /data/checkpoints"
+
+      # Detects: a producer schema change, a broken GPS unit fleet-wide, or a validation bug.
+      # Threshold: BAD_EVENT_RATE is 2% by design, so 5% sustained over 2 minutes means the real
+      # corruption rate more than doubled. The chaos test raises BAD_EVENT_RATE to 0.2 to fire it.
+      - alert: HighRejectRate
+        # DEFECT-015: the denominator must be EVENTS, not sink writes.
+        # stream_rows_processed_total counts rows written per sink (25 vehicle_status upserts and
+        # ~6 zone-window upserts per micro-batch), which is a different unit from the rejected
+        # event count -- the original expression compared the two and sat permanently at ~7%.
+        expr: |
+          sum(rate(stream_rows_rejected_total[2m]))
+            /
+          clamp_min(sum(rate(stream_events_valid_total[2m])) + sum(rate(stream_rows_rejected_total[2m])), 0.001)
+            > 0.05
+        for: 1m
+        labels:
+          severity: warning
+          stage: processing
+        annotations:
+          summary: "More than 5% of telemetry rows are being quarantined"
+          description: "Reject ratio {{ $value | humanizePercentage }} over the last 2 minutes."
+          runbook: "SELECT reason, count(*) FROM rejected_events WHERE rejected_at > now() - interval '5 min' GROUP BY 1;"
+
+      # Detects: back-pressure — batches taking longer than the 30 s trigger interval means the
+      # job can never catch up and lag grows without bound.
+      - alert: StreamBatchSlow
+        expr: histogram_quantile(0.95, sum(rate(stream_batch_duration_seconds_bucket[5m])) by (le, sink)) > 20
+        for: 2m
+        labels:
+          severity: warning
+          stage: processing
+        annotations:
+          summary: "p95 micro-batch duration above 20 s for sink {{ $labels.sink }}"
+          description: "p95 = {{ $value }}s against a {{ 30 }}s trigger; the job is approaching back-pressure."
+
+      # Detects: the consumer cannot keep up with the producer. 5000 messages at ~12.5 events/s
+      # is roughly 6 minutes of backlog.
+      #
+      # NOTE (DEFECT-013): this is deliberately NOT written against
+      # `kafka_consumergroup_lag`.  Spark Structured Streaming does not commit offsets to Kafka --
+      # it keeps them in its checkpoint, which is what gives it its delivery guarantees -- so the
+      # broker knows of no consumer group for this job and that metric is permanently empty.
+      # True lag is therefore computed here as (broker end offset) - (offset the job committed),
+      # where kafka-exporter supplies the first term and the stream job publishes the second.
+      # `max by (partition)` collapses the four queries, which each track the topic independently.
+      - alert: ConsumerLagHigh
+        expr: |
+          sum(kafka_topic_partition_current_offset{topic="fleet.telemetry"})
+            -
+          sum(max by (partition) (stream_committed_offset{topic="fleet.telemetry"}))
+            > 5000
+        for: 2m
+        labels:
+          severity: warning
+          stage: processing
+        annotations:
+          summary: "Streaming job is more than 5000 messages behind the broker"
+          description: "Lag {{ $value }} messages on fleet.telemetry (broker end offset minus the offset the job has committed to its checkpoint)."
+          runbook: "Check stream_input_rows_per_second vs stream_processed_rows_per_second; if processing is lower for a sustained period the job cannot catch up."
+
+      # Detects: the job is consuming slower than data arrives -- the leading indicator of the
+      # backlog above, visible before lag becomes large.
+      - alert: StreamFallingBehind
+        expr: |
+          sum(stream_input_rows_per_second) > 0
+            and
+          sum(stream_processed_rows_per_second) < sum(stream_input_rows_per_second) * 0.8
+        for: 5m
+        labels:
+          severity: warning
+          stage: processing
+        annotations:
+          summary: "Streaming job is processing slower than data arrives"
+          description: "Processed rate is below 80% of the input rate for 5 minutes."
+
+  - name: fleet-batch-layer
+    interval: 10s
+    rules:
+      # Detects: the batch source stopped. 1.5 simulated days (900 s with SIM_DAY_SECONDS=600)
+      # means one whole day's file was missed, which is exactly the SKIP_DAY failure scenario.
+      - alert: ExpenseFileLate
+        # Dead man's switch (DEFECT-017): if the expense producer is gone, no file will ever
+        # arrive, so the Airflow sensor will time out a simulated day later.  Catch it here first.
+        expr: |
+          up{job="expense-producer"} == 0
+            or
+          time() - expense_last_file_timestamp{job="expense-producer"} > 900
+        for: 30s
+        labels:
+          severity: warning
+          stage: ingestion
+        annotations:
+          summary: "No daily expense file written for more than 1.5 simulated days"
+          description: "Last file {{ $value | humanizeDuration }} ago. The Airflow FileSensor will time out and the reconciliation for that day cannot run."
+          runbook: "ls -l /data/landing; docker compose logs expense-producer"
+
+      # Detects: a serving-layer outage or a degraded /health (DB down, data stale).
+      - alert: ApiUnhealthy
+        # Dead man's switch (DEFECT-017): a missing series means the API is gone, which is
+        # more serious than a degraded one, so `absent()` must fire too.
+        expr: |
+          api_health_status{job="api"} < 1
+            or
+          absent(api_health_status{job="api"})
+        for: 1m
+        labels:
+          severity: critical
+          stage: serving
+        annotations:
+          summary: "FastAPI /health is reporting degraded"
+          description: "api_health_status = {{ $value }}. Check Postgres connectivity and data freshness."
+
+      # Detects: idle alerts piling up — an operational (not technical) signal that the fleet is
+      # over-supplied for current demand. Included to show alerting on business KPIs, not only
+      # on infrastructure.
+      - alert: ManyVehiclesIdle
+        expr: idle_alerts_open{job="stream-job"} > 5
+        for: 2m
+        labels:
+          severity: info
+          stage: serving
+        annotations:
+          summary: "{{ $value }} vehicles have open idle alerts"
+          description: "Fleet utilisation is low; consider repositioning or reducing supply."
+
+  - name: fleet-infrastructure
+    interval: 10s
+    rules:
+      # Catch-all: any scrape target down. Keeps the rule set honest — without it, a dead
+      # exporter would make the other rules silently stop evaluating.
+      - alert: TargetDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+          stage: monitoring
+        annotations:
+          summary: "Prometheus target {{ $labels.job }} is down"
+          description: "{{ $labels.instance }} has been unreachable for 1 minute."

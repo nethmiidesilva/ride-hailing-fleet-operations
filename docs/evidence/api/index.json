@@ -1,0 +1,30 @@
+{
+  "captured_at": "2026-09-26T03:08:05+00:00",
+  "request": "GET /",
+  "status_code": 200,
+  "body": {
+    "service": "fleet-operations-api",
+    "version": "1.0.0",
+    "run_id": "d0e05f6df34b",
+    "architecture": "lambda",
+    "docs": "/docs",
+    "endpoints": [
+      "/health/live",
+      "/health",
+      "/metrics/fleet",
+      "/metrics/zones",
+      "/alerts/idle",
+      "/metrics/time-of-day",
+      "/reports/profitability",
+      "/vehicles/unprofitable",
+      "/reports/profitability/{report_date}/html",
+      "/reports",
+      "/metrics-prom",
+      "/"
+    ],
+    "simulated_clock": {
+      "sim_day_seconds": 600,
+      "sim_start_date": "2026-09-01"
+    }
+  }
+}

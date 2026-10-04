@@ -1,0 +1,67 @@
+[project]
+name = "fleet-lambda"
+version = "1.0.0"
+description = "Ride-hailing fleet operations — Lambda architecture data pipeline (Applied Big Data Engineering mini project)"
+requires-python = ">=3.11"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = [".git", "__pycache__", "docs", "data"]
+
+[tool.ruff.lint]
+# E/W pycodestyle, F pyflakes, I import order, B bugbear, UP pyupgrade, C4 comprehensions,
+# D docstrings on public API (the viva requires every public function to be explainable).
+select = ["E", "W", "F", "I", "B", "UP", "C4", "ARG", "SIM"]
+
+# Rules deliberately disabled, with the reason -- so a future reader knows these are decisions
+# rather than oversights.
+#
+#   UP038  isinstance(x, (int, float)) -> isinstance(x, int | float).  The tuple form reads more
+#          clearly for a runtime type check and is measurably faster on CPython 3.11, so the
+#          "modernisation" is not an improvement here.
+#   ARG001 Unused function argument.  FastAPI's lifespan signature requires `app` whether or not
+#          the body uses it, and pytest fixtures are requested by name for their side effects.
+#   ARG005 Unused lambda argument.  Test doubles must match the signature they replace.
+ignore = [
+    "UP038",
+    "ARG001",
+    "ARG005",
+    "E501",   # line length is enforced by black
+    "B008",   # FastAPI Depends() in defaults is the documented idiom
+    "SIM105", # contextlib.suppress is not always clearer than try/except/pass
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ARG001", "ARG002"]  # pytest fixtures are passed but not always referenced
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+# Node ids stay stable so they can be quoted as evidence in TEST_REPORT.md.
+addopts = "-ra -q --strict-markers --timeout=600"
+markers = [
+    "unit: pure-Python or local-SparkSession tests, no Docker stack required",
+    "integration: requires the docker compose stack to be running",
+    "e2e: full end-to-end flow across all services",
+    "chaos: failure-injection scenario tests",
+    "nfr: non-functional (throughput/latency/resource) measurements",
+    "spark: needs a local SparkSession (slow to start, ~15 s)",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning:pyspark.*",
+    "ignore::DeprecationWarning:pkg_resources.*",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["common", "streaming", "batch", "api", "producers"]
+omit = ["*/__init__.py", "*/Dockerfile*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true

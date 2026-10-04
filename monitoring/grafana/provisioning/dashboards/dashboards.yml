@@ -1,0 +1,16 @@
+# Dashboard provider: picks up every JSON file dropped into /var/lib/grafana/dashboards.
+# `foldersFromFilesStructure: false` keeps both dashboards in one "Fleet Lambda" folder so the
+# demo needs a single click.
+apiVersion: 1
+
+providers:
+  - name: fleet-lambda
+    orgId: 1
+    folder: Fleet Lambda
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards
+      foldersFromFilesStructure: false

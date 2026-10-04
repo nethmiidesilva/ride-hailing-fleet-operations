@@ -1,0 +1,64 @@
+/*
+ * Observability: what is measured, where it goes, and which failure each signal detects.
+ * Render: dot -Tpng observability.dot -o observability.png
+ */
+digraph Observability {
+  rankdir=LR;
+  bgcolor="white";
+  fontname="Helvetica";
+  labelloc="t";
+  label="Observability — every signal exists to detect a NAMED failure, not because it was easy to emit";
+  fontsize=11;
+  node [fontname="Helvetica", fontsize=9, shape=box, style="rounded,filled", penwidth=0.8];
+  edge [fontname="Helvetica", fontsize=8, color="#5b6b7a"];
+
+  /* ---------------- emitters ---------------- */
+  subgraph cluster_emit {
+    label="EMITTERS  (every Python service)"; fontsize=10; color="#b9c8d4"; style="rounded"; bgcolor="#f6f9fb";
+    e_gps    [label="gps-producer :8001\nproducer_events_sent_total{status}\nproducer_send_errors_total\nproducer_bad_events_injected_total{kind}\nproducer_last_send_timestamp", fillcolor="#dbeafe", color="#176ba8"];
+    e_exp    [label="expense-producer :8002\nexpense_files_written_total\nexpense_last_file_timestamp\nexpense_rows_written_total{kind}", fillcolor="#dbeafe", color="#176ba8"];
+    e_stream [label="stream-job :8003\nstream_batches_total{sink}\nstream_rows_processed_total{sink}\nstream_rows_rejected_total{reason}\nstream_batch_duration_seconds (histogram)\nstream_last_batch_timestamp\nidle_alerts_open", fillcolor="#d7f3f3", color="#2e7d7d"];
+    e_api    [label="api :8000/metrics-prom\napi_requests_total{method,path,status}\napi_request_duration_seconds\napi_health_status", fillcolor="#f0e9f7", color="#6a4c93"];
+    e_kexp   [label="kafka-exporter :9308\nkafka_consumergroup_lag\n(broker-side fact the\nproducer cannot know)", fillcolor="#e8f4fb", color="#176ba8"];
+  }
+
+  logs [label="STRUCTURED JSON LOGS → stdout\n{ts, level, service, stage, event, run_id, message, …}\nstage ∈ ingestion | processing | storage | serving | orchestration\n\nTRACING-LITE:\n  event_id  producer → rejected_events → logs\n  batch_id  every foreachBatch line\n  run_id    Airflow → spark-submit → pipeline_runs → report",
+        shape=note, fillcolor="#fffaf0", color="#b8860b", fontsize=9];
+
+  prom [label="Prometheus 2.53\nscrape_interval 10 s\nevaluation_interval 10 s", shape=cylinder, fillcolor="#fbe9e9", color="#c62828"];
+
+  /* ---------------- alert rules ---------------- */
+  subgraph cluster_rules {
+    label="ALERT RULES  —  signal → failure detected → threshold rationale"; fontsize=10;
+    color="#c62828"; style="rounded"; bgcolor="#fdf4f4";
+    r1 [label="NoTelemetryReceived\nage(producer_last_send) > 120 s, for 30 s\n→ producer dead / Kafka unreachable\n2 s emit interval ⇒ 60 missed cycles", fillcolor="#ffffff", color="#c62828"];
+    r2 [label="StreamProcessingStalled\nage(stream_last_batch) > 120 s, for 30 s\n→ Spark crashed or stuck\n(distinct from 'no data produced')", fillcolor="#ffffff", color="#c62828"];
+    r3 [label="HighRejectRate\nrejected / total > 5% over 2 m\n→ upstream schema change / broken GPS\nbaseline injection is 2%", fillcolor="#ffffff", color="#ef6c00"];
+    r4 [label="StreamBatchSlow\np95 batch duration > 20 s\n→ back-pressure; 30 s trigger\nmeans the job can never catch up", fillcolor="#ffffff", color="#ef6c00"];
+    r5 [label="ConsumerLagHigh\nlag > 5000\n→ ~6 min of backlog at 12.5 ev/s", fillcolor="#ffffff", color="#ef6c00"];
+    r6 [label="ExpenseFileLate\nage(expense_last_file) > 1.5 sim days\n→ batch source stopped; the DAG\nsensor will time out", fillcolor="#ffffff", color="#ef6c00"];
+    r7 [label="ApiUnhealthy\napi_health_status < 1, for 1 m\n→ DB down / data stale", fillcolor="#ffffff", color="#c62828"];
+    r8 [label="ManyVehiclesIdle\nidle_alerts_open > 5\n→ BUSINESS signal: fleet over-supplied", fillcolor="#ffffff", color="#176ba8"];
+    r9 [label="TargetDown\nup == 0, for 1 m\n→ a dead exporter would silently\nstop every other rule evaluating", fillcolor="#ffffff", color="#c62828"];
+  }
+
+  graf [label="Grafana 11 (provisioned)\n\nFleet Operations:\n  active vehicles · idle ratio\n  earnings by zone · trips/hour\n  open idle alerts\n  unprofitable vehicles\n\nPipeline Health:\n  producer rate · consumer lag\n  batch duration p50/p95\n  rejected rows by reason\n  last-event age · DAG runs",
+         fillcolor="#fbe9e9", color="#c62828"];
+
+  health [label="GET /health (deep)\nPostgres + Kafka metadata +\ndata freshness < 120 s\n→ 200 or 503 with details",
+          shape=note, fillcolor="#f0e9f7", color="#6a4c93"];
+  dockerhc [label="Docker healthchecks\non every service\n(+ /health/live for the API,\nso a DB blip does not restart it)",
+            shape=note, fillcolor="#eef3f7", color="#16222e"];
+  pgalerts [label="pipeline_alerts table\nAirflow on_failure_callback\n→ orchestration failures get the\nsame treatment as metric alerts",
+            shape=note, fillcolor="#fdf0d5", color="#b8860b"];
+
+  e_gps -> prom; e_exp -> prom; e_stream -> prom; e_api -> prom; e_kexp -> prom;
+  prom -> r1; prom -> r2; prom -> r3; prom -> r4; prom -> r5; prom -> r6; prom -> r7; prom -> r8; prom -> r9;
+  prom -> graf [label="datasource"];
+  e_gps -> logs [style=dotted, arrowhead=none];
+  e_stream -> logs [style=dotted, arrowhead=none];
+  e_api -> health [style=dotted];
+  health -> e_api [style=dotted, label="sets api_health_status"];
+  health -> dockerhc [style=invis];
+  r7 -> pgalerts [style=invis];
+}

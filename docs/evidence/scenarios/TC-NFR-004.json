@@ -1,0 +1,29 @@
+{
+  "test_case": "TC-NFR-004",
+  "title": "Throughput at 200 vehicles held for 180s (NFR-06)",
+  "requirements": ["REQ-04", "NFR-06"],
+  "status": "PASS",
+  "configuration": {
+    "baseline_vehicles": "25",
+    "load_vehicles": 200,
+    "emit_interval_sec": "2",
+    "theoretical_events_per_sec_at_load": 100.0,
+    "hold_seconds": 180,
+    "sample_interval_seconds": 15,
+    "drain_target_messages": 1000
+  },
+  "lag_definition": "broker end offset minus the offset the streaming job committed to its checkpoint (see DEFECT-013)",
+  "baseline": {"t":"2026-09-26T02:36:49Z","events_per_sec":"13.600527534662696","streaming_lag":"151","batch_p95_s":"4.762499999999999","rejected_per_sec":"0.16242555495397942"},
+  "samples_under_load": [{"t":"2026-09-26T02:37:08Z","events_per_sec":"28.79911635092482","streaming_lag":"1012","batch_p95_s":"4.716666666666667","rejected_per_sec":"0.15413749064165236"},{"t":"2026-09-26T02:37:24Z","events_per_sec":"48.12966552563205","streaming_lag":"810","batch_p95_s":"4.762499999999999","rejected_per_sec":"0.6087882938708064"},{"t":"2026-09-26T02:37:40Z","events_per_sec":"83.9542970690512","streaming_lag":"603","batch_p95_s":"4.762499999999999","rejected_per_sec":"1.6609219009519047"},{"t":"2026-09-26T02:37:56Z","events_per_sec":"97.854506418337","streaming_lag":"1817","batch_p95_s":"4.733333333333333","rejected_per_sec":"2.0289728597608865"},{"t":"2026-09-26T02:38:12Z","events_per_sec":"104.50760778172454","streaming_lag":"401","batch_p95_s":"4.762499999999999","rejected_per_sec":"2.6089883857936376"},{"t":"2026-09-26T02:38:29Z","events_per_sec":"106.39071763721674","streaming_lag":"1008","batch_p95_s":"4.75","rejected_per_sec":"1.1558894791828753"},{"t":"2026-09-26T02:38:46Z","events_per_sec":"106.87697439635936","streaming_lag":"1213","batch_p95_s":"4.75","rejected_per_sec":"2.207625355120062"},{"t":"2026-09-26T02:39:02Z","events_per_sec":"105.59019205824512","streaming_lag":"1009","batch_p95_s":"4.716666666666667","rejected_per_sec":"1.2668078252529094"},{"t":"2026-09-26T02:39:18Z","events_per_sec":"113.37535775096909","streaming_lag":"806","batch_p95_s":"4.7625","rejected_per_sec":"3.0526921205149753"},{"t":"2026-09-26T02:39:34Z","events_per_sec":"109.98003992015967","streaming_lag":"608","batch_p95_s":"4.716666666666667","rejected_per_sec":"1.231727860597388"},{"t":"2026-09-26T02:39:50Z","events_per_sec":"111.8868719108097","streaming_lag":"402","batch_p95_s":"4.683333333333334","rejected_per_sec":"2.6310059515169106"},{"t":"2026-09-26T02:40:07Z","events_per_sec":"106.92502477155122","streaming_lag":"1212","batch_p95_s":"4.574999999999999","rejected_per_sec":"2.5805753058793806"}],
+  "peak": {
+    "streaming_lag_messages": 1817,
+    "batch_p95_seconds": "4.574999999999999",
+    "vehicle_status_rows": "200"
+  },
+  "recovery": {
+    "restored_at": "2026-09-26T02:40:08Z",
+    "backlog_drained_below_1000_after_seconds": 15,
+    "after_restore": {"t":"2026-09-26T02:40:26Z","events_per_sec":"68.62530746916651","streaming_lag":"152","batch_p95_s":"4.666666666666667","rejected_per_sec":"2.5805753058793806"}
+  },
+  "captured_at": "2026-09-26T02:40:26Z"
+}

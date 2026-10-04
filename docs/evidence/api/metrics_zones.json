@@ -1,0 +1,73 @@
+{
+  "captured_at": "2026-09-26T03:08:05+00:00",
+  "request": "GET /metrics/zones?minutes=15",
+  "status_code": 200,
+  "body": [
+    {
+      "source_layer": "speed",
+      "zone": "Wellawatte",
+      "windows": 14,
+      "active_vehicles": 6,
+      "idle_vehicles": 6,
+      "idle_ratio": 0.3194,
+      "trips": 59,
+      "earnings_lkr": 11685.14,
+      "avg_speed_kmh": 35.52
+    },
+    {
+      "source_layer": "speed",
+      "zone": "Fort",
+      "windows": 14,
+      "active_vehicles": 6,
+      "idle_vehicles": 5,
+      "idle_ratio": 0.2111,
+      "trips": 60,
+      "earnings_lkr": 11536.98,
+      "avg_speed_kmh": 35.05
+    },
+    {
+      "source_layer": "speed",
+      "zone": "Kollupitiya",
+      "windows": 14,
+      "active_vehicles": 4,
+      "idle_vehicles": 3,
+      "idle_ratio": 0.2153,
+      "trips": 39,
+      "earnings_lkr": 7499.39,
+      "avg_speed_kmh": 31.25
+    },
+    {
+      "source_layer": "speed",
+      "zone": "Borella",
+      "windows": 14,
+      "active_vehicles": 4,
+      "idle_vehicles": 4,
+      "idle_ratio": 0.3732,
+      "trips": 34,
+      "earnings_lkr": 6610.42,
+      "avg_speed_kmh": 35.55
+    },
+    {
+      "source_layer": "speed",
+      "zone": "Bambalapitiya",
+      "windows": 14,
+      "active_vehicles": 4,
+      "idle_vehicles": 3,
+      "idle_ratio": 0.3794,
+      "trips": 28,
+      "earnings_lkr": 5611.14,
+      "avg_speed_kmh": 38.95
+    },
+    {
+      "source_layer": "speed",
+      "zone": "Pettah",
+      "windows": 14,
+      "active_vehicles": 2,
+      "idle_vehicles": 2,
+      "idle_ratio": 0.2054,
+      "trips": 23,
+      "earnings_lkr": 4388.73,
+      "avg_speed_kmh": 33.31
+    }
+  ]
+}

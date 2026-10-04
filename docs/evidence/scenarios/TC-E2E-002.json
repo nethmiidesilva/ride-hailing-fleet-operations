@@ -1,0 +1,24 @@
+{
+  "test_case": "TC-E2E-002",
+  "report_date": "2026-09-01",
+  "real_time_span": [
+    "2026-09-25T15:23:15.434074+00:00",
+    "2026-09-25T15:33:15.434074+00:00"
+  ],
+  "batch_layer": {
+    "revenue_lkr": 30611.9,
+    "trips": 159
+  },
+  "speed_layer": {
+    "revenue_lkr": 33545.28,
+    "trips": 174,
+    "windows": 60
+  },
+  "difference_lkr": 2933.38,
+  "difference_pct": 9.58,
+  "explanation": "The speed layer drops events later than the 2-minute watermark and cuts its 1-minute windows on real event_time, which does not align exactly with the simulated-day boundary used by the batch layer. The batch layer recomputes from the complete Parquet partition and is the figure the business uses.",
+  "malformed_rows_quarantined": 0,
+  "tolerance_pct": 25.0,
+  "status": "PASS",
+  "captured_at": "2026-09-26T03:06:51+00:00"
+}

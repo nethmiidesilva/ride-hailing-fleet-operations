@@ -1,0 +1,27 @@
+{
+  "test_case": "TC-NFR-001",
+  "num_vehicles": 25,
+  "emit_interval_sec": 2.0,
+  "theoretical_events_per_sec": 12.5,
+  "measured_events_per_sec": {
+    "samples": [
+      14.411,
+      13.859,
+      13.71,
+      14.405,
+      13.348,
+      12.684
+    ],
+    "mean": 13.736,
+    "median": 13.785,
+    "min": 12.684,
+    "max": 14.411
+  },
+  "stream_batch_duration_seconds": {
+    "p50": 2.2251067408940335,
+    "p95": 4.722510468755048
+  },
+  "consumer_lag": null,
+  "status": "PASS",
+  "captured_at": "2026-09-26T03:07:46+00:00"
+}

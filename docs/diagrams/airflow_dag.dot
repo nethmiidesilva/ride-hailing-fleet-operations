@@ -1,0 +1,50 @@
+/*
+ * Airflow task graph for daily_reconciliation.
+ * Render: dot -Tpng airflow_dag.dot -o airflow_dag.png
+ */
+digraph DailyReconciliation {
+  rankdir=LR;
+  bgcolor="white";
+  fontname="Helvetica";
+  labelloc="t";
+  label="daily_reconciliation  —  schedule: every SIM_DAY_SECONDS · catchup=False · max_active_runs=1 · retries=2";
+  fontsize=11;
+  node [fontname="Helvetica", fontsize=9, shape=box, style="rounded,filled", penwidth=0.9,
+        fillcolor="#eef3f7", color="#176ba8"];
+  edge [fontname="Helvetica", fontsize=8, color="#5b6b7a"];
+
+  t1 [label="compute_target_date\nPythonOperator\nprevious_sim_date() or\ndag_run.conf['date']", fillcolor="#dbeafe"];
+
+  t2 [label="wait_for_expense_file\nFileSensor\nmode=reschedule · poke 15 s\ntimeout = 1 simulated day\nretries=0", fillcolor="#fdf0d5", color="#b8860b", shape="box", style="rounded,filled,bold"];
+
+  t3 [label="validate_expense_file\nshared rule set\nbad rows → rejected_expenses\nFAIL if >20% invalid", fillcolor="#fbe9e9", color="#c62828"];
+
+  t4 [label="load_expenses_to_postgres\nINSERT … ON CONFLICT\n(report_date, vehicle_id)"];
+
+  t5 [label="check_master_data_available\nParquet partition sim_date=D\nexists and has files", fillcolor="#e9f7ef", color="#2e7d32"];
+
+  t6 [label="run_profitability_job\nBashOperator → spark-submit\nrecompute + join + score", fillcolor="#d7f3f3", color="#2e7d7d", style="rounded,filled,bold"];
+
+  t7 [label="build_daily_report\nHTML + CSV\n/data/reports/"];
+
+  t8 [label="data_quality_checks\nrow counts · revenue ≥ 0\njoin coverage", fillcolor="#fbe9e9", color="#c62828"];
+
+  t9 [label="record_pipeline_run\n→ pipeline_runs (audit)"];
+
+  t10 [label="archive_expense_file\ncopy → /data/processed\n(landing copy kept for replay)"];
+
+  fail [label="on_failure_callback\n→ pipeline_alerts\n+ structured ERROR log",
+        shape=note, fillcolor="#fff0f0", color="#c62828", fontsize=8];
+
+  t1 -> t2 -> t3 -> t4 -> t6;
+  t1 -> t5 -> t6;
+  t4 -> t10;
+  t6 -> t7 -> t8 -> t9;
+
+  t2 -> fail [style=dotted, color="#c62828", label="timeout"];
+  t3 -> fail [style=dotted, color="#c62828", label=">20% bad"];
+  t6 -> fail [style=dotted, color="#c62828", label="non-zero exit"];
+  t8 -> fail [style=dotted, color="#c62828", label="invariant broken"];
+
+  {rank=same; t2; t5;}
+}

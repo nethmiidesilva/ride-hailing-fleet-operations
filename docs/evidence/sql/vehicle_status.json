@@ -1,0 +1,232 @@
+{
+  "captured_at": "2026-09-26T03:08:06+00:00",
+  "sql": "SELECT vehicle_id, driver_id, status, zone, speed_kmh, last_event_time, idle_since FROM vehicle_status ORDER BY vehicle_id LIMIT 30;",
+  "row_count": 25,
+  "rows": [
+    {
+      "vehicle_id": "V-001",
+      "driver_id": "D-001",
+      "status": "idle",
+      "zone": "Bambalapitiya",
+      "speed_kmh": "0.00",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": "2026-09-26 03:05:09.731000+00:00"
+    },
+    {
+      "vehicle_id": "V-002",
+      "driver_id": "D-002",
+      "status": "idle",
+      "zone": "Wellawatte",
+      "speed_kmh": "0.00",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": "2026-09-26 03:04:59.729000+00:00"
+    },
+    {
+      "vehicle_id": "V-003",
+      "driver_id": "D-003",
+      "status": "idle",
+      "zone": "Borella",
+      "speed_kmh": "0.00",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": "2026-09-26 03:06:19.463000+00:00"
+    },
+    {
+      "vehicle_id": "V-004",
+      "driver_id": "D-004",
+      "status": "on_trip",
+      "zone": "Fort",
+      "speed_kmh": "49.89",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-005",
+      "driver_id": "D-005",
+      "status": "on_trip",
+      "zone": "Pettah",
+      "speed_kmh": "57.29",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-006",
+      "driver_id": "D-006",
+      "status": "idle",
+      "zone": "Kollupitiya",
+      "speed_kmh": "0.00",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": "2026-09-26 03:07:59.292000+00:00"
+    },
+    {
+      "vehicle_id": "V-007",
+      "driver_id": "D-007",
+      "status": "on_trip",
+      "zone": "Bambalapitiya",
+      "speed_kmh": "25.42",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-008",
+      "driver_id": "D-008",
+      "status": "on_trip",
+      "zone": "Bambalapitiya",
+      "speed_kmh": "53.40",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-009",
+      "driver_id": "D-009",
+      "status": "idle",
+      "zone": "Borella",
+      "speed_kmh": "0.00",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": "2026-09-26 03:07:49.676000+00:00"
+    },
+    {
+      "vehicle_id": "V-010",
+      "driver_id": "D-010",
+      "status": "idle",
+      "zone": "Fort",
+      "speed_kmh": "0.00",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": "2026-09-26 03:07:59.292000+00:00"
+    },
+    {
+      "vehicle_id": "V-011",
+      "driver_id": "D-011",
+      "status": "on_trip",
+      "zone": "Wellawatte",
+      "speed_kmh": "49.32",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-012",
+      "driver_id": "D-012",
+      "status": "on_trip",
+      "zone": "Fort",
+      "speed_kmh": "54.91",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-013",
+      "driver_id": "D-013",
+      "status": "on_trip",
+      "zone": "Wellawatte",
+      "speed_kmh": "10.02",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-014",
+      "driver_id": "D-014",
+      "status": "on_trip",
+      "zone": "Kollupitiya",
+      "speed_kmh": "53.31",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-015",
+      "driver_id": "D-015",
+      "status": "on_trip",
+      "zone": "Borella",
+      "speed_kmh": "58.30",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-016",
+      "driver_id": "D-016",
+      "status": "on_trip",
+      "zone": "Kollupitiya",
+      "speed_kmh": "29.08",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-017",
+      "driver_id": "D-017",
+      "status": "on_trip",
+      "zone": "Borella",
+      "speed_kmh": "37.06",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-018",
+      "driver_id": "D-018",
+      "status": "idle",
+      "zone": "Fort",
+      "speed_kmh": "0.00",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": "2026-09-26 03:07:59.292000+00:00"
+    },
+    {
+      "vehicle_id": "V-019",
+      "driver_id": "D-019",
+      "status": "on_trip",
+      "zone": "Wellawatte",
+      "speed_kmh": "50.60",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-020",
+      "driver_id": "D-020",
+      "status": "enroute",
+      "zone": "Kollupitiya",
+      "speed_kmh": "25.11",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-021",
+      "driver_id": "D-021",
+      "status": "on_trip",
+      "zone": "Bambalapitiya",
+      "speed_kmh": "30.30",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-022",
+      "driver_id": "D-022",
+      "status": "on_trip",
+      "zone": "Kollupitiya",
+      "speed_kmh": "54.16",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-023",
+      "driver_id": "D-023",
+      "status": "enroute",
+      "zone": "Pettah",
+      "speed_kmh": "35.96",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    },
+    {
+      "vehicle_id": "V-024",
+      "driver_id": "D-024",
+      "status": "idle",
+      "zone": "Pettah",
+      "speed_kmh": "0.00",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": "2026-09-26 03:07:59.292000+00:00"
+    },
+    {
+      "vehicle_id": "V-025",
+      "driver_id": "D-025",
+      "status": "on_trip",
+      "zone": "Wellawatte",
+      "speed_kmh": "56.02",
+      "last_event_time": "2026-09-26 03:07:59.292000+00:00",
+      "idle_since": null
+    }
+  ]
+}

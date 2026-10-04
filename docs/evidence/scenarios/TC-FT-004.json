@@ -1,0 +1,31 @@
+{
+  "test_case": "TC-FT-004",
+  "title": "Bad-event rate raised to 0.2 - HighRejectRate fires and rows are quarantined",
+  "requirements": ["REQ-09", "REQ-12"],
+  "status": "PASS",
+  "baseline": {
+    "rejected_event_rows": "832",
+    "reject_ratio": "0.04060913705583757",
+    "alert_state": "inactive",
+    "configured_bad_event_rate": "0.02"
+  },
+  "injection": {
+    "at": "2026-09-25T18:18:34Z",
+    "action": "docker compose up -d --force-recreate gps-producer with BAD_EVENT_RATE=0.2"
+  },
+  "detection": {
+    "alert_name": "HighRejectRate",
+    "alert_threshold": 0.05,
+    "alert_fired_after_seconds": 114,
+    "peak_reject_ratio": "0.4170656597898693",
+    "rejected_event_rows_after": "1063",
+    "rows_added": 231,
+    "reasons_observed": "NULL_VEHICLE_ID=191,NEGATIVE_SPEED=186,NEGATIVE_FARE=184,LON_OUT_OF_RANGE=179,UNKNOWN_STATUS=175,LAT_OUT_OF_RANGE=148"
+  },
+  "recovery": {
+    "at": "2026-09-25T18:20:31Z",
+    "action": "recreate gps-producer with the configured rate",
+    "alert_cleared_after_seconds": 139
+  },
+  "captured_at": "2026-09-25T18:22:53Z"
+}

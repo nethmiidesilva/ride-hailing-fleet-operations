@@ -1,0 +1,2208 @@
+{
+  "generated_at": "2026-09-26T03:10:04+00:00",
+  "totals": {
+    "pytest_total": 203,
+    "pytest_passed": 200,
+    "pytest_failed": 0,
+    "pytest_skipped": 3,
+    "scenarios_total": 13,
+    "scenarios_passed": 13,
+    "scenarios_failed": 0,
+    "scenarios_not_executed": 0,
+    "total_duration_s": 224.68
+  },
+  "coverage": {
+    "available": true,
+    "overall_line_rate": 67.4,
+    "overall_branch_rate": 55.8,
+    "packages": [
+      {
+        "name": ".",
+        "line_rate": 67.4,
+        "branch_rate": 55.8
+      }
+    ]
+  },
+  "pytest_results": [
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_001_profit_margin_and_per_km_match_hand_calculation",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_001_profit_margin_and_per_km_match_hand_calculation",
+      "tc_id": "TC-BAT-001",
+      "status": "PASS",
+      "duration_s": 8.752,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_002_unprofitable_vehicle_is_detected",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_002_unprofitable_vehicle_is_detected",
+      "tc_id": "TC-BAT-002",
+      "status": "PASS",
+      "duration_s": 1.15,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_003_missing_expense_row_is_flagged_not_dropped",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_003_missing_expense_row_is_flagged_not_dropped",
+      "tc_id": "TC-BAT-003",
+      "status": "PASS",
+      "duration_s": 1.063,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_004_expense_row_without_telemetry_is_flagged",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_004_expense_row_without_telemetry_is_flagged",
+      "tc_id": "TC-BAT-004",
+      "status": "PASS",
+      "duration_s": 1.199,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_005_no_vehicle_is_lost_by_the_join",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_005_no_vehicle_is_lost_by_the_join",
+      "tc_id": "TC-BAT-005",
+      "status": "PASS",
+      "duration_s": 1.01,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_006_divide_by_zero_is_guarded",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_006_divide_by_zero_is_guarded",
+      "tc_id": "TC-BAT-006",
+      "status": "PASS",
+      "duration_s": 1.091,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_007_declining_trend_needs_two_consecutive_drops",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_007_declining_trend_needs_two_consecutive_drops",
+      "tc_id": "TC-BAT-007",
+      "status": "PASS",
+      "duration_s": 0.873,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_008_a_single_drop_is_not_declining",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_008_a_single_drop_is_not_declining",
+      "tc_id": "TC-BAT-008",
+      "status": "PASS",
+      "duration_s": 0.862,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_009_at_risk_needs_two_days_below_the_threshold",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_009_at_risk_needs_two_days_below_the_threshold",
+      "tc_id": "TC-BAT-009",
+      "status": "PASS",
+      "duration_s": 0.887,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_010_at_risk_takes_precedence_over_declining",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_010_at_risk_takes_precedence_over_declining",
+      "tc_id": "TC-BAT-010",
+      "status": "PASS",
+      "duration_s": 0.855,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_011_no_history_means_stable",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_011_no_history_means_stable",
+      "tc_id": "TC-BAT-011",
+      "status": "PASS",
+      "duration_s": 0.892,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_012_revenue_is_deduplicated_by_trip_id",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_012_revenue_is_deduplicated_by_trip_id",
+      "tc_id": "TC-BAT-012",
+      "status": "PASS",
+      "duration_s": 1.069,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_013_utilisation_is_recomputed_from_event_counts",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_013_utilisation_is_recomputed_from_event_counts",
+      "tc_id": "TC-BAT-013",
+      "status": "PASS",
+      "duration_s": 0.69,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_014_zone_hour_summary_groups_on_the_simulated_clock",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_014_zone_hour_summary_groups_on_the_simulated_clock",
+      "tc_id": "TC-BAT-014",
+      "status": "PASS",
+      "duration_s": 0.396,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_profitability",
+      "name": "test_tc_bat_015_recomputation_is_deterministic",
+      "node_id": "tests/unit/test_profitability.py::test_tc_bat_015_recomputation_is_deterministic",
+      "tc_id": "TC-BAT-015",
+      "status": "PASS",
+      "duration_s": 1.182,
+      "detail": ""
+    },
+    {
+      "suite": "e2e",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_e2e_001_full_flow_answers_the_business_question",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_e2e_001_full_flow_answers_the_business_question",
+      "tc_id": "TC-E2E-001",
+      "status": "PASS",
+      "duration_s": 0.204,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_e2e_001_full_flow_answers_the_business_question",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_e2e_001_full_flow_answers_the_business_question",
+      "tc_id": "TC-E2E-001",
+      "status": "PASS",
+      "duration_s": 0.29,
+      "detail": ""
+    },
+    {
+      "suite": "e2e",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_e2e_002_batch_vs_speed_reconciliation",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_e2e_002_batch_vs_speed_reconciliation",
+      "tc_id": "TC-E2E-002",
+      "status": "PASS",
+      "duration_s": 0.075,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_e2e_002_batch_vs_speed_reconciliation",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_e2e_002_batch_vs_speed_reconciliation",
+      "tc_id": "TC-E2E-002",
+      "status": "PASS",
+      "duration_s": 0.085,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_002_every_zone_centre_maps_back_to_itself",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_002_every_zone_centre_maps_back_to_itself",
+      "tc_id": "TC-ING-002",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_003_corners_of_the_bounding_box_are_inside",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_003_corners_of_the_bounding_box_are_inside",
+      "tc_id": "TC-ING-003",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_004_internal_boundary_belongs_to_the_higher_cell",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_004_internal_boundary_belongs_to_the_higher_cell",
+      "tc_id": "TC-ING-004",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_005_outside_or_unusable_points_are_out_of_area[0.0-0.0]",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_005_outside_or_unusable_points_are_out_of_area[0.0-0.0]",
+      "tc_id": "TC-ING-005",
+      "status": "PASS",
+      "duration_s": 0.003,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.85-79.86]",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.85-79.86]",
+      "tc_id": "TC-ING-005",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.9-79.83]",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.9-79.83]",
+      "tc_id": "TC-ING-005",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.9-79.91]",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.9-79.91]",
+      "tc_id": "TC-ING-005",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.9-None]",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.9-None]",
+      "tc_id": "TC-ING-005",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.99-79.86]",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_005_outside_or_unusable_points_are_out_of_area[6.99-79.86]",
+      "tc_id": "TC-ING-005",
+      "status": "PASS",
+      "duration_s": 0.002,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_005_outside_or_unusable_points_are_out_of_area[None-79.86]",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_005_outside_or_unusable_points_are_out_of_area[None-79.86]",
+      "tc_id": "TC-ING-005",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_005_outside_or_unusable_points_are_out_of_area[abc-79.86]",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_005_outside_or_unusable_points_are_out_of_area[abc-79.86]",
+      "tc_id": "TC-ING-005",
+      "status": "PASS",
+      "duration_s": 0.002,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_005_outside_or_unusable_points_are_out_of_area[nan-79.86]",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_005_outside_or_unusable_points_are_out_of_area[nan-79.86]",
+      "tc_id": "TC-ING-005",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_006_function_is_deterministic_and_pure",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_006_function_is_deterministic_and_pure",
+      "tc_id": "TC-ING-006",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_007_unknown_zone_centre_raises",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_007_unknown_zone_centre_raises",
+      "tc_id": "TC-ING-007",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_zones",
+      "name": "test_tc_ing_008_grid_covers_the_box_without_gaps",
+      "node_id": "tests/unit/test_zones.py::test_tc_ing_008_grid_covers_the_box_without_gaps",
+      "tc_id": "TC-ING-008",
+      "status": "PASS",
+      "duration_s": 0.925,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_010_epoch_zero_is_simulation_start",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_010_epoch_zero_is_simulation_start",
+      "tc_id": "TC-ING-010",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_011_one_sim_day_elapses_after_sim_day_seconds",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_011_one_sim_day_elapses_after_sim_day_seconds",
+      "tc_id": "TC-ING-011",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_012_sim_hour_mapping[0-0]",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_012_sim_hour_mapping[0-0]",
+      "tc_id": "TC-ING-012",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_012_sim_hour_mapping[25.0-1]",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_012_sim_hour_mapping[25.0-1]",
+      "tc_id": "TC-ING-012",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_012_sim_hour_mapping[300.0-12]",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_012_sim_hour_mapping[300.0-12]",
+      "tc_id": "TC-ING-012",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_012_sim_hour_mapping[575.0-23]",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_012_sim_hour_mapping[575.0-23]",
+      "tc_id": "TC-ING-012",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_012_sim_hour_mapping[599.999-23]",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_012_sim_hour_mapping[599.999-23]",
+      "tc_id": "TC-ING-012",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_013_day_boundary_and_previous_day",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_013_day_boundary_and_previous_day",
+      "tc_id": "TC-ING-013",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_014_seconds_until_next_sim_day",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_014_seconds_until_next_sim_day",
+      "tc_id": "TC-ING-014",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_015_real_window_for_a_sim_date",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_015_real_window_for_a_sim_date",
+      "tc_id": "TC-ING-015",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_016_epoch_file_is_written_once",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_016_epoch_file_is_written_once",
+      "tc_id": "TC-ING-016",
+      "status": "PASS",
+      "duration_s": 0.003,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_017_epoch_created_when_absent",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_017_epoch_created_when_absent",
+      "tc_id": "TC-ING-017",
+      "status": "PASS",
+      "duration_s": 0.005,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_sim_clock",
+      "name": "test_tc_ing_018_clock_is_monotonic_in_real_time",
+      "node_id": "tests/unit/test_sim_clock.py::test_tc_ing_018_clock_is_monotonic_in_real_time",
+      "tc_id": "TC-ING-018",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_020_valid_event_passes",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_020_valid_event_passes",
+      "tc_id": "TC-ING-020",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation0-NULL_EVENT_ID]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation0-NULL_EVENT_ID]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation1-NULL_EVENT_ID]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation1-NULL_EVENT_ID]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation10-LAT_OUT_OF_RANGE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation10-LAT_OUT_OF_RANGE]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation11-LAT_OUT_OF_RANGE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation11-LAT_OUT_OF_RANGE]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation12-LON_OUT_OF_RANGE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation12-LON_OUT_OF_RANGE]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation13-LON_OUT_OF_RANGE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation13-LON_OUT_OF_RANGE]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation14-NEGATIVE_FARE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation14-NEGATIVE_FARE]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation2-NULL_VEHICLE_ID]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation2-NULL_VEHICLE_ID]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation3-NULL_VEHICLE_ID]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation3-NULL_VEHICLE_ID]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation4-NULL_EVENT_TIME]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation4-NULL_EVENT_TIME]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation5-UNKNOWN_STATUS]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation5-UNKNOWN_STATUS]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation6-UNKNOWN_STATUS]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation6-UNKNOWN_STATUS]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation7-NEGATIVE_SPEED]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation7-NEGATIVE_SPEED]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation8-NEGATIVE_SPEED]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation8-NEGATIVE_SPEED]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation9-SPEED_TOO_HIGH]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_021_each_bad_shape_gets_the_right_reason[mutation9-SPEED_TOO_HIGH]",
+      "tc_id": "TC-ING-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_022_reason_order_is_deterministic",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_022_reason_order_is_deterministic",
+      "tc_id": "TC-ING-022",
+      "status": "PASS",
+      "duration_s": 0.0,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_023_out_of_area_is_not_a_rejection",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_023_out_of_area_is_not_a_rejection",
+      "tc_id": "TC-ING-023",
+      "status": "PASS",
+      "duration_s": 0.0,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_024_zero_speed_while_idle_is_valid",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_024_zero_speed_while_idle_is_valid",
+      "tc_id": "TC-ING-024",
+      "status": "PASS",
+      "duration_s": 0.0,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_025_validation_does_not_mutate_its_input",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_025_validation_does_not_mutate_its_input",
+      "tc_id": "TC-ING-025",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_026_valid_expense_row_passes",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_026_valid_expense_row_passes",
+      "tc_id": "TC-ING-026",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_027_bad_expense_rows_are_quarantined[mutation0-MISSING_VEHICLE_ID]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_027_bad_expense_rows_are_quarantined[mutation0-MISSING_VEHICLE_ID]",
+      "tc_id": "TC-ING-027",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_027_bad_expense_rows_are_quarantined[mutation1-NON_NUMERIC_VALUE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_027_bad_expense_rows_are_quarantined[mutation1-NON_NUMERIC_VALUE]",
+      "tc_id": "TC-ING-027",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_027_bad_expense_rows_are_quarantined[mutation2-NEGATIVE_VALUE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_027_bad_expense_rows_are_quarantined[mutation2-NEGATIVE_VALUE]",
+      "tc_id": "TC-ING-027",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_027_bad_expense_rows_are_quarantined[mutation3-NEGATIVE_VALUE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_027_bad_expense_rows_are_quarantined[mutation3-NEGATIVE_VALUE]",
+      "tc_id": "TC-ING-027",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_027_bad_expense_rows_are_quarantined[mutation4-NON_NUMERIC_VALUE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_027_bad_expense_rows_are_quarantined[mutation4-NON_NUMERIC_VALUE]",
+      "tc_id": "TC-ING-027",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_027_bad_expense_rows_are_quarantined[mutation5-BAD_REPORT_DATE]",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_027_bad_expense_rows_are_quarantined[mutation5-BAD_REPORT_DATE]",
+      "tc_id": "TC-ING-027",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_028_expense_date_must_match_the_file_day",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_028_expense_date_must_match_the_file_day",
+      "tc_id": "TC-ING-028",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_schemas",
+      "name": "test_tc_ing_029_missing_column_is_detected",
+      "node_id": "tests/unit/test_schemas.py::test_tc_ing_029_missing_column_is_detected",
+      "tc_id": "TC-ING-029",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_030_only_legal_state_transitions_occur",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_030_only_legal_state_transitions_occur",
+      "tc_id": "TC-ING-030",
+      "status": "PASS",
+      "duration_s": 0.074,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_031_fare_is_non_zero_only_on_trip_end",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_031_fare_is_non_zero_only_on_trip_end",
+      "tc_id": "TC-ING-031",
+      "status": "PASS",
+      "duration_s": 0.064,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_032_each_trip_id_is_paid_exactly_once",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_032_each_trip_id_is_paid_exactly_once",
+      "tc_id": "TC-ING-032",
+      "status": "PASS",
+      "duration_s": 0.075,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_033_speed_is_zero_while_idle_and_positive_while_moving",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_033_speed_is_zero_while_idle_and_positive_while_moving",
+      "tc_id": "TC-ING-033",
+      "status": "PASS",
+      "duration_s": 0.046,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_034_lazy_vehicles_stay_idle_much_longer",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_034_lazy_vehicles_stay_idle_much_longer",
+      "tc_id": "TC-ING-034",
+      "status": "PASS",
+      "duration_s": 0.025,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_035_simulation_is_deterministic_for_a_seed",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_035_simulation_is_deterministic_for_a_seed",
+      "tc_id": "TC-ING-035",
+      "status": "PASS",
+      "duration_s": 0.021,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_036_emitted_events_pass_the_shared_validator",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_036_emitted_events_pass_the_shared_validator",
+      "tc_id": "TC-ING-036",
+      "status": "PASS",
+      "duration_s": 0.034,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_037_vehicles_stay_inside_the_service_area",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_037_vehicles_stay_inside_the_service_area",
+      "tc_id": "TC-ING-037",
+      "status": "PASS",
+      "duration_s": 0.063,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_038_event_ids_are_unique",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_038_event_ids_are_unique",
+      "tc_id": "TC-ING-038",
+      "status": "PASS",
+      "duration_s": 0.018,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_039_dual_timestamps_are_present_and_consistent",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_039_dual_timestamps_are_present_and_consistent",
+      "tc_id": "TC-ING-039",
+      "status": "PASS",
+      "duration_s": 0.002,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[0]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[0]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[10]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[10]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[11]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[11]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[12]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[12]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[13]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[13]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[14]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[14]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[15]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[15]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[16]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[16]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[17]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[17]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[18]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[18]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[19]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[19]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[1]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[1]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[2]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[2]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[3]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[3]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[4]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[4]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[5]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[5]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[6]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[6]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[7]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[7]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[8]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[8]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_040_corrupt_produces_a_rejectable_event[9]",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_040_corrupt_produces_a_rejectable_event[9]",
+      "tc_id": "TC-ING-040",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_041_make_late_moves_event_time_backwards_only",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_041_make_late_moves_event_time_backwards_only",
+      "tc_id": "TC-ING-041",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_042_fare_formula_matches_the_documented_rule",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_042_fare_formula_matches_the_documented_rule",
+      "tc_id": "TC-ING-042",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_043_fleet_size_and_ids_follow_the_shared_convention",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_043_fleet_size_and_ids_follow_the_shared_convention",
+      "tc_id": "TC-ING-043",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_fleet_simulator",
+      "name": "test_tc_ing_044_trips_actually_complete_and_distance_accumulates",
+      "node_id": "tests/unit/test_fleet_simulator.py::test_tc_ing_044_trips_actually_complete_and_distance_accumulates",
+      "tc_id": "TC-ING-044",
+      "status": "PASS",
+      "duration_s": 0.046,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_045_file_is_written_atomically_with_the_agreed_name",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_045_file_is_written_atomically_with_the_agreed_name",
+      "tc_id": "TC-ING-045",
+      "status": "PASS",
+      "duration_s": 0.008,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_046_columns_match_the_contract",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_046_columns_match_the_contract",
+      "tc_id": "TC-ING-046",
+      "status": "PASS",
+      "duration_s": 0.004,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_047_one_row_per_vehicle_plus_dirty_rows",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_047_one_row_per_vehicle_plus_dirty_rows",
+      "tc_id": "TC-ING-047",
+      "status": "PASS",
+      "duration_s": 0.004,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_048_vehicle_ids_match_the_gps_producer",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_048_vehicle_ids_match_the_gps_producer",
+      "tc_id": "TC-ING-048",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_049_dirty_rows_are_caught_by_the_shared_validator",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_049_dirty_rows_are_caught_by_the_shared_validator",
+      "tc_id": "TC-ING-049",
+      "status": "PASS",
+      "duration_s": 0.005,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_050_high_cost_vehicles_exist_and_carry_the_service_flag",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_050_high_cost_vehicles_exist_and_carry_the_service_flag",
+      "tc_id": "TC-ING-050",
+      "status": "PASS",
+      "duration_s": 0.004,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_051_generation_is_deterministic_per_day",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_051_generation_is_deterministic_per_day",
+      "tc_id": "TC-ING-051",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_052_skip_day_suppresses_the_file",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_052_skip_day_suppresses_the_file",
+      "tc_id": "TC-ING-052",
+      "status": "PASS",
+      "duration_s": 0.002,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_053_backfill_writes_one_file_per_day",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_053_backfill_writes_one_file_per_day",
+      "tc_id": "TC-ING-053",
+      "status": "PASS",
+      "duration_s": 0.012,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_054_values_are_realistic_lkr",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_054_values_are_realistic_lkr",
+      "tc_id": "TC-ING-054",
+      "status": "PASS",
+      "duration_s": 0.005,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_expense_producer",
+      "name": "test_tc_ing_055_overwriting_a_day_is_safe",
+      "node_id": "tests/unit/test_expense_producer.py::test_tc_ing_055_overwriting_a_day_is_safe",
+      "tc_id": "TC-ING-055",
+      "status": "PASS",
+      "duration_s": 0.008,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_001_producer_messages_reach_kafka_with_vehicle_keys",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_001_producer_messages_reach_kafka_with_vehicle_keys",
+      "tc_id": "TC-INT-001",
+      "status": "PASS",
+      "duration_s": 30.331,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_002_expense_files_land_in_the_landing_directory",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_002_expense_files_land_in_the_landing_directory",
+      "tc_id": "TC-INT-002",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_003_zone_metrics_appear_in_postgres",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_003_zone_metrics_appear_in_postgres",
+      "tc_id": "TC-INT-003",
+      "status": "PASS",
+      "duration_s": 0.013,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_004_vehicle_status_has_one_row_per_vehicle",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_004_vehicle_status_has_one_row_per_vehicle",
+      "tc_id": "TC-INT-004",
+      "status": "PASS",
+      "duration_s": 0.02,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_005_parquet_partition_for_the_current_sim_date_exists",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_005_parquet_partition_for_the_current_sim_date_exists",
+      "tc_id": "TC-INT-005",
+      "status": "PASS",
+      "duration_s": 0.026,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_006_rejected_events_are_quarantined_with_reasons",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_006_rejected_events_are_quarantined_with_reasons",
+      "tc_id": "TC-INT-006",
+      "status": "PASS",
+      "duration_s": 0.014,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_007_idle_alert_opens_for_a_lazy_vehicle",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_007_idle_alert_opens_for_a_lazy_vehicle",
+      "tc_id": "TC-INT-007",
+      "status": "PASS",
+      "duration_s": 0.014,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_008_alerts_resolve_when_the_vehicle_moves",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_008_alerts_resolve_when_the_vehicle_moves",
+      "tc_id": "TC-INT-008",
+      "status": "PASS",
+      "duration_s": 0.007,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_009_api_health_is_healthy_against_the_live_stack",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_009_api_health_is_healthy_against_the_live_stack",
+      "tc_id": "TC-INT-009",
+      "status": "PASS",
+      "duration_s": 0.018,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_010_api_fleet_and_zone_endpoints_return_live_data",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_010_api_fleet_and_zone_endpoints_return_live_data",
+      "tc_id": "TC-INT-010",
+      "status": "PASS",
+      "duration_s": 0.053,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_011_all_prometheus_targets_are_up",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_011_all_prometheus_targets_are_up",
+      "tc_id": "TC-INT-011",
+      "status": "PASS",
+      "duration_s": 0.007,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_012_alert_rules_are_loaded",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_012_alert_rules_are_loaded",
+      "tc_id": "TC-INT-012",
+      "status": "PASS",
+      "duration_s": 0.004,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_013_grafana_datasources_and_dashboards_are_provisioned",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_013_grafana_datasources_and_dashboards_are_provisioned",
+      "tc_id": "TC-INT-013",
+      "status": "PASS",
+      "duration_s": 0.034,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_014_producer_and_stream_metrics_are_being_collected",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_014_producer_and_stream_metrics_are_being_collected",
+      "tc_id": "TC-INT-014",
+      "status": "PASS",
+      "duration_s": 0.015,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_int_015_structured_logs_are_valid_json_with_the_envelope",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_int_015_structured_logs_are_valid_json_with_the_envelope",
+      "tc_id": "TC-INT-015",
+      "status": "PASS",
+      "duration_s": 0.004,
+      "detail": ""
+    },
+    {
+      "suite": "e2e",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_nfr_001_ingestion_throughput",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_nfr_001_ingestion_throughput",
+      "tc_id": "TC-NFR-001",
+      "status": "PASS",
+      "duration_s": 60.084,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_nfr_001_ingestion_throughput",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_nfr_001_ingestion_throughput",
+      "tc_id": "TC-NFR-001",
+      "status": "PASS",
+      "duration_s": 60.075,
+      "detail": ""
+    },
+    {
+      "suite": "e2e",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_nfr_002_end_to_end_latency",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_nfr_002_end_to_end_latency",
+      "tc_id": "TC-NFR-002",
+      "status": "PASS",
+      "duration_s": 0.015,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_nfr_002_end_to_end_latency",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_nfr_002_end_to_end_latency",
+      "tc_id": "TC-NFR-002",
+      "status": "PASS",
+      "duration_s": 0.016,
+      "detail": ""
+    },
+    {
+      "suite": "e2e",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_nfr_003_resource_usage_snapshot",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_nfr_003_resource_usage_snapshot",
+      "tc_id": "TC-NFR-003",
+      "status": "SKIPPED",
+      "duration_s": 0.001,
+      "detail": "docker CLI not available inside the test container: [Errno 2] No such file or directory: 'docker'"
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.e2e.test_end_to_end",
+      "name": "test_tc_nfr_003_resource_usage_snapshot",
+      "node_id": "tests/e2e/test_end_to_end.py::test_tc_nfr_003_resource_usage_snapshot",
+      "tc_id": "TC-NFR-003",
+      "status": "SKIPPED",
+      "duration_s": 0.001,
+      "detail": "docker CLI not available inside the test container: [Errno 2] No such file or directory: 'docker'"
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_logging_setup",
+      "name": "test_tc_obs_001_log_line_is_valid_json_with_the_required_envelope",
+      "node_id": "tests/unit/test_logging_setup.py::test_tc_obs_001_log_line_is_valid_json_with_the_required_envelope",
+      "tc_id": "TC-OBS-001",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_logging_setup",
+      "name": "test_tc_obs_002_extra_context_is_merged_for_tracing",
+      "node_id": "tests/unit/test_logging_setup.py::test_tc_obs_002_extra_context_is_merged_for_tracing",
+      "tc_id": "TC-OBS-002",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_logging_setup",
+      "name": "test_tc_obs_003_invalid_stage_is_rejected",
+      "node_id": "tests/unit/test_logging_setup.py::test_tc_obs_003_invalid_stage_is_rejected",
+      "tc_id": "TC-OBS-003",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_logging_setup",
+      "name": "test_tc_obs_004_exceptions_are_serialised",
+      "node_id": "tests/unit/test_logging_setup.py::test_tc_obs_004_exceptions_are_serialised",
+      "tc_id": "TC-OBS-004",
+      "status": "PASS",
+      "duration_s": 0.059,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_logging_setup",
+      "name": "test_tc_obs_005_handlers_are_not_duplicated_on_reconfigure",
+      "node_id": "tests/unit/test_logging_setup.py::test_tc_obs_005_handlers_are_not_duplicated_on_reconfigure",
+      "tc_id": "TC-OBS-005",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_config",
+      "name": "test_tc_obs_010_env_overrides_are_read_and_cast",
+      "node_id": "tests/unit/test_config.py::test_tc_obs_010_env_overrides_are_read_and_cast",
+      "tc_id": "TC-OBS-010",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_config",
+      "name": "test_tc_obs_011_secrets_are_masked_in_dumps",
+      "node_id": "tests/unit/test_config.py::test_tc_obs_011_secrets_are_masked_in_dumps",
+      "tc_id": "TC-OBS-011",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_config",
+      "name": "test_tc_obs_012_derived_values_are_consistent",
+      "node_id": "tests/unit/test_config.py::test_tc_obs_012_derived_values_are_consistent",
+      "tc_id": "TC-OBS-012",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_config",
+      "name": "test_tc_obs_013_config_is_immutable",
+      "node_id": "tests/unit/test_config.py::test_tc_obs_013_config_is_immutable",
+      "tc_id": "TC-OBS-013",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_001_dag_is_registered_and_unpaused",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_001_dag_is_registered_and_unpaused",
+      "tc_id": "TC-ORC-001",
+      "status": "PASS",
+      "duration_s": 0.113,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_002_dag_has_no_import_errors",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_002_dag_has_no_import_errors",
+      "tc_id": "TC-ORC-002",
+      "status": "PASS",
+      "duration_s": 0.085,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_003_every_expected_task_is_present",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_003_every_expected_task_is_present",
+      "tc_id": "TC-ORC-003",
+      "status": "PASS",
+      "duration_s": 0.089,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_004_sensor_is_configured_for_a_long_wait",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_004_sensor_is_configured_for_a_long_wait",
+      "tc_id": "TC-ORC-004",
+      "status": "PASS",
+      "duration_s": 0.087,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_005_a_full_run_succeeds_for_a_day_with_data",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_005_a_full_run_succeeds_for_a_day_with_data",
+      "tc_id": "TC-ORC-005",
+      "status": "PASS",
+      "duration_s": 30.821,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_006_dirty_expense_rows_are_quarantined",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_006_dirty_expense_rows_are_quarantined",
+      "tc_id": "TC-ORC-006",
+      "status": "PASS",
+      "duration_s": 0.015,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_007_expense_load_is_idempotent",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_007_expense_load_is_idempotent",
+      "tc_id": "TC-ORC-007",
+      "status": "PASS",
+      "duration_s": 0.018,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_008_pipeline_run_is_recorded_with_row_counts",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_008_pipeline_run_is_recorded_with_row_counts",
+      "tc_id": "TC-ORC-008",
+      "status": "PASS",
+      "duration_s": 0.016,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_009_report_files_are_produced",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_009_report_files_are_produced",
+      "tc_id": "TC-ORC-009",
+      "status": "PASS",
+      "duration_s": 0.002,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_airflow_integration",
+      "name": "test_tc_orc_010_cli_and_rest_agree_on_run_history",
+      "node_id": "tests/integration/test_airflow_integration.py::test_tc_orc_010_cli_and_rest_agree_on_run_history",
+      "tc_id": "TC-ORC-010",
+      "status": "SKIPPED",
+      "duration_s": 0.152,
+      "detail": "airflow CLI not available in this container (expected: tests image)"
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_001_liveness_is_always_200",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_001_liveness_is_always_200",
+      "tc_id": "TC-SRV-001",
+      "status": "PASS",
+      "duration_s": 0.025,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_002_health_is_200_when_everything_is_fresh",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_002_health_is_200_when_everything_is_fresh",
+      "tc_id": "TC-SRV-002",
+      "status": "PASS",
+      "duration_s": 0.008,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_003_health_is_503_when_the_database_is_down",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_003_health_is_503_when_the_database_is_down",
+      "tc_id": "TC-SRV-003",
+      "status": "PASS",
+      "duration_s": 0.007,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_004_health_is_503_when_data_is_stale",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_004_health_is_503_when_data_is_stale",
+      "tc_id": "TC-SRV-004",
+      "status": "PASS",
+      "duration_s": 0.01,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_005_fleet_metrics_schema_and_values",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_005_fleet_metrics_schema_and_values",
+      "tc_id": "TC-SRV-005",
+      "status": "PASS",
+      "duration_s": 0.008,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_006_zone_metrics_returns_a_list",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_006_zone_metrics_returns_a_list",
+      "tc_id": "TC-SRV-006",
+      "status": "PASS",
+      "duration_s": 0.007,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_007_zone_metrics_rejects_an_out_of_range_lookback",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_007_zone_metrics_rejects_an_out_of_range_lookback",
+      "tc_id": "TC-SRV-007",
+      "status": "PASS",
+      "duration_s": 0.016,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_008_idle_alerts_filter_by_status",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_008_idle_alerts_filter_by_status",
+      "tc_id": "TC-SRV-008",
+      "status": "PASS",
+      "duration_s": 0.008,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_009_idle_alerts_rejects_an_unknown_status",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_009_idle_alerts_rejects_an_unknown_status",
+      "tc_id": "TC-SRV-009",
+      "status": "PASS",
+      "duration_s": 0.006,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_010_profitability_returns_rows_for_a_date",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_010_profitability_returns_rows_for_a_date",
+      "tc_id": "TC-SRV-010",
+      "status": "PASS",
+      "duration_s": 0.008,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_011_bad_date_is_422_and_missing_data_is_404",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_011_bad_date_is_422_and_missing_data_is_404",
+      "tc_id": "TC-SRV-011",
+      "status": "PASS",
+      "duration_s": 0.012,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_012_no_reconciled_day_yet_is_404",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_012_no_reconciled_day_yet_is_404",
+      "tc_id": "TC-SRV-012",
+      "status": "PASS",
+      "duration_s": 0.007,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_013_unprofitable_endpoint_answers_the_business_question",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_013_unprofitable_endpoint_answers_the_business_question",
+      "tc_id": "TC-SRV-013",
+      "status": "PASS",
+      "duration_s": 0.006,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_014_html_report_404_when_not_generated",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_014_html_report_404_when_not_generated",
+      "tc_id": "TC-SRV-014",
+      "status": "PASS",
+      "duration_s": 0.01,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_015_time_of_day_uses_the_batch_layer",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_015_time_of_day_uses_the_batch_layer",
+      "tc_id": "TC-SRV-015",
+      "status": "PASS",
+      "duration_s": 0.007,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_016_prometheus_endpoint_exposes_api_metrics",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_016_prometheus_endpoint_exposes_api_metrics",
+      "tc_id": "TC-SRV-016",
+      "status": "PASS",
+      "duration_s": 0.014,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_api",
+      "name": "test_tc_srv_017_openapi_schema_documents_every_endpoint",
+      "node_id": "tests/unit/test_api.py::test_tc_srv_017_openapi_schema_documents_every_endpoint",
+      "tc_id": "TC-SRV-017",
+      "status": "PASS",
+      "duration_s": 0.037,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_020_html_contains_every_required_section",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_020_html_contains_every_required_section",
+      "tc_id": "TC-SRV-020",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_021_unprofitable_rows_are_highlighted",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_021_unprofitable_rows_are_highlighted",
+      "tc_id": "TC-SRV-021",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_022_every_vehicle_appears_in_the_table",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_022_every_vehicle_appears_in_the_table",
+      "tc_id": "TC-SRV-022",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_023_kpis_are_rendered_with_real_values",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_023_kpis_are_rendered_with_real_values",
+      "tc_id": "TC-SRV-023",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_024_null_values_render_as_a_dash_not_none",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_024_null_values_render_as_a_dash_not_none",
+      "tc_id": "TC-SRV-024",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_025_heatmap_covers_every_zone_and_hour",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_025_heatmap_covers_every_zone_and_hour",
+      "tc_id": "TC-SRV-025",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_026_reconciliation_states_the_difference_and_explains_it",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_026_reconciliation_states_the_difference_and_explains_it",
+      "tc_id": "TC-SRV-026",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_027_csv_has_one_row_per_vehicle_with_the_agreed_columns",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_027_csv_has_one_row_per_vehicle_with_the_agreed_columns",
+      "tc_id": "TC-SRV-027",
+      "status": "PASS",
+      "duration_s": 0.002,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_028_empty_sections_do_not_crash_the_renderer",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_028_empty_sections_do_not_crash_the_renderer",
+      "tc_id": "TC-SRV-028",
+      "status": "PASS",
+      "duration_s": 0.001,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_report_builder",
+      "name": "test_tc_srv_029_build_report_writes_both_files",
+      "node_id": "tests/unit/test_report_builder.py::test_tc_srv_029_build_report_writes_both_files",
+      "tc_id": "TC-SRV-029",
+      "status": "PASS",
+      "duration_s": 0.1,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_001_valid_rows_pass_and_invalid_rows_are_split",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_001_valid_rows_pass_and_invalid_rows_are_split",
+      "tc_id": "TC-STR-001",
+      "status": "PASS",
+      "duration_s": 1.442,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_002_spark_and_python_validators_agree",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_002_spark_and_python_validators_agree",
+      "tc_id": "TC-STR-002",
+      "status": "PASS",
+      "duration_s": 0.289,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_003_completely_unparseable_row_is_malformed_json",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_003_completely_unparseable_row_is_malformed_json",
+      "tc_id": "TC-STR-003",
+      "status": "PASS",
+      "duration_s": 0.282,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_004_duplicate_event_ids_are_removed",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_004_duplicate_event_ids_are_removed",
+      "tc_id": "TC-STR-004",
+      "status": "PASS",
+      "duration_s": 0.354,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_005_dedup_keeps_distinct_events_from_the_same_vehicle",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_005_dedup_keeps_distinct_events_from_the_same_vehicle",
+      "tc_id": "TC-STR-005",
+      "status": "PASS",
+      "duration_s": 0.312,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_006_enrich_adds_zone_is_active_and_is_trip_end",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_006_enrich_adds_zone_is_active_and_is_trip_end",
+      "tc_id": "TC-STR-006",
+      "status": "PASS",
+      "duration_s": 1.7,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_007_window_aggregates_match_hand_calculation",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_007_window_aggregates_match_hand_calculation",
+      "tc_id": "TC-STR-007",
+      "status": "PASS",
+      "duration_s": 0.616,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_008_events_are_placed_in_the_correct_window",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_008_events_are_placed_in_the_correct_window",
+      "tc_id": "TC-STR-008",
+      "status": "PASS",
+      "duration_s": 0.467,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_009_windows_are_grouped_per_zone",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_009_windows_are_grouped_per_zone",
+      "tc_id": "TC-STR-009",
+      "status": "PASS",
+      "duration_s": 0.46,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_010_empty_window_does_not_divide_by_zero",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_010_empty_window_does_not_divide_by_zero",
+      "tc_id": "TC-STR-010",
+      "status": "PASS",
+      "duration_s": 0.678,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_011_latest_per_vehicle_picks_the_newest_event",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_011_latest_per_vehicle_picks_the_newest_event",
+      "tc_id": "TC-STR-011",
+      "status": "PASS",
+      "duration_s": 0.545,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_012_latest_per_vehicle_carries_zone_and_driver",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_012_latest_per_vehicle_carries_zone_and_driver",
+      "tc_id": "TC-STR-012",
+      "status": "PASS",
+      "duration_s": 0.419,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_013_master_dataset_drops_kafka_internals_and_keeps_sim_date_last",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_013_master_dataset_drops_kafka_internals_and_keeps_sim_date_last",
+      "tc_id": "TC-STR-013",
+      "status": "PASS",
+      "duration_s": 0.055,
+      "detail": ""
+    },
+    {
+      "suite": "unit",
+      "classname": "tests.unit.test_transforms",
+      "name": "test_tc_str_014_zone_udf_matches_the_shared_python_function",
+      "node_id": "tests/unit/test_transforms.py::test_tc_str_014_zone_udf_matches_the_shared_python_function",
+      "tc_id": "TC-STR-014",
+      "status": "PASS",
+      "duration_s": 0.319,
+      "detail": ""
+    },
+    {
+      "suite": "integration",
+      "classname": "tests.integration.test_pipeline_integration",
+      "name": "test_tc_str_015_idle_alerts_for_departed_vehicles_are_closed",
+      "node_id": "tests/integration/test_pipeline_integration.py::test_tc_str_015_idle_alerts_for_departed_vehicles_are_closed",
+      "tc_id": "TC-STR-015",
+      "status": "PASS",
+      "duration_s": 10.056,
+      "detail": ""
+    }
+  ],
+  "scenarios": [
+    {
+      "tc_id": "TC-E2E-001",
+      "title": "",
+      "status": "PASS",
+      "requirements": [],
+      "evidence": "docs\\evidence\\scenarios\\TC-E2E-001.json",
+      "captured_at": "2026-09-26T03:06:51+00:00",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-E2E-002",
+      "title": "",
+      "status": "PASS",
+      "requirements": [],
+      "evidence": "docs\\evidence\\scenarios\\TC-E2E-002.json",
+      "captured_at": "2026-09-26T03:06:51+00:00",
+      "detail": "The speed layer drops events later than the 2-minute watermark and cuts its 1-minute windows on real event_time, which does not align exactly with the simulated-day boundary used by the batch layer. The batch layer recomputes from the complete Parquet partition and is the figure the business uses."
+    },
+    {
+      "tc_id": "TC-FT-001",
+      "title": "GPS producer stopped - NoTelemetryReceived fires and /health degrades",
+      "status": "PASS",
+      "requirements": [
+        "REQ-08",
+        "REQ-09"
+      ],
+      "evidence": "docs\\evidence\\scenarios\\TC-FT-001.json",
+      "captured_at": "2026-09-26T02:15:35Z",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-FT-002",
+      "title": "Stream job restart resumes from checkpoint with no duplicate rows",
+      "status": "PASS",
+      "requirements": [
+        "REQ-10",
+        "REQ-11"
+      ],
+      "evidence": "docs\\evidence\\scenarios\\TC-FT-002.json",
+      "captured_at": "2026-09-25T18:18:21Z",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-FT-003",
+      "title": "Kafka broker restart - producer retries and does not crash",
+      "status": "PASS",
+      "requirements": [
+        "REQ-01",
+        "REQ-08"
+      ],
+      "evidence": "docs\\evidence\\scenarios\\TC-FT-003.json",
+      "captured_at": "2026-09-25T18:18:32Z",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-FT-004",
+      "title": "Bad-event rate raised to 0.2 - HighRejectRate fires and rows are quarantined",
+      "status": "PASS",
+      "requirements": [
+        "REQ-09",
+        "REQ-12"
+      ],
+      "evidence": "docs\\evidence\\scenarios\\TC-FT-004.json",
+      "captured_at": "2026-09-25T18:22:53Z",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-FT-005",
+      "title": "Expense file never arrives - sensor times out, DAG fails cleanly, alert recorded",
+      "status": "PASS",
+      "requirements": [
+        "REQ-02",
+        "REQ-09"
+      ],
+      "evidence": "docs\\evidence\\scenarios\\TC-FT-005.json",
+      "captured_at": "2026-09-25T18:52:37Z",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-FT-006",
+      "title": "Corrupt expense file (80% invalid rows) is refused, not partially loaded",
+      "status": "PASS",
+      "requirements": [
+        "REQ-02",
+        "REQ-12"
+      ],
+      "evidence": "docs\\evidence\\scenarios\\TC-FT-006.json",
+      "captured_at": "2026-09-25T18:53:07Z",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-FT-007",
+      "title": "Replaying a reconciled simulated day produces identical business results",
+      "status": "PASS",
+      "requirements": [
+        "REQ-10",
+        "REQ-11"
+      ],
+      "evidence": "docs\\evidence\\scenarios\\TC-FT-007.json",
+      "captured_at": "2026-09-25T18:53:48Z",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-NFR-001",
+      "title": "",
+      "status": "PASS",
+      "requirements": [],
+      "evidence": "docs\\evidence\\scenarios\\TC-NFR-001.json",
+      "captured_at": "2026-09-26T03:07:46+00:00",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-NFR-002",
+      "title": "",
+      "status": "PASS",
+      "requirements": [],
+      "evidence": "docs\\evidence\\scenarios\\TC-NFR-002.json",
+      "captured_at": "2026-09-26T03:07:46+00:00",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-NFR-003",
+      "title": "Container CPU and memory against the declared limits (NFR-05)",
+      "status": "PASS",
+      "requirements": [
+        "NFR-05"
+      ],
+      "evidence": "docs\\evidence\\scenarios\\TC-NFR-003.json",
+      "captured_at": "2026-09-26T02:55:38Z",
+      "detail": ""
+    },
+    {
+      "tc_id": "TC-NFR-004",
+      "title": "Throughput at 200 vehicles held for 180s (NFR-06)",
+      "status": "PASS",
+      "requirements": [
+        "REQ-04",
+        "NFR-06"
+      ],
+      "evidence": "docs\\evidence\\scenarios\\TC-NFR-004.json",
+      "captured_at": "2026-09-26T02:40:26Z",
+      "detail": ""
+    }
+  ],
+  "junit_files": [
+    "docs\\evidence\\tests\\junit-e2e.xml",
+    "docs\\evidence\\tests\\junit-integration.xml",
+    "docs\\evidence\\tests\\junit-unit.xml"
+  ]
+}

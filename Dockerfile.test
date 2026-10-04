@@ -1,0 +1,59 @@
+# ==============================================================================================
+# Test runner image.
+#
+# Why a container at all?  The host interpreter on the development machine is Python 3.13, and
+# PySpark 3.5 only supports up to 3.11.  Running the suite inside this image means the unit tests
+# execute against exactly the same interpreter, JVM and jar set as the production stream job, so a
+# green unit run actually predicts production behaviour.
+#
+# It deliberately installs the union of every service's requirements so one image can run the
+# unit, integration, e2e and chaos suites.
+# ==============================================================================================
+FROM python:3.11-slim-bookworm
+
+# --- JVM: PySpark needs a JRE; 17 is the version Spark 3.5 is built and tested against --------
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+        openjdk-17-jre-headless curl procps netcat-openbsd postgresql-client graphviz \
+ && rm -rf /var/lib/apt/lists/*
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+
+WORKDIR /app
+
+COPY requirements-common.txt requirements-dev.txt ./
+RUN pip install --no-cache-dir -r requirements-dev.txt
+
+# --- Spark connector jars, baked in at build time ---------------------------------------------
+# Resolving these with `--packages` at submit time needs Maven Central on every container start,
+# which is slow and a single point of failure during a live demo.  Baking them in makes the image
+# self-contained and the startup deterministic.
+ARG SPARK_VERSION=3.5.3
+ARG KAFKA_CLIENTS_VERSION=3.4.1
+ARG COMMONS_POOL2_VERSION=2.11.1
+ARG POSTGRES_JDBC_VERSION=42.7.4
+ENV SPARK_JARS=/usr/local/lib/python3.11/site-packages/pyspark/jars
+RUN set -eux; \
+    base=https://repo1.maven.org/maven2; \
+    curl -fsSL -o "$SPARK_JARS/spark-sql-kafka-0-10_2.12-${SPARK_VERSION}.jar" \
+      "$base/org/apache/spark/spark-sql-kafka-0-10_2.12/${SPARK_VERSION}/spark-sql-kafka-0-10_2.12-${SPARK_VERSION}.jar"; \
+    curl -fsSL -o "$SPARK_JARS/spark-token-provider-kafka-0-10_2.12-${SPARK_VERSION}.jar" \
+      "$base/org/apache/spark/spark-token-provider-kafka-0-10_2.12/${SPARK_VERSION}/spark-token-provider-kafka-0-10_2.12-${SPARK_VERSION}.jar"; \
+    curl -fsSL -o "$SPARK_JARS/kafka-clients-${KAFKA_CLIENTS_VERSION}.jar" \
+      "$base/org/apache/kafka/kafka-clients/${KAFKA_CLIENTS_VERSION}/kafka-clients-${KAFKA_CLIENTS_VERSION}.jar"; \
+    curl -fsSL -o "$SPARK_JARS/commons-pool2-${COMMONS_POOL2_VERSION}.jar" \
+      "$base/org/apache/commons/commons-pool2/${COMMONS_POOL2_VERSION}/commons-pool2-${COMMONS_POOL2_VERSION}.jar"; \
+    curl -fsSL -o "$SPARK_JARS/postgresql-${POSTGRES_JDBC_VERSION}.jar" \
+      "$base/org/postgresql/postgresql/${POSTGRES_JDBC_VERSION}/postgresql-${POSTGRES_JDBC_VERSION}.jar"
+
+ENV PYTHONPATH=/app \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    # Spark's Python worker must be the same interpreter as the driver.
+    PYSPARK_PYTHON=python3 \
+    PYSPARK_DRIVER_PYTHON=python3
+
+# Source is bind-mounted by docker compose so an edit needs no rebuild; the COPY keeps the image
+# usable standalone (e.g. `docker run fleet-tests pytest tests/unit`).
+COPY . /app
+
+CMD ["pytest", "tests/unit", "-m", "unit"]

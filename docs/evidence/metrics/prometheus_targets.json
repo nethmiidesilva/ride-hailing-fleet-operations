@@ -1,0 +1,177 @@
+{
+  "captured_at": "2026-09-26T03:08:07+00:00",
+  "endpoint": "/api/v1/targets",
+  "data": {
+    "activeTargets": [
+      {
+        "discoveredLabels": {
+          "__address__": "api:8000",
+          "__metrics_path__": "/metrics-prom",
+          "__scheme__": "http",
+          "__scrape_interval__": "10s",
+          "__scrape_timeout__": "10s",
+          "component": "serving",
+          "job": "api",
+          "stage": "serving"
+        },
+        "labels": {
+          "component": "serving",
+          "instance": "api:8000",
+          "job": "api",
+          "stage": "serving"
+        },
+        "scrapePool": "api",
+        "scrapeUrl": "http://api:8000/metrics-prom",
+        "globalUrl": "http://api:8000/metrics-prom",
+        "lastError": "",
+        "lastScrape": "2026-09-26T03:08:01.555826138Z",
+        "lastScrapeDuration": 0.003279266,
+        "health": "up",
+        "scrapeInterval": "10s",
+        "scrapeTimeout": "10s"
+      },
+      {
+        "discoveredLabels": {
+          "__address__": "expense-producer:8002",
+          "__metrics_path__": "/metrics",
+          "__scheme__": "http",
+          "__scrape_interval__": "10s",
+          "__scrape_timeout__": "10s",
+          "component": "ingestion",
+          "job": "expense-producer",
+          "stage": "ingestion"
+        },
+        "labels": {
+          "component": "ingestion",
+          "instance": "expense-producer:8002",
+          "job": "expense-producer",
+          "stage": "ingestion"
+        },
+        "scrapePool": "expense-producer",
+        "scrapeUrl": "http://expense-producer:8002/metrics",
+        "globalUrl": "http://expense-producer:8002/metrics",
+        "lastError": "",
+        "lastScrape": "2026-09-26T03:08:05.553674258Z",
+        "lastScrapeDuration": 0.001461581,
+        "health": "up",
+        "scrapeInterval": "10s",
+        "scrapeTimeout": "10s"
+      },
+      {
+        "discoveredLabels": {
+          "__address__": "gps-producer:8001",
+          "__metrics_path__": "/metrics",
+          "__scheme__": "http",
+          "__scrape_interval__": "10s",
+          "__scrape_timeout__": "10s",
+          "component": "ingestion",
+          "job": "gps-producer",
+          "stage": "ingestion"
+        },
+        "labels": {
+          "component": "ingestion",
+          "instance": "gps-producer:8001",
+          "job": "gps-producer",
+          "stage": "ingestion"
+        },
+        "scrapePool": "gps-producer",
+        "scrapeUrl": "http://gps-producer:8001/metrics",
+        "globalUrl": "http://gps-producer:8001/metrics",
+        "lastError": "",
+        "lastScrape": "2026-09-26T03:08:00.240127566Z",
+        "lastScrapeDuration": 0.001791239,
+        "health": "up",
+        "scrapeInterval": "10s",
+        "scrapeTimeout": "10s"
+      },
+      {
+        "discoveredLabels": {
+          "__address__": "kafka-exporter:9308",
+          "__metrics_path__": "/metrics",
+          "__scheme__": "http",
+          "__scrape_interval__": "10s",
+          "__scrape_timeout__": "10s",
+          "component": "messaging",
+          "job": "kafka-exporter",
+          "stage": "ingestion"
+        },
+        "labels": {
+          "component": "messaging",
+          "instance": "kafka-exporter:9308",
+          "job": "kafka-exporter",
+          "stage": "ingestion"
+        },
+        "scrapePool": "kafka-exporter",
+        "scrapeUrl": "http://kafka-exporter:9308/metrics",
+        "globalUrl": "http://kafka-exporter:9308/metrics",
+        "lastError": "",
+        "lastScrape": "2026-09-26T03:08:03.990167084Z",
+        "lastScrapeDuration": 0.025630203,
+        "health": "up",
+        "scrapeInterval": "10s",
+        "scrapeTimeout": "10s"
+      },
+      {
+        "discoveredLabels": {
+          "__address__": "localhost:9090",
+          "__metrics_path__": "/metrics",
+          "__scheme__": "http",
+          "__scrape_interval__": "10s",
+          "__scrape_timeout__": "10s",
+          "component": "monitoring",
+          "job": "prometheus"
+        },
+        "labels": {
+          "component": "monitoring",
+          "instance": "localhost:9090",
+          "job": "prometheus"
+        },
+        "scrapePool": "prometheus",
+        "scrapeUrl": "http://localhost:9090/metrics",
+        "globalUrl": "http://d80e872cc32e:9090/metrics",
+        "lastError": "",
+        "lastScrape": "2026-09-26T03:08:02.360111414Z",
+        "lastScrapeDuration": 0.003697236,
+        "health": "up",
+        "scrapeInterval": "10s",
+        "scrapeTimeout": "10s"
+      },
+      {
+        "discoveredLabels": {
+          "__address__": "stream-job:8003",
+          "__metrics_path__": "/metrics",
+          "__scheme__": "http",
+          "__scrape_interval__": "10s",
+          "__scrape_timeout__": "10s",
+          "component": "processing",
+          "job": "stream-job",
+          "stage": "processing"
+        },
+        "labels": {
+          "component": "processing",
+          "instance": "stream-job:8003",
+          "job": "stream-job",
+          "stage": "processing"
+        },
+        "scrapePool": "stream-job",
+        "scrapeUrl": "http://stream-job:8003/metrics",
+        "globalUrl": "http://stream-job:8003/metrics",
+        "lastError": "",
+        "lastScrape": "2026-09-26T03:08:05.624410293Z",
+        "lastScrapeDuration": 0.00220676,
+        "health": "up",
+        "scrapeInterval": "10s",
+        "scrapeTimeout": "10s"
+      }
+    ],
+    "droppedTargets": [],
+    "droppedTargetCounts": {
+      "api": 0,
+      "expense-producer": 0,
+      "gps-producer": 0,
+      "kafka-exporter": 0,
+      "prometheus": 0,
+      "stream-job": 0
+    }
+  }
+}

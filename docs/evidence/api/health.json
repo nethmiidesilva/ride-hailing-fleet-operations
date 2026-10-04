@@ -1,0 +1,29 @@
+{
+  "captured_at": "2026-09-26T03:08:05+00:00",
+  "request": "GET /health",
+  "status_code": 200,
+  "body": {
+    "status": "healthy",
+    "checked_at": "2026-09-26T03:08:05.466445Z",
+    "run_id": "d0e05f6df34b",
+    "components": {
+      "postgres": {
+        "ok": true,
+        "detail": null,
+        "latency_ms": 5.79
+      },
+      "kafka": {
+        "ok": true,
+        "detail": null,
+        "latency_ms": 1.75
+      },
+      "data_freshness": {
+        "ok": true,
+        "detail": "newest event is 6.2s old (threshold 120s)",
+        "latency_ms": null
+      }
+    },
+    "freshness_seconds": 6.17,
+    "freshness_threshold_seconds": 120
+  }
+}

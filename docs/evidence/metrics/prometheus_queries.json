@@ -1,0 +1,569 @@
+{
+  "captured_at": "2026-09-26T03:08:07+00:00",
+  "queries": {
+    "producer_rate": {
+      "expr": "sum(rate(producer_events_sent_total[1m]))",
+      "result": [
+        {
+          "metric": {},
+          "value": [
+            1790392087.698,
+            "12.749271320430289"
+          ]
+        }
+      ]
+    },
+    "producer_rate_by_status": {
+      "expr": "sum by (status) (rate(producer_events_sent_total[1m]))",
+      "result": [
+        {
+          "metric": {
+            "status": "idle"
+          },
+          "value": [
+            1790392087.7,
+            "3.4389481851160646"
+          ]
+        },
+        {
+          "metric": {
+            "status": "enroute"
+          },
+          "value": [
+            1790392087.7,
+            "2.1178888213214786"
+          ]
+        },
+        {
+          "metric": {
+            "status": "on_trip"
+          },
+          "value": [
+            1790392087.7,
+            "7.171465117742037"
+          ]
+        },
+        {
+          "metric": {
+            "status": "unknown"
+          },
+          "value": [
+            1790392087.7,
+            "0"
+          ]
+        },
+        {
+          "metric": {},
+          "value": [
+            1790392087.7,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "status": "flying"
+          },
+          "value": [
+            1790392087.7,
+            "0.02096919625070771"
+          ]
+        }
+      ]
+    },
+    "producer_last_send_age": {
+      "expr": "time() - producer_last_send_timestamp",
+      "result": [
+        {
+          "metric": {
+            "component": "ingestion",
+            "instance": "gps-producer:8001",
+            "job": "gps-producer",
+            "stage": "ingestion"
+          },
+          "value": [
+            1790392087.702,
+            "8.408316850662231"
+          ]
+        }
+      ]
+    },
+    "bad_events_injected": {
+      "expr": "sum by (kind) (producer_bad_events_injected_total)",
+      "result": [
+        {
+          "metric": {
+            "kind": "null_vehicle_id"
+          },
+          "value": [
+            1790392087.704,
+            "79"
+          ]
+        },
+        {
+          "metric": {
+            "kind": "negative_speed"
+          },
+          "value": [
+            1790392087.704,
+            "75"
+          ]
+        },
+        {
+          "metric": {
+            "kind": "negative_fare"
+          },
+          "value": [
+            1790392087.704,
+            "80"
+          ]
+        },
+        {
+          "metric": {
+            "kind": "lat_out_of_range"
+          },
+          "value": [
+            1790392087.704,
+            "71"
+          ]
+        },
+        {
+          "metric": {
+            "kind": "lon_out_of_range"
+          },
+          "value": [
+            1790392087.704,
+            "61"
+          ]
+        },
+        {
+          "metric": {
+            "kind": "unknown_status"
+          },
+          "value": [
+            1790392087.704,
+            "80"
+          ]
+        }
+      ]
+    },
+    "stream_batches": {
+      "expr": "sum by (sink) (stream_batches_total)",
+      "result": [
+        {
+          "metric": {
+            "sink": "vehicle_status"
+          },
+          "value": [
+            1790392087.706,
+            "49"
+          ]
+        },
+        {
+          "metric": {
+            "sink": "zone_metrics"
+          },
+          "value": [
+            1790392087.706,
+            "17"
+          ]
+        },
+        {
+          "metric": {
+            "sink": "rejected"
+          },
+          "value": [
+            1790392087.706,
+            "17"
+          ]
+        }
+      ]
+    },
+    "stream_rows_processed": {
+      "expr": "sum by (sink) (stream_rows_processed_total)",
+      "result": [
+        {
+          "metric": {
+            "sink": "vehicle_status"
+          },
+          "value": [
+            1790392087.708,
+            "1225"
+          ]
+        },
+        {
+          "metric": {
+            "sink": "zone_metrics"
+          },
+          "value": [
+            1790392087.708,
+            "154"
+          ]
+        }
+      ]
+    },
+    "stream_rows_rejected": {
+      "expr": "sum by (reason) (stream_rows_rejected_total)",
+      "result": [
+        {
+          "metric": {
+            "reason": "LAT_OUT_OF_RANGE"
+          },
+          "value": [
+            1790392087.713,
+            "19"
+          ]
+        },
+        {
+          "metric": {
+            "reason": "NEGATIVE_FARE"
+          },
+          "value": [
+            1790392087.713,
+            "25"
+          ]
+        },
+        {
+          "metric": {
+            "reason": "LON_OUT_OF_RANGE"
+          },
+          "value": [
+            1790392087.713,
+            "14"
+          ]
+        },
+        {
+          "metric": {
+            "reason": "NEGATIVE_SPEED"
+          },
+          "value": [
+            1790392087.713,
+            "26"
+          ]
+        },
+        {
+          "metric": {
+            "reason": "NULL_VEHICLE_ID"
+          },
+          "value": [
+            1790392087.713,
+            "24"
+          ]
+        },
+        {
+          "metric": {
+            "reason": "UNKNOWN_STATUS"
+          },
+          "value": [
+            1790392087.713,
+            "22"
+          ]
+        }
+      ]
+    },
+    "stream_batch_p50": {
+      "expr": "histogram_quantile(0.5, sum(rate(stream_batch_duration_seconds_bucket[5m])) by (le, sink))",
+      "result": [
+        {
+          "metric": {
+            "sink": "vehicle_status"
+          },
+          "value": [
+            1790392087.715,
+            "0.875"
+          ]
+        },
+        {
+          "metric": {
+            "sink": "zone_metrics"
+          },
+          "value": [
+            1790392087.715,
+            "3.3338560088742533"
+          ]
+        },
+        {
+          "metric": {
+            "sink": "rejected"
+          },
+          "value": [
+            1790392087.715,
+            "3.3338560088742533"
+          ]
+        }
+      ]
+    },
+    "stream_batch_p95": {
+      "expr": "histogram_quantile(0.95, sum(rate(stream_batch_duration_seconds_bucket[5m])) by (le, sink))",
+      "result": [
+        {
+          "metric": {
+            "sink": "vehicle_status"
+          },
+          "value": [
+            1790392087.717,
+            "4.5"
+          ]
+        },
+        {
+          "metric": {
+            "sink": "zone_metrics"
+          },
+          "value": [
+            1790392087.717,
+            "4.833385477507965"
+          ]
+        },
+        {
+          "metric": {
+            "sink": "rejected"
+          },
+          "value": [
+            1790392087.717,
+            "4.833385477507965"
+          ]
+        }
+      ]
+    },
+    "stream_last_batch_age": {
+      "expr": "time() - stream_last_batch_timestamp",
+      "result": [
+        {
+          "metric": {
+            "component": "processing",
+            "instance": "stream-job:8003",
+            "job": "stream-job",
+            "stage": "processing"
+          },
+          "value": [
+            1790392087.719,
+            "4.525190114974976"
+          ]
+        }
+      ]
+    },
+    "reject_ratio": {
+      "expr": "sum(rate(stream_rows_rejected_total[5m])) / clamp_min(sum(rate(stream_rows_processed_total[5m])) + sum(rate(stream_rows_rejected_total[5m])), 0.001)",
+      "result": [
+        {
+          "metric": {},
+          "value": [
+            1790392087.72,
+            "0.08487486398258977"
+          ]
+        }
+      ]
+    },
+    "consumer_lag": {
+      "expr": "sum(kafka_consumergroup_lag{topic=\"fleet.telemetry\"})",
+      "result": []
+    },
+    "idle_alerts_open": {
+      "expr": "idle_alerts_open",
+      "result": [
+        {
+          "metric": {
+            "__name__": "idle_alerts_open",
+            "component": "processing",
+            "instance": "stream-job:8003",
+            "job": "stream-job",
+            "stage": "processing"
+          },
+          "value": [
+            1790392087.724,
+            "1"
+          ]
+        }
+      ]
+    },
+    "api_health": {
+      "expr": "api_health_status",
+      "result": [
+        {
+          "metric": {
+            "__name__": "api_health_status",
+            "component": "serving",
+            "instance": "api:8000",
+            "job": "api",
+            "stage": "serving"
+          },
+          "value": [
+            1790392087.725,
+            "1"
+          ]
+        }
+      ]
+    },
+    "api_request_rate": {
+      "expr": "sum by (path) (rate(api_requests_total[5m]))",
+      "result": [
+        {
+          "metric": {
+            "path": "/metrics-prom"
+          },
+          "value": [
+            1790392087.727,
+            "0.10799098449458479"
+          ]
+        },
+        {
+          "metric": {
+            "path": "/health/live"
+          },
+          "value": [
+            1790392087.727,
+            "0.0557372823197857"
+          ]
+        },
+        {
+          "metric": {
+            "path": "/health"
+          },
+          "value": [
+            1790392087.727,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "path": "/metrics/fleet"
+          },
+          "value": [
+            1790392087.727,
+            "0.0038145514997170345"
+          ]
+        },
+        {
+          "metric": {
+            "path": "/metrics/zones"
+          },
+          "value": [
+            1790392087.727,
+            "0.0038145514997170345"
+          ]
+        },
+        {
+          "metric": {
+            "path": "/"
+          },
+          "value": [
+            1790392087.727,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "path": "/reports/profitability"
+          },
+          "value": [
+            1790392087.727,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "path": "/vehicles/unprofitable"
+          },
+          "value": [
+            1790392087.727,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "path": "/reports/profitability/2026-09-01/html"
+          },
+          "value": [
+            1790392087.727,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "path": "/alerts/idle"
+          },
+          "value": [
+            1790392087.727,
+            "0"
+          ]
+        }
+      ]
+    },
+    "expense_files": {
+      "expr": "expense_files_written_total",
+      "result": [
+        {
+          "metric": {
+            "__name__": "expense_files_written_total",
+            "component": "ingestion",
+            "instance": "expense-producer:8002",
+            "job": "expense-producer",
+            "stage": "ingestion"
+          },
+          "value": [
+            1790392087.729,
+            "4"
+          ]
+        }
+      ]
+    },
+    "targets_up": {
+      "expr": "sum by (job) (up)",
+      "result": [
+        {
+          "metric": {
+            "job": "kafka-exporter"
+          },
+          "value": [
+            1790392087.73,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "job": "prometheus"
+          },
+          "value": [
+            1790392087.73,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "job": "expense-producer"
+          },
+          "value": [
+            1790392087.73,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "job": "stream-job"
+          },
+          "value": [
+            1790392087.73,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "job": "api"
+          },
+          "value": [
+            1790392087.73,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "job": "gps-producer"
+          },
+          "value": [
+            1790392087.73,
+            "1"
+          ]
+        }
+      ]
+    }
+  }
+}

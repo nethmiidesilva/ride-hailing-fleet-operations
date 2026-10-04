@@ -1,0 +1,17 @@
+{
+  "captured_at": "2026-09-26T03:08:05+00:00",
+  "request": "GET /alerts/idle?status=open",
+  "status_code": 200,
+  "body": [
+    {
+      "id": 2114,
+      "vehicle_id": "V-002",
+      "zone": "Wellawatte",
+      "idle_since": "2026-09-26T03:04:59.729000Z",
+      "detected_at": "2026-09-26T03:08:02.983560Z",
+      "resolved_at": null,
+      "idle_minutes": 3.05,
+      "status": "open"
+    }
+  ]
+}

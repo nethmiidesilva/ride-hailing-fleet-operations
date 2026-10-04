@@ -1,0 +1,271 @@
+{
+  "captured_at": "2026-09-26T03:08:06+00:00",
+  "sql": "SELECT window_start, zone, active_vehicles, idle_vehicles, idle_ratio, trips_completed, earnings_lkr, avg_speed_kmh, event_count FROM realtime_zone_metrics ORDER BY window_start DESC, zone LIMIT 24;",
+  "row_count": 24,
+  "rows": [
+    {
+      "window_start": "2026-09-26 03:07:00+00:00",
+      "zone": "Bambalapitiya",
+      "active_vehicles": 3,
+      "idle_vehicles": 1,
+      "idle_ratio": "0.3265",
+      "trips_completed": 0,
+      "earnings_lkr": "0.00",
+      "avg_speed_kmh": "29.17",
+      "event_count": 98
+    },
+    {
+      "window_start": "2026-09-26 03:07:00+00:00",
+      "zone": "Borella",
+      "active_vehicles": 3,
+      "idle_vehicles": 4,
+      "idle_ratio": "0.4160",
+      "trips_completed": 4,
+      "earnings_lkr": "803.84",
+      "avg_speed_kmh": "42.42",
+      "event_count": 125
+    },
+    {
+      "window_start": "2026-09-26 03:07:00+00:00",
+      "zone": "Fort",
+      "active_vehicles": 5,
+      "idle_vehicles": 3,
+      "idle_ratio": "0.1458",
+      "trips_completed": 3,
+      "earnings_lkr": "607.19",
+      "avg_speed_kmh": "30.29",
+      "event_count": 96
+    },
+    {
+      "window_start": "2026-09-26 03:07:00+00:00",
+      "zone": "Kollupitiya",
+      "active_vehicles": 6,
+      "idle_vehicles": 5,
+      "idle_ratio": "0.1758",
+      "trips_completed": 4,
+      "earnings_lkr": "793.54",
+      "avg_speed_kmh": "40.47",
+      "event_count": 165
+    },
+    {
+      "window_start": "2026-09-26 03:07:00+00:00",
+      "zone": "Pettah",
+      "active_vehicles": 3,
+      "idle_vehicles": 2,
+      "idle_ratio": "0.1158",
+      "trips_completed": 2,
+      "earnings_lkr": "410.23",
+      "avg_speed_kmh": "45.83",
+      "event_count": 95
+    },
+    {
+      "window_start": "2026-09-26 03:07:00+00:00",
+      "zone": "Wellawatte",
+      "active_vehicles": 6,
+      "idle_vehicles": 6,
+      "idle_ratio": "0.3452",
+      "trips_completed": 5,
+      "earnings_lkr": "943.72",
+      "avg_speed_kmh": "46.41",
+      "event_count": 197
+    },
+    {
+      "window_start": "2026-09-26 03:06:00+00:00",
+      "zone": "Bambalapitiya",
+      "active_vehicles": 2,
+      "idle_vehicles": 3,
+      "idle_ratio": "0.5949",
+      "trips_completed": 2,
+      "earnings_lkr": "478.59",
+      "avg_speed_kmh": "45.41",
+      "event_count": 79
+    },
+    {
+      "window_start": "2026-09-26 03:06:00+00:00",
+      "zone": "Borella",
+      "active_vehicles": 5,
+      "idle_vehicles": 2,
+      "idle_ratio": "0.2137",
+      "trips_completed": 2,
+      "earnings_lkr": "364.36",
+      "avg_speed_kmh": "41.90",
+      "event_count": 131
+    },
+    {
+      "window_start": "2026-09-26 03:06:00+00:00",
+      "zone": "Fort",
+      "active_vehicles": 5,
+      "idle_vehicles": 4,
+      "idle_ratio": "0.1811",
+      "trips_completed": 3,
+      "earnings_lkr": "623.67",
+      "avg_speed_kmh": "44.77",
+      "event_count": 127
+    },
+    {
+      "window_start": "2026-09-26 03:06:00+00:00",
+      "zone": "Kollupitiya",
+      "active_vehicles": 6,
+      "idle_vehicles": 5,
+      "idle_ratio": "0.3287",
+      "trips_completed": 3,
+      "earnings_lkr": "561.50",
+      "avg_speed_kmh": "28.97",
+      "event_count": 143
+    },
+    {
+      "window_start": "2026-09-26 03:06:00+00:00",
+      "zone": "Pettah",
+      "active_vehicles": 3,
+      "idle_vehicles": 3,
+      "idle_ratio": "0.3011",
+      "trips_completed": 3,
+      "earnings_lkr": "505.45",
+      "avg_speed_kmh": "22.79",
+      "event_count": 93
+    },
+    {
+      "window_start": "2026-09-26 03:06:00+00:00",
+      "zone": "Wellawatte",
+      "active_vehicles": 7,
+      "idle_vehicles": 5,
+      "idle_ratio": "0.3602",
+      "trips_completed": 5,
+      "earnings_lkr": "971.82",
+      "avg_speed_kmh": "34.86",
+      "event_count": 211
+    },
+    {
+      "window_start": "2026-09-26 03:05:00+00:00",
+      "zone": "Bambalapitiya",
+      "active_vehicles": 2,
+      "idle_vehicles": 1,
+      "idle_ratio": "0.5862",
+      "trips_completed": 1,
+      "earnings_lkr": "267.94",
+      "avg_speed_kmh": "52.88",
+      "event_count": 58
+    },
+    {
+      "window_start": "2026-09-26 03:05:00+00:00",
+      "zone": "Borella",
+      "active_vehicles": 5,
+      "idle_vehicles": 3,
+      "idle_ratio": "0.2083",
+      "trips_completed": 2,
+      "earnings_lkr": "424.56",
+      "avg_speed_kmh": "35.82",
+      "event_count": 144
+    },
+    {
+      "window_start": "2026-09-26 03:05:00+00:00",
+      "zone": "Fort",
+      "active_vehicles": 6,
+      "idle_vehicles": 4,
+      "idle_ratio": "0.2364",
+      "trips_completed": 4,
+      "earnings_lkr": "798.80",
+      "avg_speed_kmh": "42.19",
+      "event_count": 165
+    },
+    {
+      "window_start": "2026-09-26 03:05:00+00:00",
+      "zone": "Kollupitiya",
+      "active_vehicles": 5,
+      "idle_vehicles": 4,
+      "idle_ratio": "0.1627",
+      "trips_completed": 3,
+      "earnings_lkr": "655.94",
+      "avg_speed_kmh": "30.14",
+      "event_count": 166
+    },
+    {
+      "window_start": "2026-09-26 03:05:00+00:00",
+      "zone": "Pettah",
+      "active_vehicles": 2,
+      "idle_vehicles": 2,
+      "idle_ratio": "0.3548",
+      "trips_completed": 2,
+      "earnings_lkr": "352.07",
+      "avg_speed_kmh": "31.17",
+      "event_count": 62
+    },
+    {
+      "window_start": "2026-09-26 03:05:00+00:00",
+      "zone": "Wellawatte",
+      "active_vehicles": 6,
+      "idle_vehicles": 5,
+      "idle_ratio": "0.2719",
+      "trips_completed": 3,
+      "earnings_lkr": "681.10",
+      "avg_speed_kmh": "34.04",
+      "event_count": 217
+    },
+    {
+      "window_start": "2026-09-26 03:04:00+00:00",
+      "zone": "Bambalapitiya",
+      "active_vehicles": 3,
+      "idle_vehicles": 1,
+      "idle_ratio": "0.1111",
+      "trips_completed": 1,
+      "earnings_lkr": "174.17",
+      "avg_speed_kmh": "50.31",
+      "event_count": 72
+    },
+    {
+      "window_start": "2026-09-26 03:04:00+00:00",
+      "zone": "Borella",
+      "active_vehicles": 4,
+      "idle_vehicles": 5,
+      "idle_ratio": "0.4268",
+      "trips_completed": 4,
+      "earnings_lkr": "762.39",
+      "avg_speed_kmh": "36.21",
+      "event_count": 164
+    },
+    {
+      "window_start": "2026-09-26 03:04:00+00:00",
+      "zone": "Fort",
+      "active_vehicles": 6,
+      "idle_vehicles": 5,
+      "idle_ratio": "0.2410",
+      "trips_completed": 5,
+      "earnings_lkr": "970.66",
+      "avg_speed_kmh": "47.45",
+      "event_count": 166
+    },
+    {
+      "window_start": "2026-09-26 03:04:00+00:00",
+      "zone": "Kollupitiya",
+      "active_vehicles": 5,
+      "idle_vehicles": 3,
+      "idle_ratio": "0.1603",
+      "trips_completed": 3,
+      "earnings_lkr": "559.89",
+      "avg_speed_kmh": "29.28",
+      "event_count": 131
+    },
+    {
+      "window_start": "2026-09-26 03:04:00+00:00",
+      "zone": "Pettah",
+      "active_vehicles": 2,
+      "idle_vehicles": 2,
+      "idle_ratio": "0.2857",
+      "trips_completed": 2,
+      "earnings_lkr": "339.34",
+      "avg_speed_kmh": "21.80",
+      "event_count": 56
+    },
+    {
+      "window_start": "2026-09-26 03:04:00+00:00",
+      "zone": "Wellawatte",
+      "active_vehicles": 7,
+      "idle_vehicles": 5,
+      "idle_ratio": "0.1521",
+      "trips_completed": 5,
+      "earnings_lkr": "955.16",
+      "avg_speed_kmh": "32.30",
+      "event_count": 217
+    }
+  ]
+}

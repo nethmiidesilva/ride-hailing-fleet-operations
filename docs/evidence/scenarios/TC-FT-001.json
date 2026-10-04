@@ -1,0 +1,31 @@
+{
+  "test_case": "TC-FT-001",
+  "title": "GPS producer stopped - NoTelemetryReceived fires and /health degrades",
+  "requirements": ["REQ-08", "REQ-09"],
+  "status": "PASS",
+  "baseline": {
+    "health_code": "200",
+    "telemetry_age_seconds": "1.234773874282837",
+    "alert_state": "inactive"
+  },
+  "injection": {
+    "at": "2026-09-26T02:13:03Z",
+    "action": "docker compose stop gps-producer"
+  },
+  "detection": {
+    "alert_name": "NoTelemetryReceived",
+    "alert_fired_after_seconds": 52,
+    "alert_threshold_seconds": 120,
+    "alert_for_clause_seconds": 30,
+    "health_503_after_seconds": 67,
+    "telemetry_age_at_detection_seconds": "",
+    "health_body_excerpt": "{\"status\":\"degraded\",\"checked_at\":\"2026-09-26T02:15:02.876863Z\",\"run_id\":\"e3ebe716107d\",\"components\":{\"postgres\":{\"ok\":true,\"detail\":null,\"latency_ms\":5.28},\"kafka\":{\"ok\":true,\"detail\":null,\"latency_ms\":3.01},\"data_freshness\":{\"ok\":false,\"detail\":\"newest event is 122.4s old (threshold 120s)\",\"latency_ms\":null}},\"freshness_seconds\":122.37,\"freshness_threshold_seconds\":120}"
+  },
+  "recovery": {
+    "at": "2026-09-26T02:15:06Z",
+    "action": "docker compose start gps-producer",
+    "health_200_after_seconds": 21,
+    "alert_cleared_after_seconds": 0
+  },
+  "captured_at": "2026-09-26T02:15:35Z"
+}

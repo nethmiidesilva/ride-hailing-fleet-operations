@@ -1,0 +1,197 @@
+{
+  "captured_at": "2026-09-26T03:08:07+00:00",
+  "sql": "SELECT run_id, report_date, status, started_at, finished_at, duration_s, rows_written FROM pipeline_runs ORDER BY started_at DESC LIMIT 10;",
+  "row_count": 10,
+  "rows": [
+    {
+      "run_id": "day1_retry_1790350777",
+      "report_date": "2026-09-01",
+      "status": "success",
+      "started_at": null,
+      "finished_at": "2026-09-25 15:50:58.464817+00:00",
+      "duration_s": null,
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-09-01.csv",
+        "report_html": "/data/reports/profitability_2026-09-01.html",
+        "parquet_files": 126,
+        "missing_expense": 0,
+        "zone_summary_rows": 144,
+        "expense_rows_valid": 25,
+        "profitability_rows": 25,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    },
+    {
+      "run_id": "itest_1790391946",
+      "report_date": "2026-11-09",
+      "status": "success",
+      "started_at": "2026-09-26 03:05:46.289174+00:00",
+      "finished_at": "2026-09-26 03:06:04.145824+00:00",
+      "duration_s": "17.86",
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-11-09.csv",
+        "report_html": "/data/reports/profitability_2026-11-09.html",
+        "parquet_files": 132,
+        "missing_expense": 0,
+        "zone_summary_rows": 144,
+        "expense_rows_valid": 25,
+        "profitability_rows": 25,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    },
+    {
+      "run_id": "scheduled_2026-09-26T0250000000",
+      "report_date": "2026-11-08",
+      "status": "success",
+      "started_at": "2026-09-26 03:00:00.079547+00:00",
+      "finished_at": "2026-09-26 03:00:21.362924+00:00",
+      "duration_s": "21.28",
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-11-08.csv",
+        "report_html": "/data/reports/profitability_2026-11-08.html",
+        "parquet_files": 126,
+        "missing_expense": 0,
+        "zone_summary_rows": 144,
+        "expense_rows_valid": 25,
+        "profitability_rows": 25,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    },
+    {
+      "run_id": "scheduled_2026-09-26T0240000000",
+      "report_date": "2026-11-07",
+      "status": "success",
+      "started_at": "2026-09-26 02:50:00.655960+00:00",
+      "finished_at": "2026-09-26 02:50:18.050640+00:00",
+      "duration_s": "17.39",
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-11-07.csv",
+        "report_html": "/data/reports/profitability_2026-11-07.html",
+        "parquet_files": 126,
+        "missing_expense": 175,
+        "zone_summary_rows": 144,
+        "expense_rows_valid": 25,
+        "profitability_rows": 200,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    },
+    {
+      "run_id": "itest_1790390917",
+      "report_date": "2026-11-07",
+      "status": "success",
+      "started_at": "2026-09-26 02:48:38.272301+00:00",
+      "finished_at": "2026-09-26 02:48:55.993262+00:00",
+      "duration_s": "17.72",
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-11-07.csv",
+        "report_html": "/data/reports/profitability_2026-11-07.html",
+        "parquet_files": 126,
+        "missing_expense": 175,
+        "zone_summary_rows": 144,
+        "expense_rows_valid": 25,
+        "profitability_rows": 200,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    },
+    {
+      "run_id": "itest_1790390589",
+      "report_date": "2026-11-06",
+      "status": "success",
+      "started_at": "2026-09-26 02:43:10.993975+00:00",
+      "finished_at": "2026-09-26 02:43:30.656154+00:00",
+      "duration_s": "19.66",
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-11-06.csv",
+        "report_html": "/data/reports/profitability_2026-11-06.html",
+        "parquet_files": 132,
+        "missing_expense": 175,
+        "zone_summary_rows": 144,
+        "expense_rows_valid": 25,
+        "profitability_rows": 200,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    },
+    {
+      "run_id": "scheduled_2026-09-26T0230000000",
+      "report_date": "2026-11-06",
+      "status": "success",
+      "started_at": "2026-09-26 02:40:00.647826+00:00",
+      "finished_at": "2026-09-26 02:40:23.153826+00:00",
+      "duration_s": "22.51",
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-11-06.csv",
+        "report_html": "/data/reports/profitability_2026-11-06.html",
+        "parquet_files": 132,
+        "missing_expense": 175,
+        "zone_summary_rows": 144,
+        "expense_rows_valid": 25,
+        "profitability_rows": 200,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    },
+    {
+      "run_id": "scheduled_2026-09-26T0220000000",
+      "report_date": "2026-11-05",
+      "status": "success",
+      "started_at": "2026-09-26 02:30:00.441448+00:00",
+      "finished_at": "2026-09-26 02:30:26.267683+00:00",
+      "duration_s": "25.83",
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-11-05.csv",
+        "report_html": "/data/reports/profitability_2026-11-05.html",
+        "parquet_files": 102,
+        "missing_expense": 0,
+        "zone_summary_rows": 117,
+        "expense_rows_valid": 25,
+        "profitability_rows": 25,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    },
+    {
+      "run_id": "scheduled_2026-09-26T0210000000",
+      "report_date": "2026-11-04",
+      "status": "success",
+      "started_at": "2026-09-26 02:21:44.128140+00:00",
+      "finished_at": "2026-09-26 02:22:11.314134+00:00",
+      "duration_s": "27.19",
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-11-04.csv",
+        "report_html": "/data/reports/profitability_2026-11-04.html",
+        "parquet_files": 30,
+        "missing_expense": 0,
+        "zone_summary_rows": 30,
+        "expense_rows_valid": 25,
+        "profitability_rows": 25,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    },
+    {
+      "run_id": "scheduled_2026-09-25T1900000000",
+      "report_date": "2026-09-22",
+      "status": "success",
+      "started_at": "2026-09-25 19:10:00.508710+00:00",
+      "finished_at": "2026-09-25 19:10:20.502421+00:00",
+      "duration_s": "19.99",
+      "rows_written": {
+        "report_csv": "/data/reports/profitability_2026-09-22.csv",
+        "report_html": "/data/reports/profitability_2026-09-22.html",
+        "parquet_files": 126,
+        "missing_expense": 0,
+        "zone_summary_rows": 136,
+        "expense_rows_valid": 25,
+        "profitability_rows": 25,
+        "expense_rows_loaded": 25,
+        "expense_rows_rejected": 2
+      }
+    }
+  ]
+}

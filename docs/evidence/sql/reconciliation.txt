@@ -1,0 +1,20 @@
+-- SELECT p.report_date, round(sum(p.revenue_lkr),2) AS batch_revenue_lkr, (SELECT round(sum(earnings_lkr),2) FROM realtime_zone_metrics) AS speed_revenue_lkr, sum(p.trips) AS batch_trips, (SELECT sum(trips_completed) FROM realtime_zone_metrics) AS speed_trips FROM daily_vehicle_profitability p GROUP BY p.report_date ORDER BY p.report_date;
+-- captured 2026-09-26T03:08:07.403675+00:00
+
+report_date | batch_revenue_lkr | speed_revenue_lkr | batch_trips | speed_trips
+------------+-------------------+-------------------+-------------+------------
+2026-09-01  | 30611.90          | 762112.43         | 159         | 2921       
+2026-09-02  | 27110.08          | 762112.43         | 129         | 2921       
+2026-09-03  | 34027.57          | 762112.43         | 179         | 2921       
+2026-09-04  | 29917.62          | 762112.43         | 151         | 2921       
+2026-09-05  | 10501.93          | 762112.43         | 14          | 2921       
+2026-09-17  | 25784.12          | 762112.43         | 66          | 2921       
+2026-09-21  | 16281.89          | 762112.43         | 16          | 2921       
+2026-09-22  | 34399.66          | 762112.43         | 177         | 2921       
+2026-11-04  | 2420.64           | 762112.43         | 13          | 2921       
+2026-11-05  | 25392.98          | 762112.43         | 131         | 2921       
+2026-11-06  | 38470.81          | 762112.43         | 201         | 2921       
+2026-11-07  | 146184.66         | 762112.43         | 751         | 2921       
+2026-11-08  | 33776.10          | 762112.43         | 176         | 2921       
+2026-11-09  | 33961.76          | 762112.43         | 174         | 2921       
+(14 rows)

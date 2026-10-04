@@ -1,0 +1,243 @@
+{
+  "captured_at": "2026-09-26T03:08:07+00:00",
+  "endpoint": "/api/v1/rules",
+  "data": {
+    "groups": [
+      {
+        "name": "fleet-batch-layer",
+        "file": "/etc/prometheus/alert_rules.yml",
+        "rules": [
+          {
+            "state": "inactive",
+            "name": "ExpenseFileLate",
+            "query": "up{job=\"expense-producer\"} == 0 or time() - expense_last_file_timestamp{job=\"expense-producer\"} > 900",
+            "duration": 30,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "warning",
+              "stage": "ingestion"
+            },
+            "annotations": {
+              "description": "Last file {{ $value | humanizeDuration }} ago. The Airflow FileSensor will time out and the reconciliation for that day cannot run.",
+              "runbook": "ls -l /data/landing; docker compose logs expense-producer",
+              "summary": "No daily expense file written for more than 1.5 simulated days"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 0.000250108,
+            "lastEvaluation": "2026-09-26T03:08:03.268417878Z",
+            "type": "alerting"
+          },
+          {
+            "state": "inactive",
+            "name": "ApiUnhealthy",
+            "query": "api_health_status{job=\"api\"} < 1 or absent(api_health_status{job=\"api\"})",
+            "duration": 60,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "critical",
+              "stage": "serving"
+            },
+            "annotations": {
+              "description": "api_health_status = {{ $value }}. Check Postgres connectivity and data freshness.",
+              "summary": "FastAPI /health is reporting degraded"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 5.4764e-05,
+            "lastEvaluation": "2026-09-26T03:08:03.268670342Z",
+            "type": "alerting"
+          },
+          {
+            "state": "inactive",
+            "name": "ManyVehiclesIdle",
+            "query": "idle_alerts_open{job=\"stream-job\"} > 5",
+            "duration": 120,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "info",
+              "stage": "serving"
+            },
+            "annotations": {
+              "description": "Fleet utilisation is low; consider repositioning or reducing supply.",
+              "summary": "{{ $value }} vehicles have open idle alerts"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 2.5283e-05,
+            "lastEvaluation": "2026-09-26T03:08:03.268725811Z",
+            "type": "alerting"
+          }
+        ],
+        "interval": 10,
+        "limit": 0,
+        "evaluationTime": 0.000350032,
+        "lastEvaluation": "2026-09-26T03:08:03.268402555Z"
+      },
+      {
+        "name": "fleet-infrastructure",
+        "file": "/etc/prometheus/alert_rules.yml",
+        "rules": [
+          {
+            "state": "inactive",
+            "name": "TargetDown",
+            "query": "up == 0",
+            "duration": 60,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "critical",
+              "stage": "monitoring"
+            },
+            "annotations": {
+              "description": "{{ $labels.instance }} has been unreachable for 1 minute.",
+              "summary": "Prometheus target {{ $labels.job }} is down"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 0.000204651,
+            "lastEvaluation": "2026-09-26T03:08:04.618375382Z",
+            "type": "alerting"
+          }
+        ],
+        "interval": 10,
+        "limit": 0,
+        "evaluationTime": 0.00022455,
+        "lastEvaluation": "2026-09-26T03:08:04.618358392Z"
+      },
+      {
+        "name": "fleet-pipeline-availability",
+        "file": "/etc/prometheus/alert_rules.yml",
+        "rules": [
+          {
+            "state": "inactive",
+            "name": "NoTelemetryReceived",
+            "query": "up{job=\"gps-producer\"} == 0 or time() - producer_last_send_timestamp{job=\"gps-producer\"} > 120",
+            "duration": 30,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "critical",
+              "stage": "ingestion"
+            },
+            "annotations": {
+              "description": "producer_last_send_timestamp is {{ $value | humanizeDuration }} old. The speed layer is blind; /health will report degraded.",
+              "runbook": "docker compose logs gps-producer; docker compose restart gps-producer",
+              "summary": "No telemetry produced for over 2 minutes"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 0.000233304,
+            "lastEvaluation": "2026-09-26T03:08:04.319072851Z",
+            "type": "alerting"
+          },
+          {
+            "state": "inactive",
+            "name": "StreamProcessingStalled",
+            "query": "up{job=\"stream-job\"} == 0 or time() - stream_last_batch_timestamp{job=\"stream-job\"} > 120",
+            "duration": 30,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "critical",
+              "stage": "processing"
+            },
+            "annotations": {
+              "description": "Last batch was {{ $value | humanizeDuration }} ago; realtime_zone_metrics is going stale.",
+              "runbook": "docker compose logs stream-job | tail -50; check checkpoint dir /data/checkpoints",
+              "summary": "No Structured Streaming micro-batch completed for over 2 minutes"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 5.8763e-05,
+            "lastEvaluation": "2026-09-26T03:08:04.319308369Z",
+            "type": "alerting"
+          },
+          {
+            "state": "inactive",
+            "name": "HighRejectRate",
+            "query": "sum(rate(stream_rows_rejected_total[2m])) / clamp_min(sum(rate(stream_events_valid_total[2m])) + sum(rate(stream_rows_rejected_total[2m])), 0.001) > 0.05",
+            "duration": 60,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "warning",
+              "stage": "processing"
+            },
+            "annotations": {
+              "description": "Reject ratio {{ $value | humanizePercentage }} over the last 2 minutes.",
+              "runbook": "SELECT reason, count(*) FROM rejected_events WHERE rejected_at > now() - interval '5 min' GROUP BY 1;",
+              "summary": "More than 5% of telemetry rows are being quarantined"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 0.000191305,
+            "lastEvaluation": "2026-09-26T03:08:04.319367922Z",
+            "type": "alerting"
+          },
+          {
+            "state": "inactive",
+            "name": "StreamBatchSlow",
+            "query": "histogram_quantile(0.95, sum by (le, sink) (rate(stream_batch_duration_seconds_bucket[5m]))) > 20",
+            "duration": 120,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "warning",
+              "stage": "processing"
+            },
+            "annotations": {
+              "description": "p95 = {{ $value }}s against a {{ 30 }}s trigger; the job is approaching back-pressure.",
+              "summary": "p95 micro-batch duration above 20 s for sink {{ $labels.sink }}"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 0.000194214,
+            "lastEvaluation": "2026-09-26T03:08:04.319560576Z",
+            "type": "alerting"
+          },
+          {
+            "state": "inactive",
+            "name": "ConsumerLagHigh",
+            "query": "sum(kafka_topic_partition_current_offset{topic=\"fleet.telemetry\"}) - sum(max by (partition) (stream_committed_offset{topic=\"fleet.telemetry\"})) > 5000",
+            "duration": 120,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "warning",
+              "stage": "processing"
+            },
+            "annotations": {
+              "description": "Lag {{ $value }} messages on fleet.telemetry (broker end offset minus the offset the job has committed to its checkpoint).",
+              "runbook": "Check stream_input_rows_per_second vs stream_processed_rows_per_second; if processing is lower for a sustained period the job cannot catch up.",
+              "summary": "Streaming job is more than 5000 messages behind the broker"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 0.000145401,
+            "lastEvaluation": "2026-09-26T03:08:04.319755587Z",
+            "type": "alerting"
+          },
+          {
+            "state": "inactive",
+            "name": "StreamFallingBehind",
+            "query": "sum(stream_input_rows_per_second) > 0 and sum(stream_processed_rows_per_second) < sum(stream_input_rows_per_second) * 0.8",
+            "duration": 300,
+            "keepFiringFor": 0,
+            "labels": {
+              "severity": "warning",
+              "stage": "processing"
+            },
+            "annotations": {
+              "description": "Processed rate is below 80% of the input rate for 5 minutes.",
+              "summary": "Streaming job is processing slower than data arrives"
+            },
+            "alerts": [],
+            "health": "ok",
+            "evaluationTime": 8.3156e-05,
+            "lastEvaluation": "2026-09-26T03:08:04.319901805Z",
+            "type": "alerting"
+          }
+        ],
+        "interval": 10,
+        "limit": 0,
+        "evaluationTime": 0.000930441,
+        "lastEvaluation": "2026-09-26T03:08:04.319056167Z"
+      }
+    ]
+  }
+}

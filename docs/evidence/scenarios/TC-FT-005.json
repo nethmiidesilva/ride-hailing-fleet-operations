@@ -1,0 +1,29 @@
+{
+  "test_case": "TC-FT-005",
+  "title": "Expense file never arrives - sensor times out, DAG fails cleanly, alert recorded",
+  "requirements": ["REQ-02", "REQ-09"],
+  "status": "PASS",
+  "baseline": {
+    "pipeline_alert_rows": "10",
+    "daily_expense_rows_for_target_day": "0"
+  },
+  "injection": {
+    "at": "2026-09-25T18:22:54Z",
+    "action": "airflow dags trigger daily_reconciliation --conf {\"date\": \"2099-12-31\"}",
+    "run_id": "chaos_TC-FT-005_1790360574",
+    "sensor_timeout_seconds": 600
+  },
+  "detection": {
+    "dag_final_state": "failed",
+    "failed_after_seconds": -1,
+    "pipeline_alert_rows_after": "12",
+    "newest_pipeline_alert": "AirflowTaskFailed:wait_for_expense_file|wait_for_expense_file|Sensorhastimedout;rundurationof1769.351779secondsexceedsthespecifiedtimeoutof600.0.",
+    "expense_file_late_alert_state": "inactive",
+    "sensor_log_path": "/opt/airflow/logs/dag_id=daily_reconciliation/run_id=itest_1790351809/task_id=wait_for_expense_file/attempt=1.log"
+  },
+  "assertions": {
+    "no_partial_load": "daily_expenses rows for the target day == 0 (was 0)",
+    "loud_failure": "DAG run state == failed and a pipeline_alerts row was written"
+  },
+  "captured_at": "2026-09-25T18:52:37Z"
+}

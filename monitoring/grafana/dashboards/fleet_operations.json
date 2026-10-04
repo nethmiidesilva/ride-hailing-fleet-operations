@@ -1,0 +1,201 @@
+{
+  "uid": "fleet-ops",
+  "title": "Fleet Operations",
+  "tags": ["fleet", "business", "speed-layer"],
+  "timezone": "utc",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-30m", "to": "now" },
+  "description": "Answers the live half of the business question: utilisation and earnings by area, right now. Fed by the speed layer (realtime_zone_metrics, vehicle_status, idle_alerts) plus the batch layer's latest profitability day.",
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Active vehicles (latest window)",
+      "description": "Vehicles with status enroute or on_trip in the most recent 1-minute speed-layer window.",
+      "gridPos": { "h": 5, "w": 4, "x": 0, "y": 0 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "thresholds": { "mode": "absolute", "steps": [
+            { "color": "red", "value": null }, { "color": "orange", "value": 3 }, { "color": "green", "value": 8 }
+          ] }
+        },
+        "overrides": []
+      },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }, "colorMode": "background", "graphMode": "none" },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT active_vehicles FROM v_fleet_now;"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "gauge",
+      "title": "Idle ratio",
+      "description": "idle_vehicles / total_vehicles in the latest window. Above 0.5 means half the fleet is earning nothing.",
+      "gridPos": { "h": 5, "w": 4, "x": 4, "y": 0 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit", "min": 0, "max": 1,
+          "thresholds": { "mode": "absolute", "steps": [
+            { "color": "green", "value": null }, { "color": "orange", "value": 0.4 }, { "color": "red", "value": 0.6 }
+          ] }
+        },
+        "overrides": []
+      },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false } },
+      "targets": [
+        { "refId": "A", "format": "table", "rawQuery": true, "rawSql": "SELECT idle_ratio FROM v_fleet_now;" }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "Trips completed (last 60 min)",
+      "description": "Count of trip-end events, which are the only events carrying a fare.",
+      "gridPos": { "h": 5, "w": 4, "x": 8, "y": 0 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }, "colorMode": "value", "graphMode": "area" },
+      "targets": [
+        {
+          "refId": "A", "format": "table", "rawQuery": true,
+          "rawSql": "SELECT COALESCE(sum(trips_completed),0) AS trips FROM realtime_zone_metrics WHERE window_start > now() - interval '60 minutes';"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "Earnings last 60 min (LKR)",
+      "description": "Sum of fares in the last hour of wall-clock time.",
+      "gridPos": { "h": 5, "w": 6, "x": 12, "y": 0 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": { "defaults": { "unit": "currencyLKR", "decimals": 0 }, "overrides": [] },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }, "colorMode": "value", "graphMode": "area" },
+      "targets": [
+        {
+          "refId": "A", "format": "table", "rawQuery": true,
+          "rawSql": "SELECT COALESCE(sum(earnings_lkr),0) AS earnings FROM realtime_zone_metrics WHERE window_start > now() - interval '60 minutes';"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "Open idle alerts",
+      "description": "Vehicles idle for longer than IDLE_ALERT_MINUTES with no resolution yet.",
+      "gridPos": { "h": 5, "w": 6, "x": 18, "y": 0 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": {
+        "defaults": { "unit": "short", "thresholds": { "mode": "absolute", "steps": [
+          { "color": "green", "value": null }, { "color": "orange", "value": 1 }, { "color": "red", "value": 5 }
+        ] } },
+        "overrides": []
+      },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }, "colorMode": "background", "graphMode": "none" },
+      "targets": [
+        { "refId": "A", "format": "table", "rawQuery": true, "rawSql": "SELECT count(*)::int AS open_alerts FROM idle_alerts WHERE status = 'open';" }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Earnings by zone (1-minute windows)",
+      "description": "Speed layer output: fare sum per zone per tumbling window on event_time.",
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 5 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": { "defaults": { "unit": "currencyLKR", "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 12, "showPoints": "auto" } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "right", "calcs": ["sum", "max"] }, "tooltip": { "mode": "multi" } },
+      "targets": [
+        {
+          "refId": "A", "format": "time_series", "rawQuery": true,
+          "rawSql": "SELECT window_start AS time, zone AS metric, earnings_lkr AS value FROM realtime_zone_metrics WHERE $__timeFilter(window_start) ORDER BY 1;"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "timeseries",
+      "title": "Active vs idle vehicles by zone",
+      "description": "Utilisation over time. A zone whose idle count dominates is over-supplied.",
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 5 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": { "defaults": { "unit": "short", "custom": { "drawStyle": "bars", "fillOpacity": 60, "stacking": { "mode": "normal" } } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "list", "placement": "bottom" }, "tooltip": { "mode": "multi" } },
+      "targets": [
+        {
+          "refId": "A", "format": "time_series", "rawQuery": true,
+          "rawSql": "SELECT window_start AS time, zone || ' active' AS metric, active_vehicles AS value FROM realtime_zone_metrics WHERE $__timeFilter(window_start) ORDER BY 1;"
+        },
+        {
+          "refId": "B", "format": "time_series", "rawQuery": true,
+          "rawSql": "SELECT window_start AS time, zone || ' idle' AS metric, idle_vehicles AS value FROM realtime_zone_metrics WHERE $__timeFilter(window_start) ORDER BY 1;"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "table",
+      "title": "Open idle alerts (threshold rule)",
+      "description": "The brief's required threshold alert: vehicle idle longer than IDLE_ALERT_MINUTES.",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 14 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": { "defaults": {}, "overrides": [] },
+      "options": { "showHeader": true, "sortBy": [{ "displayName": "idle_minutes", "desc": true }] },
+      "targets": [
+        {
+          "refId": "A", "format": "table", "rawQuery": true,
+          "rawSql": "SELECT a.vehicle_id, a.zone, a.idle_since, a.detected_at, round(EXTRACT(EPOCH FROM (now() - a.idle_since))/60.0, 1) AS idle_minutes, a.status FROM idle_alerts a WHERE a.status = 'open' ORDER BY a.idle_since ASC LIMIT 25;"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "table",
+      "title": "Unprofitable / at-risk vehicles (latest reconciled day)",
+      "description": "Batch layer output: the second half of the business question. Rows come from daily_vehicle_profitability after the Airflow DAG has joined telemetry with the expense file.",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 14 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "profit_lkr" },
+            "properties": [ { "id": "custom.cellOptions", "value": { "type": "color-background" } },
+              { "id": "thresholds", "value": { "mode": "absolute", "steps": [ { "color": "red", "value": null }, { "color": "green", "value": 0 } ] } } ] }
+        ]
+      },
+      "options": { "showHeader": true },
+      "targets": [
+        {
+          "refId": "A", "format": "table", "rawQuery": true,
+          "rawSql": "SELECT report_date, vehicle_id, revenue_lkr, total_cost_lkr, profit_lkr, round(margin,3) AS margin, trend, data_quality_flag FROM v_unprofitable_vehicles LIMIT 25;"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "barchart",
+      "title": "Earnings by simulated hour of day (latest batch day)",
+      "description": "Time-of-day analysis from the batch layer, grouped on the SIMULATED clock so a full 24 h profile exists after one 10-minute simulated day.",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 22 },
+      "datasource": { "type": "postgres", "uid": "fleet-postgres" },
+      "fieldConfig": { "defaults": { "unit": "currencyLKR" }, "overrides": [] },
+      "options": { "xField": "sim_hour", "legend": { "displayMode": "list", "placement": "bottom" }, "stacking": "normal" },
+      "targets": [
+        {
+          "refId": "A", "format": "table", "rawQuery": true,
+          "rawSql": "SELECT sim_hour, zone, sum(earnings_lkr) AS earnings FROM daily_zone_summary WHERE report_date = (SELECT max(report_date) FROM daily_zone_summary) GROUP BY 1,2 ORDER BY 1;"
+        }
+      ]
+    }
+  ]
+}

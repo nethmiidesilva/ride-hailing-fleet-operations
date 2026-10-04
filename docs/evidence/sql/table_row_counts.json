@@ -1,0 +1,47 @@
+{
+  "captured_at": "2026-09-26T03:08:07+00:00",
+  "sql": "SELECT 'realtime_zone_metrics' AS table_name, count(*) AS rows FROM realtime_zone_metrics UNION ALL SELECT 'vehicle_status', count(*) FROM vehicle_status UNION ALL SELECT 'idle_alerts', count(*) FROM idle_alerts UNION ALL SELECT 'rejected_events', count(*) FROM rejected_events UNION ALL SELECT 'daily_expenses', count(*) FROM daily_expenses UNION ALL SELECT 'rejected_expenses', count(*) FROM rejected_expenses UNION ALL SELECT 'daily_vehicle_profitability', count(*) FROM daily_vehicle_profitability UNION ALL SELECT 'daily_zone_summary', count(*) FROM daily_zone_summary UNION ALL SELECT 'pipeline_runs', count(*) FROM pipeline_runs UNION ALL SELECT 'pipeline_alerts', count(*) FROM pipeline_alerts ORDER BY 1;",
+  "row_count": 10,
+  "rows": [
+    {
+      "table_name": "daily_expenses",
+      "rows": 400
+    },
+    {
+      "table_name": "daily_vehicle_profitability",
+      "rows": 700
+    },
+    {
+      "table_name": "daily_zone_summary",
+      "rows": 1466
+    },
+    {
+      "table_name": "idle_alerts",
+      "rows": 117
+    },
+    {
+      "table_name": "pipeline_alerts",
+      "rows": 17
+    },
+    {
+      "table_name": "pipeline_runs",
+      "rows": 20
+    },
+    {
+      "table_name": "realtime_zone_metrics",
+      "rows": 895
+    },
+    {
+      "table_name": "rejected_events",
+      "rows": 3334
+    },
+    {
+      "table_name": "rejected_expenses",
+      "rows": 64
+    },
+    {
+      "table_name": "vehicle_status",
+      "rows": 25
+    }
+  ]
+}

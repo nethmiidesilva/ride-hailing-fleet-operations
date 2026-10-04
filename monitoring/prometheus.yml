@@ -1,0 +1,58 @@
+# ==============================================================================================
+# Prometheus scrape configuration.
+#
+# Scrape interval is 10 s rather than the 15 s default: the speed layer's whole point is
+# second-scale visibility, and the demo alerts (NoTelemetryReceived at 120 s) need enough samples
+# inside their evaluation window to fire promptly during a 10-minute demonstration.
+# ==============================================================================================
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+  external_labels:
+    stack: fleet-lambda
+    environment: local-demo
+
+rule_files:
+  - /etc/prometheus/alert_rules.yml
+
+# Alertmanager is intentionally not deployed (documented as a limitation): alert *state* is read
+# from the Prometheus API by the chaos tests, which is sufficient evidence that the rule fires.
+# alerting:
+#   alertmanagers:
+#     - static_configs: [{targets: ["alertmanager:9093"]}]
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
+        labels: {component: monitoring}
+
+  # --- ingestion ----------------------------------------------------------------------------
+  - job_name: gps-producer
+    static_configs:
+      - targets: ["gps-producer:8001"]
+        labels: {component: ingestion, stage: ingestion}
+
+  - job_name: expense-producer
+    static_configs:
+      - targets: ["expense-producer:8002"]
+        labels: {component: ingestion, stage: ingestion}
+
+  # --- processing ---------------------------------------------------------------------------
+  - job_name: stream-job
+    static_configs:
+      - targets: ["stream-job:8003"]
+        labels: {component: processing, stage: processing}
+
+  # --- serving ------------------------------------------------------------------------------
+  - job_name: api
+    metrics_path: /metrics-prom
+    static_configs:
+      - targets: ["api:8000"]
+        labels: {component: serving, stage: serving}
+
+  # --- broker-side facts the producer cannot know (consumer lag, topic offsets) --------------
+  - job_name: kafka-exporter
+    static_configs:
+      - targets: ["kafka-exporter:9308"]
+        labels: {component: messaging, stage: ingestion}

@@ -1,0 +1,588 @@
+{
+  "captured_at": "2026-09-26T03:08:07+00:00",
+  "sql": "SELECT report_date, zone, sum(trips) AS trips, round(sum(earnings_lkr),2) AS earnings, round(avg(utilization),4) AS avg_utilization FROM daily_zone_summary GROUP BY report_date, zone ORDER BY report_date DESC, earnings DESC;",
+  "row_count": 83,
+  "rows": [
+    {
+      "report_date": "2026-11-09",
+      "zone": "Fort",
+      "trips": 45,
+      "earnings": "8572.44",
+      "avg_utilization": "0.7891"
+    },
+    {
+      "report_date": "2026-11-09",
+      "zone": "Wellawatte",
+      "trips": 40,
+      "earnings": "7959.64",
+      "avg_utilization": "0.6645"
+    },
+    {
+      "report_date": "2026-11-09",
+      "zone": "Kollupitiya",
+      "trips": 25,
+      "earnings": "4818.89",
+      "avg_utilization": "0.7790"
+    },
+    {
+      "report_date": "2026-11-09",
+      "zone": "Bambalapitiya",
+      "trips": 24,
+      "earnings": "4728.34",
+      "avg_utilization": "0.6214"
+    },
+    {
+      "report_date": "2026-11-09",
+      "zone": "Borella",
+      "trips": 23,
+      "earnings": "4499.99",
+      "avg_utilization": "0.5908"
+    },
+    {
+      "report_date": "2026-11-09",
+      "zone": "Pettah",
+      "trips": 17,
+      "earnings": "3382.46",
+      "avg_utilization": "0.7897"
+    },
+    {
+      "report_date": "2026-11-08",
+      "zone": "Wellawatte",
+      "trips": 45,
+      "earnings": "8468.94",
+      "avg_utilization": "0.6908"
+    },
+    {
+      "report_date": "2026-11-08",
+      "zone": "Pettah",
+      "trips": 35,
+      "earnings": "6722.75",
+      "avg_utilization": "0.8021"
+    },
+    {
+      "report_date": "2026-11-08",
+      "zone": "Kollupitiya",
+      "trips": 28,
+      "earnings": "5382.47",
+      "avg_utilization": "0.7841"
+    },
+    {
+      "report_date": "2026-11-08",
+      "zone": "Fort",
+      "trips": 26,
+      "earnings": "5032.62",
+      "avg_utilization": "0.7821"
+    },
+    {
+      "report_date": "2026-11-08",
+      "zone": "Bambalapitiya",
+      "trips": 22,
+      "earnings": "4259.60",
+      "avg_utilization": "0.6336"
+    },
+    {
+      "report_date": "2026-11-08",
+      "zone": "Borella",
+      "trips": 20,
+      "earnings": "3909.72",
+      "avg_utilization": "0.6016"
+    },
+    {
+      "report_date": "2026-11-07",
+      "zone": "Kollupitiya",
+      "trips": 129,
+      "earnings": "25759.60",
+      "avg_utilization": "0.7989"
+    },
+    {
+      "report_date": "2026-11-07",
+      "zone": "Bambalapitiya",
+      "trips": 127,
+      "earnings": "24894.47",
+      "avg_utilization": "0.7023"
+    },
+    {
+      "report_date": "2026-11-07",
+      "zone": "Borella",
+      "trips": 130,
+      "earnings": "24859.38",
+      "avg_utilization": "0.6911"
+    },
+    {
+      "report_date": "2026-11-07",
+      "zone": "Pettah",
+      "trips": 125,
+      "earnings": "24304.02",
+      "avg_utilization": "0.7859"
+    },
+    {
+      "report_date": "2026-11-07",
+      "zone": "Fort",
+      "trips": 122,
+      "earnings": "23727.95",
+      "avg_utilization": "0.8038"
+    },
+    {
+      "report_date": "2026-11-07",
+      "zone": "Wellawatte",
+      "trips": 121,
+      "earnings": "23191.92",
+      "avg_utilization": "0.7155"
+    },
+    {
+      "report_date": "2026-11-06",
+      "zone": "Pettah",
+      "trips": 40,
+      "earnings": "7879.40",
+      "avg_utilization": "0.7883"
+    },
+    {
+      "report_date": "2026-11-06",
+      "zone": "Kollupitiya",
+      "trips": 34,
+      "earnings": "6818.87",
+      "avg_utilization": "0.7710"
+    },
+    {
+      "report_date": "2026-11-06",
+      "zone": "Wellawatte",
+      "trips": 33,
+      "earnings": "6337.61",
+      "avg_utilization": "0.6409"
+    },
+    {
+      "report_date": "2026-11-06",
+      "zone": "Borella",
+      "trips": 33,
+      "earnings": "6108.52",
+      "avg_utilization": "0.6163"
+    },
+    {
+      "report_date": "2026-11-06",
+      "zone": "Fort",
+      "trips": 32,
+      "earnings": "5885.29",
+      "avg_utilization": "0.7776"
+    },
+    {
+      "report_date": "2026-11-06",
+      "zone": "Bambalapitiya",
+      "trips": 29,
+      "earnings": "5441.12",
+      "avg_utilization": "0.6325"
+    },
+    {
+      "report_date": "2026-11-05",
+      "zone": "Wellawatte",
+      "trips": 26,
+      "earnings": "4923.96",
+      "avg_utilization": "0.6050"
+    },
+    {
+      "report_date": "2026-11-05",
+      "zone": "Fort",
+      "trips": 24,
+      "earnings": "4678.89",
+      "avg_utilization": "0.7813"
+    },
+    {
+      "report_date": "2026-11-05",
+      "zone": "Kollupitiya",
+      "trips": 24,
+      "earnings": "4558.45",
+      "avg_utilization": "0.7614"
+    },
+    {
+      "report_date": "2026-11-05",
+      "zone": "Pettah",
+      "trips": 23,
+      "earnings": "4456.29",
+      "avg_utilization": "0.7986"
+    },
+    {
+      "report_date": "2026-11-05",
+      "zone": "Bambalapitiya",
+      "trips": 20,
+      "earnings": "3868.57",
+      "avg_utilization": "0.6261"
+    },
+    {
+      "report_date": "2026-11-05",
+      "zone": "Borella",
+      "trips": 14,
+      "earnings": "2906.82",
+      "avg_utilization": "0.6271"
+    },
+    {
+      "report_date": "2026-11-04",
+      "zone": "Wellawatte",
+      "trips": 3,
+      "earnings": "549.00",
+      "avg_utilization": "0.5148"
+    },
+    {
+      "report_date": "2026-11-04",
+      "zone": "Fort",
+      "trips": 2,
+      "earnings": "410.21",
+      "avg_utilization": "0.6657"
+    },
+    {
+      "report_date": "2026-11-04",
+      "zone": "Pettah",
+      "trips": 2,
+      "earnings": "406.21",
+      "avg_utilization": "0.6588"
+    },
+    {
+      "report_date": "2026-11-04",
+      "zone": "Kollupitiya",
+      "trips": 2,
+      "earnings": "386.12",
+      "avg_utilization": "0.6192"
+    },
+    {
+      "report_date": "2026-11-04",
+      "zone": "Borella",
+      "trips": 2,
+      "earnings": "339.19",
+      "avg_utilization": "0.4085"
+    },
+    {
+      "report_date": "2026-11-04",
+      "zone": "Bambalapitiya",
+      "trips": 2,
+      "earnings": "329.91",
+      "avg_utilization": "0.4549"
+    },
+    {
+      "report_date": "2026-09-22",
+      "zone": "Kollupitiya",
+      "trips": 44,
+      "earnings": "8483.62",
+      "avg_utilization": "0.7928"
+    },
+    {
+      "report_date": "2026-09-22",
+      "zone": "Borella",
+      "trips": 43,
+      "earnings": "8305.40",
+      "avg_utilization": "0.6795"
+    },
+    {
+      "report_date": "2026-09-22",
+      "zone": "Pettah",
+      "trips": 36,
+      "earnings": "7049.42",
+      "avg_utilization": "0.8294"
+    },
+    {
+      "report_date": "2026-09-22",
+      "zone": "Wellawatte",
+      "trips": 23,
+      "earnings": "4381.49",
+      "avg_utilization": "0.5650"
+    },
+    {
+      "report_date": "2026-09-22",
+      "zone": "Bambalapitiya",
+      "trips": 18,
+      "earnings": "3452.39",
+      "avg_utilization": "0.5536"
+    },
+    {
+      "report_date": "2026-09-22",
+      "zone": "Fort",
+      "trips": 13,
+      "earnings": "2727.34",
+      "avg_utilization": "0.7719"
+    },
+    {
+      "report_date": "2026-09-21",
+      "zone": "Kollupitiya",
+      "trips": 5,
+      "earnings": "5368.66",
+      "avg_utilization": "0.6627"
+    },
+    {
+      "report_date": "2026-09-21",
+      "zone": "Borella",
+      "trips": 5,
+      "earnings": "4978.29",
+      "avg_utilization": "0.7554"
+    },
+    {
+      "report_date": "2026-09-21",
+      "zone": "Pettah",
+      "trips": 4,
+      "earnings": "3788.00",
+      "avg_utilization": "0.6058"
+    },
+    {
+      "report_date": "2026-09-21",
+      "zone": "Wellawatte",
+      "trips": 1,
+      "earnings": "1627.09",
+      "avg_utilization": "0.7639"
+    },
+    {
+      "report_date": "2026-09-21",
+      "zone": "Fort",
+      "trips": 1,
+      "earnings": "519.85",
+      "avg_utilization": "0.7821"
+    },
+    {
+      "report_date": "2026-09-21",
+      "zone": "Bambalapitiya",
+      "trips": 0,
+      "earnings": "0.00",
+      "avg_utilization": "0.9369"
+    },
+    {
+      "report_date": "2026-09-17",
+      "zone": "Borella",
+      "trips": 24,
+      "earnings": "10032.06",
+      "avg_utilization": "0.7083"
+    },
+    {
+      "report_date": "2026-09-17",
+      "zone": "Bambalapitiya",
+      "trips": 5,
+      "earnings": "6069.30",
+      "avg_utilization": "0.6811"
+    },
+    {
+      "report_date": "2026-09-17",
+      "zone": "Pettah",
+      "trips": 17,
+      "earnings": "5660.76",
+      "avg_utilization": "0.8193"
+    },
+    {
+      "report_date": "2026-09-17",
+      "zone": "Wellawatte",
+      "trips": 13,
+      "earnings": "2649.05",
+      "avg_utilization": "0.7916"
+    },
+    {
+      "report_date": "2026-09-17",
+      "zone": "Kollupitiya",
+      "trips": 7,
+      "earnings": "1372.95",
+      "avg_utilization": "0.6044"
+    },
+    {
+      "report_date": "2026-09-05",
+      "zone": "Wellawatte",
+      "trips": 5,
+      "earnings": "3972.16",
+      "avg_utilization": "0.4493"
+    },
+    {
+      "report_date": "2026-09-05",
+      "zone": "Bambalapitiya",
+      "trips": 2,
+      "earnings": "1741.56",
+      "avg_utilization": "0.5185"
+    },
+    {
+      "report_date": "2026-09-05",
+      "zone": "Kollupitiya",
+      "trips": 2,
+      "earnings": "1718.18",
+      "avg_utilization": "0.5588"
+    },
+    {
+      "report_date": "2026-09-05",
+      "zone": "Pettah",
+      "trips": 2,
+      "earnings": "1572.94",
+      "avg_utilization": "0.5000"
+    },
+    {
+      "report_date": "2026-09-05",
+      "zone": "Borella",
+      "trips": 3,
+      "earnings": "1497.09",
+      "avg_utilization": "0.3824"
+    },
+    {
+      "report_date": "2026-09-05",
+      "zone": "Fort",
+      "trips": 0,
+      "earnings": "0.00",
+      "avg_utilization": "1.0000"
+    },
+    {
+      "report_date": "2026-09-04",
+      "zone": "Fort",
+      "trips": 38,
+      "earnings": "7682.71",
+      "avg_utilization": "0.7992"
+    },
+    {
+      "report_date": "2026-09-04",
+      "zone": "Borella",
+      "trips": 34,
+      "earnings": "6709.71",
+      "avg_utilization": "0.7060"
+    },
+    {
+      "report_date": "2026-09-04",
+      "zone": "Wellawatte",
+      "trips": 23,
+      "earnings": "4452.35",
+      "avg_utilization": "0.5802"
+    },
+    {
+      "report_date": "2026-09-04",
+      "zone": "Bambalapitiya",
+      "trips": 21,
+      "earnings": "4039.41",
+      "avg_utilization": "0.5693"
+    },
+    {
+      "report_date": "2026-09-04",
+      "zone": "Pettah",
+      "trips": 19,
+      "earnings": "3779.37",
+      "avg_utilization": "0.7895"
+    },
+    {
+      "report_date": "2026-09-04",
+      "zone": "Kollupitiya",
+      "trips": 16,
+      "earnings": "3254.07",
+      "avg_utilization": "0.8288"
+    },
+    {
+      "report_date": "2026-09-03",
+      "zone": "Bambalapitiya",
+      "trips": 42,
+      "earnings": "7832.70",
+      "avg_utilization": "0.7374"
+    },
+    {
+      "report_date": "2026-09-03",
+      "zone": "Pettah",
+      "trips": 40,
+      "earnings": "7445.84",
+      "avg_utilization": "0.7733"
+    },
+    {
+      "report_date": "2026-09-03",
+      "zone": "Borella",
+      "trips": 36,
+      "earnings": "7115.22",
+      "avg_utilization": "0.6410"
+    },
+    {
+      "report_date": "2026-09-03",
+      "zone": "Fort",
+      "trips": 23,
+      "earnings": "4382.32",
+      "avg_utilization": "0.8228"
+    },
+    {
+      "report_date": "2026-09-03",
+      "zone": "Kollupitiya",
+      "trips": 23,
+      "earnings": "4256.77",
+      "avg_utilization": "0.7519"
+    },
+    {
+      "report_date": "2026-09-03",
+      "zone": "Wellawatte",
+      "trips": 15,
+      "earnings": "2994.72",
+      "avg_utilization": "0.4694"
+    },
+    {
+      "report_date": "2026-09-02",
+      "zone": "Pettah",
+      "trips": 33,
+      "earnings": "7416.43",
+      "avg_utilization": "0.7628"
+    },
+    {
+      "report_date": "2026-09-02",
+      "zone": "Wellawatte",
+      "trips": 25,
+      "earnings": "4518.81",
+      "avg_utilization": "0.6772"
+    },
+    {
+      "report_date": "2026-09-02",
+      "zone": "Bambalapitiya",
+      "trips": 20,
+      "earnings": "4516.52",
+      "avg_utilization": "0.6295"
+    },
+    {
+      "report_date": "2026-09-02",
+      "zone": "Borella",
+      "trips": 20,
+      "earnings": "4434.09",
+      "avg_utilization": "0.6361"
+    },
+    {
+      "report_date": "2026-09-02",
+      "zone": "Fort",
+      "trips": 21,
+      "earnings": "4202.03",
+      "avg_utilization": "0.7476"
+    },
+    {
+      "report_date": "2026-09-02",
+      "zone": "Kollupitiya",
+      "trips": 10,
+      "earnings": "2022.20",
+      "avg_utilization": "0.8146"
+    },
+    {
+      "report_date": "2026-09-01",
+      "zone": "Wellawatte",
+      "trips": 37,
+      "earnings": "6874.59",
+      "avg_utilization": "0.6637"
+    },
+    {
+      "report_date": "2026-09-01",
+      "zone": "Pettah",
+      "trips": 33,
+      "earnings": "6315.06",
+      "avg_utilization": "0.7838"
+    },
+    {
+      "report_date": "2026-09-01",
+      "zone": "Kollupitiya",
+      "trips": 27,
+      "earnings": "5248.62",
+      "avg_utilization": "0.7826"
+    },
+    {
+      "report_date": "2026-09-01",
+      "zone": "Fort",
+      "trips": 24,
+      "earnings": "4575.57",
+      "avg_utilization": "0.7860"
+    },
+    {
+      "report_date": "2026-09-01",
+      "zone": "Borella",
+      "trips": 23,
+      "earnings": "4509.79",
+      "avg_utilization": "0.5991"
+    },
+    {
+      "report_date": "2026-09-01",
+      "zone": "Bambalapitiya",
+      "trips": 15,
+      "earnings": "3088.27",
+      "avg_utilization": "0.5486"
+    }
+  ]
+}

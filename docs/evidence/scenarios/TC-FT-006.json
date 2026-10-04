@@ -1,0 +1,32 @@
+{
+  "test_case": "TC-FT-006",
+  "title": "Corrupt expense file (80% invalid rows) is refused, not partially loaded",
+  "requirements": ["REQ-02", "REQ-12"],
+  "status": "PASS",
+  "baseline": {
+    "rejected_expense_rows": "32",
+    "daily_expense_rows_for_target_day": "0"
+  },
+  "injection": {
+    "at": "2026-09-25T18:52:39Z",
+    "file": "/data/landing/expenses_2098-11-11.csv",
+    "rows_written": 10,
+    "invalid_rows": 8,
+    "bad_row_share": 0.8,
+    "threshold": "0.20",
+    "run_id": "chaos_TC-FT-006_1790362360"
+  },
+  "detection": {
+    "dag_final_state": "failed",
+    "failed_after_seconds": 16,
+    "rejected_expense_rows_after": "42",
+    "rows_quarantined": 10,
+    "quarantine_reasons": "MISSING_VEHICLE_ID=16",
+    "failing_task_recorded_in_pipeline_alerts": "check_master_data_available"
+  },
+  "assertions": {
+    "no_partial_load": "daily_expenses rows for the target day == 0 (expected 0)",
+    "every_bad_row_kept": "rejected_expenses grew, so no bad row was silently dropped"
+  },
+  "captured_at": "2026-09-25T18:53:07Z"
+}

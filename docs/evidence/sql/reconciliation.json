@@ -1,0 +1,105 @@
+{
+  "captured_at": "2026-09-26T03:08:07+00:00",
+  "sql": "SELECT p.report_date, round(sum(p.revenue_lkr),2) AS batch_revenue_lkr, (SELECT round(sum(earnings_lkr),2) FROM realtime_zone_metrics) AS speed_revenue_lkr, sum(p.trips) AS batch_trips, (SELECT sum(trips_completed) FROM realtime_zone_metrics) AS speed_trips FROM daily_vehicle_profitability p GROUP BY p.report_date ORDER BY p.report_date;",
+  "row_count": 14,
+  "rows": [
+    {
+      "report_date": "2026-09-01",
+      "batch_revenue_lkr": "30611.90",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 159,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-09-02",
+      "batch_revenue_lkr": "27110.08",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 129,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-09-03",
+      "batch_revenue_lkr": "34027.57",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 179,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-09-04",
+      "batch_revenue_lkr": "29917.62",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 151,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-09-05",
+      "batch_revenue_lkr": "10501.93",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 14,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-09-17",
+      "batch_revenue_lkr": "25784.12",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 66,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-09-21",
+      "batch_revenue_lkr": "16281.89",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 16,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-09-22",
+      "batch_revenue_lkr": "34399.66",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 177,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-11-04",
+      "batch_revenue_lkr": "2420.64",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 13,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-11-05",
+      "batch_revenue_lkr": "25392.98",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 131,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-11-06",
+      "batch_revenue_lkr": "38470.81",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 201,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-11-07",
+      "batch_revenue_lkr": "146184.66",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 751,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-11-08",
+      "batch_revenue_lkr": "33776.10",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 176,
+      "speed_trips": 2921
+    },
+    {
+      "report_date": "2026-11-09",
+      "batch_revenue_lkr": "33961.76",
+      "speed_revenue_lkr": "762112.43",
+      "batch_trips": 174,
+      "speed_trips": 2921
+    }
+  ]
+}

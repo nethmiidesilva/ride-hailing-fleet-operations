@@ -1,0 +1,7 @@
+{
+  "captured_at": "2026-09-26T03:08:07+00:00",
+  "endpoint": "/api/v1/alerts",
+  "data": {
+    "alerts": []
+  }
+}

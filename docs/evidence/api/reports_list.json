@@ -1,0 +1,91 @@
+{
+  "captured_at": "2026-09-26T03:08:05+00:00",
+  "request": "GET /reports",
+  "status_code": 200,
+  "body": [
+    {
+      "report_date": "2026-09-01",
+      "html": "/reports/profitability/2026-09-01/html",
+      "bytes": 24126,
+      "generated_at": "2026-09-25T15:51:04.342132+00:00"
+    },
+    {
+      "report_date": "2026-09-02",
+      "html": "/reports/profitability/2026-09-02/html",
+      "bytes": 22530,
+      "generated_at": "2026-09-25T15:51:33.519844+00:00"
+    },
+    {
+      "report_date": "2026-09-03",
+      "html": "/reports/profitability/2026-09-03/html",
+      "bytes": 25491,
+      "generated_at": "2026-09-25T16:00:15.467182+00:00"
+    },
+    {
+      "report_date": "2026-09-04",
+      "html": "/reports/profitability/2026-09-04/html",
+      "bytes": 25980,
+      "generated_at": "2026-09-25T16:11:54.675370+00:00"
+    },
+    {
+      "report_date": "2026-09-05",
+      "html": "/reports/profitability/2026-09-05/html",
+      "bytes": 19951,
+      "generated_at": "2026-09-25T18:09:19.416233+00:00"
+    },
+    {
+      "report_date": "2026-09-17",
+      "html": "/reports/profitability/2026-09-17/html",
+      "bytes": 25595,
+      "generated_at": "2026-09-25T18:53:26.496557+00:00"
+    },
+    {
+      "report_date": "2026-09-21",
+      "html": "/reports/profitability/2026-09-21/html",
+      "bytes": 23636,
+      "generated_at": "2026-09-25T19:00:27.517917+00:00"
+    },
+    {
+      "report_date": "2026-09-22",
+      "html": "/reports/profitability/2026-09-22/html",
+      "bytes": 31046,
+      "generated_at": "2026-09-25T19:10:18.253956+00:00"
+    },
+    {
+      "report_date": "2026-11-04",
+      "html": "/reports/profitability/2026-11-04/html",
+      "bytes": 13697,
+      "generated_at": "2026-09-26T02:22:08.739563+00:00"
+    },
+    {
+      "report_date": "2026-11-05",
+      "html": "/reports/profitability/2026-11-05/html",
+      "bytes": 19466,
+      "generated_at": "2026-09-26T02:30:24.241285+00:00"
+    },
+    {
+      "report_date": "2026-11-06",
+      "html": "/reports/profitability/2026-11-06/html",
+      "bytes": 60208,
+      "generated_at": "2026-09-26T02:43:27.949294+00:00"
+    },
+    {
+      "report_date": "2026-11-07",
+      "html": "/reports/profitability/2026-11-07/html",
+      "bytes": 61335,
+      "generated_at": "2026-09-26T02:50:15.996031+00:00"
+    },
+    {
+      "report_date": "2026-11-08",
+      "html": "/reports/profitability/2026-11-08/html",
+      "bytes": 20930,
+      "generated_at": "2026-09-26T03:00:18.305518+00:00"
+    },
+    {
+      "report_date": "2026-11-09",
+      "html": "/reports/profitability/2026-11-09/html",
+      "bytes": 21011,
+      "generated_at": "2026-09-26T03:06:02.066201+00:00"
+    }
+  ]
+}

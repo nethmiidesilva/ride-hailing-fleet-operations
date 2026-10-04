@@ -1,0 +1,43 @@
+{
+  "captured_at": "2026-09-26T03:08:06+00:00",
+  "sql": "SELECT reason, count(*) AS rows_rejected, min(rejected_at) AS first_seen, max(rejected_at) AS last_seen FROM rejected_events GROUP BY reason ORDER BY rows_rejected DESC;",
+  "row_count": 6,
+  "rows": [
+    {
+      "reason": "NULL_VEHICLE_ID",
+      "rows_rejected": 598,
+      "first_seen": "2026-09-25 15:24:00.861635+00:00",
+      "last_seen": "2026-09-26 03:07:30.682076+00:00"
+    },
+    {
+      "reason": "NEGATIVE_FARE",
+      "rows_rejected": 589,
+      "first_seen": "2026-09-25 15:24:00.861635+00:00",
+      "last_seen": "2026-09-26 03:08:00.674737+00:00"
+    },
+    {
+      "reason": "NEGATIVE_SPEED",
+      "rows_rejected": 560,
+      "first_seen": "2026-09-25 15:24:00.861635+00:00",
+      "last_seen": "2026-09-26 03:08:00.674737+00:00"
+    },
+    {
+      "reason": "LON_OUT_OF_RANGE",
+      "rows_rejected": 530,
+      "first_seen": "2026-09-25 15:23:34.620741+00:00",
+      "last_seen": "2026-09-26 03:08:00.674737+00:00"
+    },
+    {
+      "reason": "LAT_OUT_OF_RANGE",
+      "rows_rejected": 529,
+      "first_seen": "2026-09-25 15:24:00.861635+00:00",
+      "last_seen": "2026-09-26 03:08:00.674737+00:00"
+    },
+    {
+      "reason": "UNKNOWN_STATUS",
+      "rows_rejected": 528,
+      "first_seen": "2026-09-25 15:24:29.188426+00:00",
+      "last_seen": "2026-09-26 03:07:30.682076+00:00"
+    }
+  ]
+}

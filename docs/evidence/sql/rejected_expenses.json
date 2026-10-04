@@ -1,0 +1,172 @@
+{
+  "captured_at": "2026-09-26T03:08:06+00:00",
+  "sql": "SELECT report_date, reason, count(*) AS rows FROM rejected_expenses GROUP BY report_date, reason ORDER BY report_date DESC;",
+  "row_count": 33,
+  "rows": [
+    {
+      "report_date": "2098-11-11",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 16
+    },
+    {
+      "report_date": "2026-11-09",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-11-09",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-11-08",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-11-08",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-11-07",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-11-07",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-11-06",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-11-06",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-11-05",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-11-05",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-11-04",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-11-04",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-22",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-22",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-21",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-21",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-20",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-20",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-17",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-09-17",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-09-16",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-09-16",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-09-05",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-09-05",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-09-04",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-04",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-03",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 3
+    },
+    {
+      "report_date": "2026-09-03",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 3
+    },
+    {
+      "report_date": "2026-09-02",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-02",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 1
+    },
+    {
+      "report_date": "2026-09-01",
+      "reason": "MISSING_VEHICLE_ID",
+      "rows": 2
+    },
+    {
+      "report_date": "2026-09-01",
+      "reason": "NEGATIVE_VALUE",
+      "rows": 2
+    }
+  ]
+}

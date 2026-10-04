@@ -1,0 +1,118 @@
+{
+  "test_case": "TC-NFR-003",
+  "title": "Container CPU and memory against the declared limits (NFR-05)",
+  "requirements": [
+    "NFR-05"
+  ],
+  "status": "PASS",
+  "method": "docker stats --no-stream sampled several times on the HOST; per-container peak reported. Run from the host because the tests container is deliberately given neither the Docker CLI nor the daemon socket.",
+  "containers": {
+    "fleet-airflow-scheduler": {
+      "peak_cpu_pct": 2.18,
+      "peak_mem_mib": 746.8,
+      "mem_limit_mib": 1399.8,
+      "peak_mem_pct_of_limit": 53.3,
+      "samples": 5
+    },
+    "fleet-airflow-webserver": {
+      "peak_cpu_pct": 0.05,
+      "peak_mem_mib": 711.9,
+      "mem_limit_mib": 900.0,
+      "peak_mem_pct_of_limit": 79.1,
+      "samples": 5
+    },
+    "fleet-api": {
+      "peak_cpu_pct": 0.11,
+      "peak_mem_mib": 62.9,
+      "mem_limit_mib": 224.0,
+      "peak_mem_pct_of_limit": 28.1,
+      "samples": 5
+    },
+    "fleet-expense-producer": {
+      "peak_cpu_pct": 5.61,
+      "peak_mem_mib": 19.3,
+      "mem_limit_mib": 160.0,
+      "peak_mem_pct_of_limit": 12.1,
+      "samples": 5
+    },
+    "fleet-gps-producer": {
+      "peak_cpu_pct": 0.12,
+      "peak_mem_mib": 20.2,
+      "mem_limit_mib": 224.0,
+      "peak_mem_pct_of_limit": 9.0,
+      "samples": 5
+    },
+    "fleet-grafana": {
+      "peak_cpu_pct": 0.06,
+      "peak_mem_mib": 80.0,
+      "mem_limit_mib": 224.0,
+      "peak_mem_pct_of_limit": 35.7,
+      "samples": 5
+    },
+    "fleet-kafka": {
+      "peak_cpu_pct": 97.04,
+      "peak_mem_mib": 356.6,
+      "mem_limit_mib": 700.0,
+      "peak_mem_pct_of_limit": 50.9,
+      "samples": 5
+    },
+    "fleet-kafka-exporter": {
+      "peak_cpu_pct": 1.41,
+      "peak_mem_mib": 18.6,
+      "mem_limit_mib": 96.0,
+      "peak_mem_pct_of_limit": 19.4,
+      "samples": 5
+    },
+    "fleet-postgres": {
+      "peak_cpu_pct": 1.9,
+      "peak_mem_mib": 54.3,
+      "mem_limit_mib": 320.0,
+      "peak_mem_pct_of_limit": 17.0,
+      "samples": 5
+    },
+    "fleet-prometheus": {
+      "peak_cpu_pct": 0.33,
+      "peak_mem_mib": 74.8,
+      "mem_limit_mib": 224.0,
+      "peak_mem_pct_of_limit": 33.4,
+      "samples": 5
+    },
+    "fleet-stream-job": {
+      "peak_cpu_pct": 53.26,
+      "peak_mem_mib": 1159.2,
+      "mem_limit_mib": 1500.2,
+      "peak_mem_pct_of_limit": 77.3,
+      "samples": 5
+    }
+  },
+  "totals": {
+    "containers_observed": 11,
+    "sum_peak_mem_mib": 3304.6,
+    "sum_declared_limit_mib": 5972.0,
+    "headroom_mib": 2667.4,
+    "utilisation_of_declared_limits_pct": 55.3,
+    "declared_limits_from_compose_mib": [
+      700,
+      320,
+      224,
+      160,
+      1500,
+      1400,
+      900,
+      224,
+      96,
+      224,
+      224,
+      1600
+    ]
+  },
+  "tightest_container": {
+    "name": "fleet-airflow-webserver",
+    "peak_cpu_pct": 0.05,
+    "peak_mem_mib": 711.9,
+    "mem_limit_mib": 900.0,
+    "peak_mem_pct_of_limit": 79.1,
+    "samples": 5
+  },
+  "captured_at": "2026-09-26T02:55:38Z"
+}

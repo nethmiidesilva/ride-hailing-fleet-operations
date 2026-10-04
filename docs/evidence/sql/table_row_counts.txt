@@ -1,0 +1,16 @@
+-- SELECT 'realtime_zone_metrics' AS table_name, count(*) AS rows FROM realtime_zone_metrics UNION ALL SELECT 'vehicle_status', count(*) FROM vehicle_status UNION ALL SELECT 'idle_alerts', count(*) FROM idle_alerts UNION ALL SELECT 'rejected_events', count(*) FROM rejected_events UNION ALL SELECT 'daily_expenses', count(*) FROM daily_expenses UNION ALL SELECT 'rejected_expenses', count(*) FROM rejected_expenses UNION ALL SELECT 'daily_vehicle_profitability', count(*) FROM daily_vehicle_profitability UNION ALL SELECT 'daily_zone_summary', count(*) FROM daily_zone_summary UNION ALL SELECT 'pipeline_runs', count(*) FROM pipeline_runs UNION ALL SELECT 'pipeline_alerts', count(*) FROM pipeline_alerts ORDER BY 1;
+-- captured 2026-09-26T03:08:07.546957+00:00
+
+table_name                  | rows
+----------------------------+-----
+daily_expenses              | 400 
+daily_vehicle_profitability | 700 
+daily_zone_summary          | 1466
+idle_alerts                 | 117 
+pipeline_alerts             | 17  
+pipeline_runs               | 20  
+realtime_zone_metrics       | 895 
+rejected_events             | 3334
+rejected_expenses           | 64  
+vehicle_status              | 25  
+(10 rows)

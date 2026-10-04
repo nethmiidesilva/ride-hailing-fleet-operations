@@ -1,0 +1,727 @@
+{
+  "captured_at": "2026-09-26T03:08:07+00:00",
+  "sql": "SELECT sim_hour, zone, round(sum(earnings_lkr),2) AS earnings FROM daily_zone_summary WHERE report_date = (SELECT max(report_date) FROM daily_zone_summary) GROUP BY sim_hour, zone ORDER BY sim_hour, zone;",
+  "row_count": 144,
+  "rows": [
+    {
+      "sim_hour": 0,
+      "zone": "Bambalapitiya",
+      "earnings": "194.49"
+    },
+    {
+      "sim_hour": 0,
+      "zone": "Borella",
+      "earnings": "428.93"
+    },
+    {
+      "sim_hour": 0,
+      "zone": "Fort",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 0,
+      "zone": "Kollupitiya",
+      "earnings": "215.55"
+    },
+    {
+      "sim_hour": 0,
+      "zone": "Pettah",
+      "earnings": "399.35"
+    },
+    {
+      "sim_hour": 0,
+      "zone": "Wellawatte",
+      "earnings": "381.30"
+    },
+    {
+      "sim_hour": 1,
+      "zone": "Bambalapitiya",
+      "earnings": "240.90"
+    },
+    {
+      "sim_hour": 1,
+      "zone": "Borella",
+      "earnings": "215.39"
+    },
+    {
+      "sim_hour": 1,
+      "zone": "Fort",
+      "earnings": "346.45"
+    },
+    {
+      "sim_hour": 1,
+      "zone": "Kollupitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 1,
+      "zone": "Pettah",
+      "earnings": "201.47"
+    },
+    {
+      "sim_hour": 1,
+      "zone": "Wellawatte",
+      "earnings": "616.03"
+    },
+    {
+      "sim_hour": 2,
+      "zone": "Bambalapitiya",
+      "earnings": "187.23"
+    },
+    {
+      "sim_hour": 2,
+      "zone": "Borella",
+      "earnings": "179.07"
+    },
+    {
+      "sim_hour": 2,
+      "zone": "Fort",
+      "earnings": "364.36"
+    },
+    {
+      "sim_hour": 2,
+      "zone": "Kollupitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 2,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 2,
+      "zone": "Wellawatte",
+      "earnings": "198.55"
+    },
+    {
+      "sim_hour": 3,
+      "zone": "Bambalapitiya",
+      "earnings": "157.42"
+    },
+    {
+      "sim_hour": 3,
+      "zone": "Borella",
+      "earnings": "207.06"
+    },
+    {
+      "sim_hour": 3,
+      "zone": "Fort",
+      "earnings": "165.58"
+    },
+    {
+      "sim_hour": 3,
+      "zone": "Kollupitiya",
+      "earnings": "355.42"
+    },
+    {
+      "sim_hour": 3,
+      "zone": "Pettah",
+      "earnings": "197.10"
+    },
+    {
+      "sim_hour": 3,
+      "zone": "Wellawatte",
+      "earnings": "648.33"
+    },
+    {
+      "sim_hour": 4,
+      "zone": "Bambalapitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 4,
+      "zone": "Borella",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 4,
+      "zone": "Fort",
+      "earnings": "364.60"
+    },
+    {
+      "sim_hour": 4,
+      "zone": "Kollupitiya",
+      "earnings": "434.04"
+    },
+    {
+      "sim_hour": 4,
+      "zone": "Pettah",
+      "earnings": "232.71"
+    },
+    {
+      "sim_hour": 4,
+      "zone": "Wellawatte",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 5,
+      "zone": "Bambalapitiya",
+      "earnings": "158.99"
+    },
+    {
+      "sim_hour": 5,
+      "zone": "Borella",
+      "earnings": "180.70"
+    },
+    {
+      "sim_hour": 5,
+      "zone": "Fort",
+      "earnings": "189.52"
+    },
+    {
+      "sim_hour": 5,
+      "zone": "Kollupitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 5,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 5,
+      "zone": "Wellawatte",
+      "earnings": "854.48"
+    },
+    {
+      "sim_hour": 6,
+      "zone": "Bambalapitiya",
+      "earnings": "217.85"
+    },
+    {
+      "sim_hour": 6,
+      "zone": "Borella",
+      "earnings": "200.49"
+    },
+    {
+      "sim_hour": 6,
+      "zone": "Fort",
+      "earnings": "462.37"
+    },
+    {
+      "sim_hour": 6,
+      "zone": "Kollupitiya",
+      "earnings": "555.16"
+    },
+    {
+      "sim_hour": 6,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 6,
+      "zone": "Wellawatte",
+      "earnings": "214.39"
+    },
+    {
+      "sim_hour": 7,
+      "zone": "Bambalapitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 7,
+      "zone": "Borella",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 7,
+      "zone": "Fort",
+      "earnings": "346.31"
+    },
+    {
+      "sim_hour": 7,
+      "zone": "Kollupitiya",
+      "earnings": "164.50"
+    },
+    {
+      "sim_hour": 7,
+      "zone": "Pettah",
+      "earnings": "161.48"
+    },
+    {
+      "sim_hour": 7,
+      "zone": "Wellawatte",
+      "earnings": "207.86"
+    },
+    {
+      "sim_hour": 8,
+      "zone": "Bambalapitiya",
+      "earnings": "181.27"
+    },
+    {
+      "sim_hour": 8,
+      "zone": "Borella",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 8,
+      "zone": "Fort",
+      "earnings": "577.45"
+    },
+    {
+      "sim_hour": 8,
+      "zone": "Kollupitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 8,
+      "zone": "Pettah",
+      "earnings": "175.50"
+    },
+    {
+      "sim_hour": 8,
+      "zone": "Wellawatte",
+      "earnings": "592.35"
+    },
+    {
+      "sim_hour": 9,
+      "zone": "Bambalapitiya",
+      "earnings": "477.38"
+    },
+    {
+      "sim_hour": 9,
+      "zone": "Borella",
+      "earnings": "198.52"
+    },
+    {
+      "sim_hour": 9,
+      "zone": "Fort",
+      "earnings": "373.06"
+    },
+    {
+      "sim_hour": 9,
+      "zone": "Kollupitiya",
+      "earnings": "417.19"
+    },
+    {
+      "sim_hour": 9,
+      "zone": "Pettah",
+      "earnings": "188.24"
+    },
+    {
+      "sim_hour": 9,
+      "zone": "Wellawatte",
+      "earnings": "156.20"
+    },
+    {
+      "sim_hour": 10,
+      "zone": "Bambalapitiya",
+      "earnings": "377.98"
+    },
+    {
+      "sim_hour": 10,
+      "zone": "Borella",
+      "earnings": "200.82"
+    },
+    {
+      "sim_hour": 10,
+      "zone": "Fort",
+      "earnings": "334.68"
+    },
+    {
+      "sim_hour": 10,
+      "zone": "Kollupitiya",
+      "earnings": "199.26"
+    },
+    {
+      "sim_hour": 10,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 10,
+      "zone": "Wellawatte",
+      "earnings": "161.23"
+    },
+    {
+      "sim_hour": 11,
+      "zone": "Bambalapitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 11,
+      "zone": "Borella",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 11,
+      "zone": "Fort",
+      "earnings": "587.21"
+    },
+    {
+      "sim_hour": 11,
+      "zone": "Kollupitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 11,
+      "zone": "Pettah",
+      "earnings": "163.33"
+    },
+    {
+      "sim_hour": 11,
+      "zone": "Wellawatte",
+      "earnings": "594.89"
+    },
+    {
+      "sim_hour": 12,
+      "zone": "Bambalapitiya",
+      "earnings": "540.35"
+    },
+    {
+      "sim_hour": 12,
+      "zone": "Borella",
+      "earnings": "212.59"
+    },
+    {
+      "sim_hour": 12,
+      "zone": "Fort",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 12,
+      "zone": "Kollupitiya",
+      "earnings": "334.87"
+    },
+    {
+      "sim_hour": 12,
+      "zone": "Pettah",
+      "earnings": "192.88"
+    },
+    {
+      "sim_hour": 12,
+      "zone": "Wellawatte",
+      "earnings": "273.39"
+    },
+    {
+      "sim_hour": 13,
+      "zone": "Bambalapitiya",
+      "earnings": "235.85"
+    },
+    {
+      "sim_hour": 13,
+      "zone": "Borella",
+      "earnings": "179.62"
+    },
+    {
+      "sim_hour": 13,
+      "zone": "Fort",
+      "earnings": "371.45"
+    },
+    {
+      "sim_hour": 13,
+      "zone": "Kollupitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 13,
+      "zone": "Pettah",
+      "earnings": "386.31"
+    },
+    {
+      "sim_hour": 13,
+      "zone": "Wellawatte",
+      "earnings": "434.21"
+    },
+    {
+      "sim_hour": 14,
+      "zone": "Bambalapitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 14,
+      "zone": "Borella",
+      "earnings": "174.39"
+    },
+    {
+      "sim_hour": 14,
+      "zone": "Fort",
+      "earnings": "647.27"
+    },
+    {
+      "sim_hour": 14,
+      "zone": "Kollupitiya",
+      "earnings": "367.91"
+    },
+    {
+      "sim_hour": 14,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 14,
+      "zone": "Wellawatte",
+      "earnings": "194.59"
+    },
+    {
+      "sim_hour": 15,
+      "zone": "Bambalapitiya",
+      "earnings": "412.09"
+    },
+    {
+      "sim_hour": 15,
+      "zone": "Borella",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 15,
+      "zone": "Fort",
+      "earnings": "229.39"
+    },
+    {
+      "sim_hour": 15,
+      "zone": "Kollupitiya",
+      "earnings": "174.01"
+    },
+    {
+      "sim_hour": 15,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 15,
+      "zone": "Wellawatte",
+      "earnings": "168.98"
+    },
+    {
+      "sim_hour": 16,
+      "zone": "Bambalapitiya",
+      "earnings": "170.16"
+    },
+    {
+      "sim_hour": 16,
+      "zone": "Borella",
+      "earnings": "652.20"
+    },
+    {
+      "sim_hour": 16,
+      "zone": "Fort",
+      "earnings": "335.57"
+    },
+    {
+      "sim_hour": 16,
+      "zone": "Kollupitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 16,
+      "zone": "Pettah",
+      "earnings": "351.34"
+    },
+    {
+      "sim_hour": 16,
+      "zone": "Wellawatte",
+      "earnings": "342.98"
+    },
+    {
+      "sim_hour": 17,
+      "zone": "Bambalapitiya",
+      "earnings": "190.74"
+    },
+    {
+      "sim_hour": 17,
+      "zone": "Borella",
+      "earnings": "169.11"
+    },
+    {
+      "sim_hour": 17,
+      "zone": "Fort",
+      "earnings": "633.80"
+    },
+    {
+      "sim_hour": 17,
+      "zone": "Kollupitiya",
+      "earnings": "457.79"
+    },
+    {
+      "sim_hour": 17,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 17,
+      "zone": "Wellawatte",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 18,
+      "zone": "Bambalapitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 18,
+      "zone": "Borella",
+      "earnings": "164.24"
+    },
+    {
+      "sim_hour": 18,
+      "zone": "Fort",
+      "earnings": "222.08"
+    },
+    {
+      "sim_hour": 18,
+      "zone": "Kollupitiya",
+      "earnings": "180.74"
+    },
+    {
+      "sim_hour": 18,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 18,
+      "zone": "Wellawatte",
+      "earnings": "768.89"
+    },
+    {
+      "sim_hour": 19,
+      "zone": "Bambalapitiya",
+      "earnings": "405.50"
+    },
+    {
+      "sim_hour": 19,
+      "zone": "Borella",
+      "earnings": "213.13"
+    },
+    {
+      "sim_hour": 19,
+      "zone": "Fort",
+      "earnings": "512.04"
+    },
+    {
+      "sim_hour": 19,
+      "zone": "Kollupitiya",
+      "earnings": "169.97"
+    },
+    {
+      "sim_hour": 19,
+      "zone": "Pettah",
+      "earnings": "240.43"
+    },
+    {
+      "sim_hour": 19,
+      "zone": "Wellawatte",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 20,
+      "zone": "Bambalapitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 20,
+      "zone": "Borella",
+      "earnings": "392.99"
+    },
+    {
+      "sim_hour": 20,
+      "zone": "Fort",
+      "earnings": "758.30"
+    },
+    {
+      "sim_hour": 20,
+      "zone": "Kollupitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 20,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 20,
+      "zone": "Wellawatte",
+      "earnings": "158.69"
+    },
+    {
+      "sim_hour": 21,
+      "zone": "Bambalapitiya",
+      "earnings": "580.14"
+    },
+    {
+      "sim_hour": 21,
+      "zone": "Borella",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 21,
+      "zone": "Fort",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 21,
+      "zone": "Kollupitiya",
+      "earnings": "223.07"
+    },
+    {
+      "sim_hour": 21,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 21,
+      "zone": "Wellawatte",
+      "earnings": "413.29"
+    },
+    {
+      "sim_hour": 22,
+      "zone": "Bambalapitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 22,
+      "zone": "Borella",
+      "earnings": "530.74"
+    },
+    {
+      "sim_hour": 22,
+      "zone": "Fort",
+      "earnings": "199.50"
+    },
+    {
+      "sim_hour": 22,
+      "zone": "Kollupitiya",
+      "earnings": "160.99"
+    },
+    {
+      "sim_hour": 22,
+      "zone": "Pettah",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 22,
+      "zone": "Wellawatte",
+      "earnings": "159.43"
+    },
+    {
+      "sim_hour": 23,
+      "zone": "Bambalapitiya",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 23,
+      "zone": "Borella",
+      "earnings": "0.00"
+    },
+    {
+      "sim_hour": 23,
+      "zone": "Fort",
+      "earnings": "551.45"
+    },
+    {
+      "sim_hour": 23,
+      "zone": "Kollupitiya",
+      "earnings": "408.42"
+    },
+    {
+      "sim_hour": 23,
+      "zone": "Pettah",
+      "earnings": "492.32"
+    },
+    {
+      "sim_hour": 23,
+      "zone": "Wellawatte",
+      "earnings": "419.58"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# Test + tooling image (Dockerfile.test). Superset of every service requirement so one image can
+# run unit, integration and e2e suites.
+-r requirements-common.txt
+pyspark==3.5.3
+confluent-kafka==2.6.1
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pytest==8.3.4
+pytest-cov==6.0.0
+pytest-html==4.1.1
+pytest-timeout==2.3.1
+httpx==0.28.1
+requests==2.32.3
+pandas==2.2.3
+matplotlib==3.9.4
+ruff==0.8.4
+black==24.10.0

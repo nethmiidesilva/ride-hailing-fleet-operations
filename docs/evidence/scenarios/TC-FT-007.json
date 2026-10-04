@@ -1,0 +1,28 @@
+{
+  "test_case": "TC-FT-007",
+  "title": "Replaying a reconciled simulated day produces identical business results",
+  "requirements": ["REQ-10", "REQ-11"],
+  "status": "PASS",
+  "target_simulated_date": "2026-09-17",
+  "before": {
+    "rows": 25,
+    "sha256_of_business_columns": "caed761fd73156fc7115e8c51df0b95f9b32c5aac5f7d2de98b4ababfac2a9e2",
+    "run_id": "scheduled__2026-09-25T1810000000"
+  },
+  "replay": {
+    "at": "2026-09-25T18:53:09Z",
+    "airflow_run_id": "replay_1790362389",
+    "dag_final_state": "success",
+    "completed_after_seconds": 30
+  },
+  "after": {
+    "rows": 25,
+    "sha256_of_business_columns": "caed761fd73156fc7115e8c51df0b95f9b32c5aac5f7d2de98b4ababfac2a9e2",
+    "run_id": "replay_1790362389"
+  },
+  "identical_business_columns": true,
+  "columns_compared": "vehicle_id, revenue_lkr, trips, active_minutes, idle_minutes, utilization, distance_km, fuel_cost, maintenance_cost, total_cost_lkr, profit_lkr, margin, cost_per_km, revenue_per_km, is_unprofitable, trend, data_quality_flag",
+  "columns_excluded": "run_id, computed_at (bookkeeping - expected to change)",
+  "diff_excerpt": "",
+  "captured_at": "2026-09-25T18:53:48Z"
+}

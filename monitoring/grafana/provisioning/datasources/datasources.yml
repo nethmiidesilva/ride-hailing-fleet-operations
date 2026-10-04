@@ -1,0 +1,39 @@
+# ==============================================================================================
+# Grafana datasources, provisioned from disk so the dashboards work on a clean `make up` with no
+# manual clicking (a rubric requirement: "provisioned datasources and dashboards").
+#
+# Two datasources because the stack has two kinds of truth:
+#   * Prometheus — pipeline health (rates, durations, lag, freshness).
+#   * PostgreSQL — business state (utilisation, earnings, alerts, profitability).
+# ==============================================================================================
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    uid: fleet-prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: false
+    jsonData:
+      timeInterval: 10s
+      httpMethod: POST
+
+  - name: FleetPostgres
+    uid: fleet-postgres
+    type: postgres
+    access: proxy
+    url: ${PG_HOST}
+    database: ${PG_DB}
+    user: ${PG_USER}
+    editable: false
+    secureJsonData:
+      password: ${PG_PASSWORD}
+    jsonData:
+      sslmode: disable
+      postgresVersion: 1600
+      timescaledb: false
+      maxOpenConns: 5
+      maxIdleConns: 2
+      connMaxLifetime: 14400

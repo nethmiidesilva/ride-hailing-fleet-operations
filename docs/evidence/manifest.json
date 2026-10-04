@@ -1,0 +1,138 @@
+{
+  "captured_at": "2026-09-26T03:08:05+00:00",
+  "api": {
+    "index": {
+      "path": "docs/evidence/api/index.json",
+      "request": "GET /",
+      "status": 200
+    },
+    "health": {
+      "path": "docs/evidence/api/health.json",
+      "request": "GET /health",
+      "status": 200
+    },
+    "metrics_fleet": {
+      "path": "docs/evidence/api/metrics_fleet.json",
+      "request": "GET /metrics/fleet",
+      "status": 200
+    },
+    "metrics_zones": {
+      "path": "docs/evidence/api/metrics_zones.json",
+      "request": "GET /metrics/zones?minutes=15",
+      "status": 200
+    },
+    "metrics_time_of_day": {
+      "path": "docs/evidence/api/metrics_time_of_day.json",
+      "request": "GET /metrics/time-of-day",
+      "status": 200
+    },
+    "alerts_idle_open": {
+      "path": "docs/evidence/api/alerts_idle_open.json",
+      "request": "GET /alerts/idle?status=open",
+      "status": 200
+    },
+    "alerts_idle_all": {
+      "path": "docs/evidence/api/alerts_idle_all.json",
+      "request": "GET /alerts/idle?status=all&limit=20",
+      "status": 200
+    },
+    "reports_profitability": {
+      "path": "docs/evidence/api/reports_profitability.json",
+      "request": "GET /reports/profitability",
+      "status": 200
+    },
+    "vehicles_unprofitable": {
+      "path": "docs/evidence/api/vehicles_unprofitable.json",
+      "request": "GET /vehicles/unprofitable",
+      "status": 200
+    },
+    "reports_list": {
+      "path": "docs/evidence/api/reports_list.json",
+      "request": "GET /reports",
+      "status": 200
+    }
+  },
+  "sql": {
+    "fleet_now": {
+      "rows": 1,
+      "sql": "SELECT * FROM v_fleet_now;"
+    },
+    "zone_metrics_recent": {
+      "rows": 24,
+      "sql": "SELECT window_start, zone, active_vehicles, idle_vehicles, idle_ratio, trips_completed, earnings_lkr, avg_speed_kmh, event_count FROM realtime_zone_metrics ORDER BY window_start DESC, zone LIMIT 24;"
+    },
+    "vehicle_status": {
+      "rows": 25,
+      "sql": "SELECT vehicle_id, driver_id, status, zone, speed_kmh, last_event_time, idle_since FROM vehicle_status ORDER BY vehicle_id LIMIT 30;"
+    },
+    "idle_alerts": {
+      "rows": 20,
+      "sql": "SELECT id, vehicle_id, zone, idle_since, detected_at, resolved_at, idle_minutes, status FROM idle_alerts ORDER BY detected_at DESC LIMIT 20;"
+    },
+    "rejected_events_by_reason": {
+      "rows": 6,
+      "sql": "SELECT reason, count(*) AS rows_rejected, min(rejected_at) AS first_seen, max(rejected_at) AS last_seen FROM rejected_events GROUP BY reason ORDER BY rows_rejected DESC;"
+    },
+    "rejected_events_sample": {
+      "rows": 10,
+      "sql": "SELECT event_id, vehicle_id, reason, kafka_partition, kafka_offset, left(raw_payload, 120) AS raw_payload_head FROM rejected_events ORDER BY rejected_at DESC LIMIT 10;"
+    },
+    "daily_expenses": {
+      "rows": 16,
+      "sql": "SELECT report_date, count(*) AS rows, round(sum(fuel_cost),2) AS fuel, round(sum(maintenance_cost),2) AS maintenance, round(sum(distance_covered),2) AS km FROM daily_expenses GROUP BY report_date ORDER BY report_date;"
+    },
+    "rejected_expenses": {
+      "rows": 33,
+      "sql": "SELECT report_date, reason, count(*) AS rows FROM rejected_expenses GROUP BY report_date, reason ORDER BY report_date DESC;"
+    },
+    "profitability": {
+      "rows": 40,
+      "sql": "SELECT report_date, vehicle_id, trips, revenue_lkr, total_cost_lkr, profit_lkr, margin, utilization, cost_per_km, is_unprofitable, trend, data_quality_flag FROM daily_vehicle_profitability ORDER BY report_date DESC, profit_lkr ASC LIMIT 40;"
+    },
+    "profitability_summary": {
+      "rows": 14,
+      "sql": "SELECT report_date, count(*) AS vehicles, sum(trips) AS trips, round(sum(revenue_lkr),2) AS revenue, round(sum(total_cost_lkr),2) AS cost, round(sum(profit_lkr),2) AS profit, count(*) FILTER (WHERE is_unprofitable) AS unprofitable, count(*) FILTER (WHERE trend <> 'STABLE') AS at_risk FROM daily_vehicle_profitability GROUP BY report_date ORDER BY report_date;"
+    },
+    "zone_summary": {
+      "rows": 83,
+      "sql": "SELECT report_date, zone, sum(trips) AS trips, round(sum(earnings_lkr),2) AS earnings, round(avg(utilization),4) AS avg_utilization FROM daily_zone_summary GROUP BY report_date, zone ORDER BY report_date DESC, earnings DESC;"
+    },
+    "zone_hour_matrix": {
+      "rows": 144,
+      "sql": "SELECT sim_hour, zone, round(sum(earnings_lkr),2) AS earnings FROM daily_zone_summary WHERE report_date = (SELECT max(report_date) FROM daily_zone_summary) GROUP BY sim_hour, zone ORDER BY sim_hour, zone;"
+    },
+    "pipeline_runs": {
+      "rows": 10,
+      "sql": "SELECT run_id, report_date, status, started_at, finished_at, duration_s, rows_written FROM pipeline_runs ORDER BY started_at DESC LIMIT 10;"
+    },
+    "pipeline_alerts": {
+      "rows": 10,
+      "sql": "SELECT created_at, alert_name, severity, dag_id, task_id, message FROM pipeline_alerts ORDER BY created_at DESC LIMIT 10;"
+    },
+    "reconciliation": {
+      "rows": 14,
+      "sql": "SELECT p.report_date, round(sum(p.revenue_lkr),2) AS batch_revenue_lkr, (SELECT round(sum(earnings_lkr),2) FROM realtime_zone_metrics) AS speed_revenue_lkr, sum(p.trips) AS batch_trips, (SELECT sum(trips_completed) FROM realtime_zone_metrics) AS speed_trips FROM daily_vehicle_profitability p GROUP BY p.report_date ORDER BY p.report_date;"
+    },
+    "table_row_counts": {
+      "rows": 10,
+      "sql": "SELECT 'realtime_zone_metrics' AS table_name, count(*) AS rows FROM realtime_zone_metrics UNION ALL SELECT 'vehicle_status', count(*) FROM vehicle_status UNION ALL SELECT 'idle_alerts', count(*) FROM idle_alerts UNION ALL SELECT 'rejected_events', count(*) FROM rejected_events UNION ALL SELECT 'daily_expenses', count(*) FROM daily_expenses UNION ALL SELECT 'rejected_expenses', count(*) FROM rejected_expenses UNION ALL SELECT 'daily_vehicle_profitability', count(*) FROM daily_vehicle_profitability UNION ALL SELECT 'daily_zone_summary', count(*) FROM daily_zone_summary UNION ALL SELECT 'pipeline_runs', count(*) FROM pipeline_runs UNION ALL SELECT 'pipeline_alerts', count(*) FROM pipeline_alerts ORDER BY 1;"
+    }
+  },
+  "metrics": {
+    "prometheus_queries": {
+      "queries": 17
+    },
+    "prometheus_alerts": {
+      "endpoint": "/api/v1/alerts"
+    },
+    "prometheus_targets": {
+      "endpoint": "/api/v1/targets"
+    },
+    "prometheus_rules": {
+      "endpoint": "/api/v1/rules"
+    }
+  },
+  "environment": {
+    "path": "docs/evidence/environment.json"
+  }
+}
